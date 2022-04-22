@@ -11,9 +11,28 @@ const std::vector<int> data = {-18, -3, 0, 1, 2, 5, 11, 23, 53, 199, 1329};
 
 // C++11
 template <typename Container, typename Element>
-typename Container::const_iterator binsearch(const Container& cont, const Element & elem);
+typename Container::const_iterator binsearch(const Container &, const Element &);
 
 
 int main() {
+	std::cout << *binsearch(data, 199) << std::endl;
 
+}
+
+template <typename Container, typename Element>
+typename Container::const_iterator binsearch(const Container& cont, const Element& sought)
+{
+	auto beg = cont.cbegin(), end = cont.cend();
+	auto middle = [&beg, &end](){ return beg + (end-beg)/2; };
+	auto mid = middle();
+
+	while (mid != end && *mid != sought)
+	{
+		if (sought < *mid)
+			end = mid;
+		else
+			beg = mid + 1;	
+		mid = middle();
+	}
+	return mid;
 }
