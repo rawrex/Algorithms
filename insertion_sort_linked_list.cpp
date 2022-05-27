@@ -2,6 +2,9 @@
 
 // 147. Insertion Sort List
 // https://leetcode.com/problems/insertion-sort-list/
+// Solution analysis 
+// https://afteracademy.com/blog/sort-a-linked-list-using-insertion-sort
+
 struct ListNode {
 	int val;
 	ListNode *next;
