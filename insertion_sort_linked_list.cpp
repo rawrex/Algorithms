@@ -11,6 +11,20 @@ struct ListNode {
 	ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+void print(ListNode* head) 
+{
+	for(auto iter = head; iter; iter=iter->next)
+		std::cout << iter->val << ' ';
+	std::cout << std::endl;
+}
+
+ListNode node5;
+ListNode node4(-4, &node5);
+ListNode node3(0, &node4);
+ListNode node2(4, &node3);
+ListNode node1(8, &node2);
+ListNode head(10, &node1);
+
 class Solution{
 	ListNode* insert(ListNode* sorted_head, ListNode* new_node)
 	{
@@ -43,36 +57,29 @@ class Solution{
 		return sorted_head;
 	}
 	
-	ListNode* sorted_head = nullptr;
 public:
 	ListNode* insertionSortList(ListNode* head)
 	{
-		for (ListNode* iter = head; iter; iter=iter->next)
+		ListNode* sorted_head = nullptr;
+		ListNode* iter = head;
+		while (iter)
+		{
+			// We need to store the next node since it may be overwritten
+			auto next = iter->next;
+
+			// Insert the iter appropriately
 			sorted_head = insert(sorted_head, iter);
+
+			// Advance the iter using pre-stored pointer to the next node
+			iter = next;
+		}
 		return sorted_head;
 	}
 };
 
-void print(ListNode* head) 
-{
-	auto iter = head;
-	while(iter)
-	{
-		std::cout << iter->val << ' ';
-		iter = iter->next;
-	}
-	std::cout << std::endl;
-}
 
 int main()
 {
-
-	ListNode node5;
-	ListNode node4(-4, &node5);
-	ListNode node3(0, &node4);
-	ListNode node2(4, &node3);
-	ListNode node1(8, &node2);
-	ListNode head(10, &node1);
 
 	print(&head);
 
