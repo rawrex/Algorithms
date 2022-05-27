@@ -2,22 +2,16 @@
 #include <vector>
 
 constexpr size_t N = 12;
-int array[N] = {5, 1, -6, 0, 7, 3, 10, -43, 6, 7, 53, 12};
-std::vector<int> list = {35, 21, 1, 54, 7, -12, 65, 3, 1, 0, 15};
+//int array[N] = {5, 1, -6, 0, 7, 3, 10, -43, 6, 7, 53, 12};
+//std::vector<int> list = {35, 21, 1, 54, 7, -12, 65, 3, 1, 0, 15};
 
 void print(int (&arr)[N])
 {
 	for (size_t i = 0; i!=N; ++i)
 		std::cout << arr[i] << ' ';
-	std::cout << std::endl;
+std::cout << std::endl;
 }
 
-void print(std::vector<int>& lt) 
-{
-	for (auto & elem : lt)
-		std::cout << elem << ' ';
-	std::cout << std::endl;
-}
 
 void insertion_sort(int (&arr)[N])
 {
@@ -33,7 +27,7 @@ void insertion_sort(int (&arr)[N])
 		arr[i+1] = key;
 	}
 }
-	
+
 void insertion_sort(std::vector<int> & lt)
 {
 	for (auto beg = lt.begin(), end = lt.end(); beg != end; ++beg)
@@ -48,10 +42,4 @@ void insertion_sort(std::vector<int> & lt)
 	}
 }
 
-int main() {
-
-	print(list);
-	insertion_sort(list);
-	print(list);
-
-}
+int main() {}
