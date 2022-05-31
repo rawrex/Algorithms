@@ -31,7 +31,7 @@ ListNode head(10, &node1);
 
 class Solution
 {
-	ListNode* insert(ListNode* sorted_head, ListNode* new_node)
+	ListNode* insert(ListNode*& sorted_head, ListNode*& new_node)
 	{
 		// If the sorted_head is a head of an empty list
 		// Or if the new_node is smaller than the smallest node in the sorted list
@@ -43,7 +43,7 @@ class Solution
 		}
 		else
 		{
-			ListNode* iter = sorted_head;
+			ListNode*& iter = sorted_head;
 
 			// While the next node in the sorted list is present (not a nullptr)
 			// And has a value that is less than the value of the new node we add
@@ -53,8 +53,8 @@ class Solution
 			// The iter now either points to the last element in the sorted list
 			// Or its (iter) next node has value greater than the value of the new_node
 
-			// Iter now points to the new_node
-			// And new_node points to the node that was coming after the iter
+			// Make iter to point to the new_node
+			// And new_node now points to the node that was coming after the iter
 			new_node->next = iter->next;
 			iter->next = new_node;
 		}
@@ -67,6 +67,7 @@ public:
 	{
 		ListNode* sorted_head = nullptr;
 		ListNode* iter = head;
+
 		while (iter)
 		{
 			// We need to store the next node since it may be overwritten (line 41)
