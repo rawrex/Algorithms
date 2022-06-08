@@ -24,7 +24,7 @@ void print(const std::vector<int> & vec, const std::string& msg = "")
 void merge(std::vector<int>& vec, iter& a, iter& b, iter& c)
 {
 	// Make copies of the subarrays 
-	std::vector<int> left(a, b+1), right(b+1, c);
+	std::vector<int> left(a, b), right(b, c);
 
 	
 	auto left_iter = left.begin();
@@ -68,7 +68,8 @@ void merge(std::vector<int>& vec, iter& a, iter& b, iter& c)
 int main() 
 {
 
-	auto beg = vec_merge.begin(), half = vec_merge.begin()+2, end = vec_merge.end();
+	auto beg = vec_merge.begin(), half = vec_merge.begin()+3, end = vec_merge.end();
+	std::cout << *half << std::endl;
 	print(vec_merge);
 	merge(vec_merge, beg, half, end);
 	print(vec_merge);
