@@ -26,21 +26,18 @@ void merge(std::vector<int>& vec, iter& a, iter& b, iter& c)
 	// Make copies of the subarrays 
 	std::vector<int> left(a, b+1), right(b+1, c);
 
-	// Loop invariant:
-	// At the start of each iteration of the loop
-	// The subcontainer vec[a..i-1] contains the i-a smallest elements
-	// of the left and right, in sorted order
 	
 	auto left_iter = left.begin();
 	auto right_iter = right.begin();
 	
 	// We now basicly need to zip the two containers together
+	// TODO: this can be done more gracefully, look into it
 
 	auto exceed_left = [&left_iter, &left]() { return left_iter == left.end(); };
 	auto exceed_right = [&right_iter, &right]() { return right_iter == right.end(); };
 	auto exceeded = [&a, &c, &exceed_left, &exceed_right]
 	{
-		bool left_or_right = (exceed_left() || exceed_right());
+		bool left_or_right = exceed_left() || exceed_right();
 		bool main = a == c; 
 		return left_or_right || main;
 	};
@@ -66,7 +63,6 @@ void merge(std::vector<int>& vec, iter& a, iter& b, iter& c)
 		append_leftover(right_iter, right.end());
 	else if (exceed_right())
 		append_leftover(left_iter, left.end());
-	}
 }
 
 int main() 
