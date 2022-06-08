@@ -26,7 +26,6 @@ void merge(std::vector<int>& vec, iter& a, iter& b, iter& c)
 	// Make copies of the subarrays 
 	std::vector<int> left(a, b), right(b, c);
 
-	
 	auto left_iter = left.begin();
 	auto right_iter = right.begin();
 	
@@ -65,13 +64,29 @@ void merge(std::vector<int>& vec, iter& a, iter& b, iter& c)
 		append_leftover(left_iter, left.end());
 }
 
+
+void mergeSort(std::vector<int>& vec, iter a, iter b)
+{
+	if (a >= b) return;	
+
+	auto middle = a + (b-a) / 2;
+
+	mergeSort(vec, a, middle);
+	mergeSort(vec, middle+1, b);
+
+	merge(vec, a, middle, b);
+}
+
+void sort(std::vector<int>& vec)
+{
+	auto beg = vec.begin(), end = vec.end();
+	mergeSort(vec, beg, end);
+}
+
+
 int main() 
 {
-
-	auto beg = vec_merge.begin(), half = vec_merge.begin()+3, end = vec_merge.end();
-	std::cout << *half << std::endl;
-	print(vec_merge);
-	merge(vec_merge, beg, half, end);
-	print(vec_merge);
-
+	print(vec);
+	sort(vec);
+	print(vec);
 }
