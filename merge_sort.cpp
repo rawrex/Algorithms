@@ -93,7 +93,7 @@ void sort(std::vector<int>& vec)
 
 int main() 
 {
-//	print(vec);
-//	sort(vec);
-//	print(vec);
+	print(vec);
+	sort(vec);
+	print(vec);
 }
