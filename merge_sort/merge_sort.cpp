@@ -29,15 +29,15 @@ void merge(std::vector<int>& vec, iter& a, iter& b, iter& c)
 	auto left_iter = left.begin();
 	auto right_iter = right.begin();
 	
-	// We now basicly need to zip the two containers together
+	// We now basicly need to zip the two containers together ordered based on their elements values
 	// TODO: this can be done more gracefully, look into it
 
 	auto exceed_left = [&left_iter, &left]() { return left_iter == left.end(); };
 	auto exceed_right = [&right_iter, &right]() { return right_iter == right.end(); };
 	auto exceeded = [&a, &c, &exceed_left, &exceed_right]
 	{
-		bool left_or_right = exceed_left() || exceed_right();
-		bool main = a == c; 
+		bool left_or_right(exceed_left() || exceed_right());
+		bool main(a == c); 
 		return left_or_right || main;
 	};
 
