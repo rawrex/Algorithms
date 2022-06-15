@@ -40,24 +40,28 @@ void merge(std::vector<int>& vec, iter& a, iter& b, iter& c)
 		bool main(a == c); 
 		return left_or_right || main;
 	};
-
-	for(/* empty */; !exceeded(); ++a)
-		if (*left_iter <= *right_iter)
-		{
-			*a = *left_iter;
-			++left_iter;
-		}
-		else
-		{
-			*a = *right_iter;
-			++right_iter;
-		}
-
+	auto advance_left = [&a, &left_iter]()
+	{
+		*a = *left_iter;
+		++left_iter;
+	};
+	auto advance_right = [&a, &right_iter]()
+	{
+		*a = *right_iter;
+		++right_iter;
+	};
 	auto append_leftover = [&vec, &a](iter& beg, const iter& end)
 	{
 		for (/* empty */; beg != end; ++beg, ++a)
 			*a = *beg;
 	};
+
+	for(/* empty */; !exceeded(); ++a)
+		if (*left_iter <= *right_iter)
+			advance_left();
+		else
+			advance_right();
+
 	if (exceed_left())
 		append_leftover(right_iter, right.end());
 	else if (exceed_right())
