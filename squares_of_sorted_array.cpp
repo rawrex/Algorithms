@@ -45,7 +45,7 @@ class Solution
 
 	// Skip the number if it is negative
 	// Insert the number in the main result container if it is nonnegative
-	void populateMainResultNonnegative(const int& number)
+	void addToMainResultNonnegative(const int& number)
 	{
 		if (number < 0) return;
 		main_result.push_back(square(number));
@@ -56,13 +56,13 @@ class Solution
 	void doPositive(const std::vector<int>& numbers)
 	{
 		for (const auto & element : numbers)
-			populateMainResultNonnegative(element);
+			addToMainResultNonnegative(element);
 	}
 
-	// Sorted insert of the passed argument into the main result container
+	// Sorted insert of the passed number into the main result container
 	void insertInMainResult(const int & number)
 	{
-
+		
 	}
 
 	// Iterate over the input contaier until a non-negative number is seen
@@ -70,7 +70,10 @@ class Solution
 	void doNegative(const std::vector<int>& numbers)
 	{
 		for (const auto & number : numbers)
+		{
+			if (number >= 0) return;
 			insertInMainResult(square(number));
+		}
 	}
 
 public:
