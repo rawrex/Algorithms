@@ -81,9 +81,9 @@ class Solution
 	}
 
 	// Utility binary search function
-	const_iter binsearch(const std::vector<int>& cont, const int& target)
+	const_iter binsearch(const int& target)
 	{
-		auto beg = cont.cbegin(), end = cont.cend();
+		auto beg = main_result.cbegin(), end = main_result.cend();
 		auto middle = [&beg, &end](){ return beg + (end-beg)/2; };
 		auto mid = middle();
 
@@ -100,6 +100,8 @@ class Solution
 
 public:
 	
+	// Constructor for our solver
+	// Takes a reference to the input sequence and stores a reference to it
 	Solution(const std::vector<int>& input) : input_numbers(input) {}
 
 	// Main call to solve the problem
@@ -112,7 +114,6 @@ public:
 };
 
 int main() {
-
 	print(main_data);
 	Solution s(main_data);
 	print(s.solve());
