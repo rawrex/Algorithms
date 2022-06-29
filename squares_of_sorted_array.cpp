@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <math>
+#include <cmath>
 #include <map>
 
 const std::vector<int> main_data = {-9, -6, -3, -1, -2, 0, 1, 3, 6, 9};
@@ -21,7 +21,7 @@ class Solution
 	// For clarity reasons
 	using input = int;
 	using result = int;
-	using iter = std::vector<int>::iterator;
+	using const_iter = std::vector<int>::const_iterator;
 
 	// Memoization container
 	std::map<input, result> memory;
@@ -81,7 +81,7 @@ class Solution
 	}
 
 	// Utility binary search function
-	iter binsearch(const std::vector<int>& cont, const int& target)
+	const_iter binsearch(const std::vector<int>& cont, const int& target)
 	{
 		auto beg = cont.cbegin(), end = cont.cend();
 		auto middle = [&beg, &end](){ return beg + (end-beg)/2; };
