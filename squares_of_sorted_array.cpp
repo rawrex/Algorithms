@@ -17,7 +17,6 @@ class Solution
 	// We can use the fact that we have a sorted input not only to populate result with nonnegative first
 	// But also to speed up the later insertion of the negative ones, based on their absolute value 
 
-
 	// For clarity reasons
 	using input = int;
 	using result = int;
@@ -66,7 +65,7 @@ class Solution
 	// Sorted insert of the passed number into the main result container
 	void sortedInsertNegative(const int & number)
 	{
-			
+		
 	}
 
 	// Iterate over the input contaier until a non-negative number is seen
@@ -81,7 +80,7 @@ class Solution
 	}
 
 	// Utility binary search function
-	const_iter binsearch(const int& target)
+	inline const_iter binsearch(const int& target) const
 	{
 		auto beg = main_result.cbegin(), end = main_result.cend();
 		auto middle = [&beg, &end](){ return beg + (end-beg)/2; };
