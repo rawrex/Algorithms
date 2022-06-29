@@ -26,8 +26,8 @@ class Solution
 	// Memoization container
 	std::map<input, result> memory;
 
-	// Store negative numbers to insert their squares at appropriate places later
-	std::vector<int> negative_numbers;
+	// Make a reference to the input container to avoid passing it via paramters too much
+	const std::vector<int>& input_numbers;
 
 	// Store non-negative numbers into the main container
 	std::vector<int> main_result;
@@ -57,23 +57,23 @@ class Solution
 
 	// Iterate over the input container populating main result
 	// While ignoring negative numbers
-	void doPositive(const std::vector<int>& numbers)
+	void doPositive()
 	{
-		for (const auto & element : numbers)
+		for (const auto & element : input_numbers)
 			addToMainResultNonnegative(element);
 	}
 
 	// Sorted insert of the passed number into the main result container
 	void sortedInsertNegative(const int & number)
 	{
-		
+			
 	}
 
 	// Iterate over the input contaier until a non-negative number is seen
 	// While computing squares of the negative numbers and inserting them properly
-	void doNegative(const std::vector<int>& numbers)
+	void doNegative()
 	{
-		for (const auto & number : numbers)
+		for (const auto & number : input_numbers)
 		{
 			if (number >= 0) return;
 			sortedInsertNegative(square(number));
@@ -99,19 +99,21 @@ class Solution
 	}
 
 public:
+	
+	Solution(const std::vector<int>& input) : input_numbers(input) {}
 
 	// Main call to solve the problem
-	std::vector<int> solve(const std::vector<int> & input_numbers)
+	std::vector<int> solve()
 	{
-		doPositive(input_numbers);
-		doNegative(input_numbers);
+		doPositive();
+		doNegative();
 		return main_result;
 	}
 };
 
 int main() {
-	Solution s;
 
 	print(main_data);
-	print(s.solve(main_data));
+	Solution s(main_data);
+	print(s.solve());
 }
