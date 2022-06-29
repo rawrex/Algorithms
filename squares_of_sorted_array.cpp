@@ -65,7 +65,8 @@ class Solution
 	// Sorted insert of the passed number into the main result container
 	void sortedInsertNegative(const int & number)
 	{
-		
+		// Find a proper place and insert the number into the main result container
+		main_result.insert(binsearch(number), number);
 	}
 
 	// Iterate over the input contaier until a non-negative number is seen
