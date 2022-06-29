@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <math>
 #include <map>
 
 const std::vector<int> main_data = {-9, -6, -3, -1, -2, 0, 1, 3, 6, 9};
@@ -29,17 +30,18 @@ class Solution
 	// Store non-negative numbers into the main container
 	std::vector<int> main_result;
 
-	// Memoized squaring of the number,
-	// return the result from the map if the square of the number was already computed
+	// Memoized squaring of the absolute value of the number,
+	// Return the result from the map if the square of the number was already computed
 	inline int square(const int & number)
 	{
+		auto abs_number = std::abs(number);
 		try
 		{
-			return memory.at(number);
+			return memory.at(abs_number);
 		}
 		catch (std::out_of_range& e)
 		{
-			return memory[number] = number*number;
+			return memory[abs_number] = abs_number*abs_number;
 		}
 	}
 
@@ -60,7 +62,7 @@ class Solution
 	}
 
 	// Sorted insert of the passed number into the main result container
-	void insertInMainResult(const int & number)
+	void sortedInsert(const int & number)
 	{
 		
 	}
@@ -72,7 +74,7 @@ class Solution
 		for (const auto & number : numbers)
 		{
 			if (number >= 0) return;
-			insertInMainResult(square(number));
+			sortedInsert(square(number));
 		}
 	}
 
