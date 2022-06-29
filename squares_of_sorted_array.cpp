@@ -62,7 +62,7 @@ class Solution
 	}
 
 	// Sorted insert of the passed number into the main result container
-	void sortedInsert(const int & number)
+	void sortedInsertNegative(const int & number)
 	{
 		
 	}
@@ -74,7 +74,7 @@ class Solution
 		for (const auto & number : numbers)
 		{
 			if (number >= 0) return;
-			sortedInsert(square(number));
+			sortedInsertNegative(square(number));
 		}
 	}
 
