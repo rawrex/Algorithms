@@ -29,6 +29,8 @@ class Solution
 	// Store non-negative numbers into the main container
 	std::vector<int> main_result;
 
+	// Memoized squaring of the number,
+	// return the result from the map if the square of the number was already computed
 	inline int square(const int & number)
 	{
 		try
@@ -40,6 +42,9 @@ class Solution
 			return memory[number] = number*number;
 		}
 	}
+
+	// Insert the number in the main result container if it is nonnegative
+	// Insert it in the negative numbers container otherwise
 	void populateProperNumbersContainer(const int& number)
 	{
 		if (number < 0)
@@ -47,15 +52,27 @@ class Solution
 		else 
 			main_result.push_back(square(number));
 	}
+
+	// Iterate over the input container and distribute numbers accordingly
+	// Note, we can just avoid negative numbers here (w/o the separate container for them)
+	// And then, after we done with the non-negative ones, we can just reiterate over the main input
+	// Until we see a zero.
+	// TODO:
+	// For now I will stick to a separate container for negative numbers, but will revise it later.
 	void doPositive(const std::vector<int>& numbers)
 	{
 		for (const auto & element : numbers)
 			populateProperNumbersContainer(element);
 	}
+
+	// Sorted insert of the passed argument into the main result container
 	void insertInMainResult(const int & number)
 	{
 
 	}
+
+	// Iterate over the negative numbers container
+	// And properly populate the main result container with squares of the numbers
 	void doNegative()
 	{
 		for (const auto & negnum : negative_numbers)
@@ -63,6 +80,8 @@ class Solution
 	}
 
 public:
+
+	// Main call to solve the problem
 	std::vector<int> solve(const std::vector<int> & input_numbers)
 	{
 		doPositive(input_numbers);
