@@ -3,7 +3,7 @@
 #include <cmath>
 #include <map>
 
-const std::vector<int> main_data = {-9, -6, -3, -1, -2, 0, 1, 3, 6, 9};
+const std::vector<int> main_data = {-6, -4, -2, 0, 1, 3, 5};
 
 void print(const std::vector<int> & vec)
 {
@@ -12,7 +12,7 @@ void print(const std::vector<int> & vec)
 	std::cout << std::endl;
 }
 
-class Solution 
+class Solver 
 {
 	// We can use the fact that we have a sorted input not only to populate result with nonnegative first
 	// But also to speed up the later insertion of the negative ones, based on their absolute value 
@@ -102,7 +102,7 @@ public:
 	
 	// Constructor for our solver
 	// Takes a reference to the input sequence and stores a reference to it
-	Solution(const std::vector<int>& input) : input_numbers(input) {}
+	Solver(const std::vector<int>& input) : input_numbers(input) {}
 
 	// Main call to solve the problem
 	std::vector<int> solve()
@@ -115,6 +115,6 @@ public:
 
 int main() {
 	print(main_data);
-	Solution s(main_data);
+	Solver s(main_data);
 	print(s.solve());
 }
