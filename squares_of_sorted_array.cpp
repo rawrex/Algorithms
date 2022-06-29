@@ -14,9 +14,9 @@ void print(const std::vector<int> & vec)
 class Solution 
 {
 	// We can use the fact that we have a sorted input not only to populate result with nonnegative first
-	// But also to speed up the later insertion of the negative ones
+	// But also to speed up the later insertion of the negative ones, based on their absolute value 
 
-	// For clarity
+	// For clarity reasons
 	using input = int;
 	using result = int;
 
@@ -37,18 +37,20 @@ class Solution
 		}
 		catch (std::out_of_range& e)
 		{
-			auto tmp = number*number;
-			memory[number] = tmp;
-			return tmp;
+			return memory[number] = number*number;
 		}
 	}
-	void doOnlyPositive(const std::vector<int>& numbers)
+	void populateProperNumbersContainer(const int& number)
+	{
+		if (number < 0)
+			negative_numbers.push_back(number);
+		else 
+			main_result.push_back(square(number));
+	}
+	void doPositive(const std::vector<int>& numbers)
 	{
 		for (const auto & element : numbers)
-			if (element < 0)
-				negative_numbers.push_back(element);
-			else 
-				main_result.push_back(square(element));
+			populateProperNumbersContainer(element);
 	}
 	void insertInMainResult(const int & number)
 	{
@@ -63,7 +65,7 @@ class Solution
 public:
 	std::vector<int> solve(const std::vector<int> & input_numbers)
 	{
-		doOnlyPositive(input_numbers);
+		doPositive(input_numbers);
 		doNegative();
 		return main_result;
 	}
