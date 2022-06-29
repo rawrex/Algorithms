@@ -17,9 +17,11 @@ class Solution
 	// We can use the fact that we have a sorted input not only to populate result with nonnegative first
 	// But also to speed up the later insertion of the negative ones, based on their absolute value 
 
+
 	// For clarity reasons
 	using input = int;
 	using result = int;
+	using iter = std::vector<int>::iterator;
 
 	// Memoization container
 	std::map<input, result> memory;
@@ -76,6 +78,24 @@ class Solution
 			if (number >= 0) return;
 			sortedInsertNegative(square(number));
 		}
+	}
+
+	// Utility binary search function
+	iter binsearch(const std::vector<int>& cont, const int& target)
+	{
+		auto beg = cont.cbegin(), end = cont.cend();
+		auto middle = [&beg, &end](){ return beg + (end-beg)/2; };
+		auto mid = middle();
+
+		while (mid != end && *mid != target)
+		{
+			if (target < *mid)
+				end = mid;
+			else
+				beg = mid + 1;	
+			mid = middle();
+		}
+		return mid;
 	}
 
 public:
