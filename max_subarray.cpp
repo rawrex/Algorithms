@@ -19,13 +19,19 @@ public:
 	Range(const iter_t& beg, const iter_t & end) : range(beg, end) {}
 };
 
-using result_t = const std::pair<Range, int>;
+struct CrossingResult
+{
+	iter_t iterator;
+	int sum;
+}
 
+using result_t = const std::pair<Range, int>;
 
 result_t FindMaxCrossingSubarray(container_t& container, iter_t& low, iter_t& mid, iter_t& high)
 {
-	auto sum = 0;
-	
+	auto left_result = FindLeftCrossingSum(low, mid);
+	auto right_result = FindRightCrossingSum(mid, high);
+	return {left_result.
 	
 }
 
