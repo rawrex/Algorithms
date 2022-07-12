@@ -19,62 +19,65 @@ public:
 	Range(const iter_t& beg, const iter_t & end) : range(beg, end) {}
 };
 
-struct CrossingResult
+struct CrossingHalf
 {
 	iter_t iterator;
 	int sum;
-}
+};
 
 using result_t = const std::pair<Range, int>;
 
-result_t FindMaxCrossingSubarray(container_t& container, iter_t& low, iter_t& mid, iter_t& high)
-{
-	auto left_result = FindLeftCrossingSum(low, mid);
-	auto right_result = FindRightCrossingSum(mid, high);
-	return {left_result.
-	
-}
-
-const std::pair<iter_t, int> FindLeftCrossingSum(iter_t& low, iter_t& mid)
+// We should refactor these two later
+// One of the considerations is to use a generic iterator function
+// Which will be called with a normal and with a reverse iterator
+const CrossingHalf FindLeftCrossingSum(iter_t& low, iter_t& mid)
 {
 	// The iterator to the furtherst to the left satisfactory element
-	auto max_left_i = mid;
+	auto max_i = mid;
 	// A sentinel 
-	auto left_result_sum = INT_MIN;
+	auto result_sum = INT_MIN;
 	auto current_sum = 0;
 
 	for(auto& i = mid; i != low; --i)
 	{
 		current_sum += *i;
-		if (current_sum > left_result_sum)
+		if (current_sum > result_sum)
 		{
-			left_result_sum = current_sum;
-			max_left_i = i;
+			result_sum = current_sum;
+			max_i = i;
 		}
 	}
-	return std::pair<iter_t, int>(max_left_i, current_sum);
+	return CrossingHalf{max_i, result_sum};
 }
 
-// We should refactor these two later
-const std::pair<iter_t, int> FindRightCrossingSum(iter_t& mid, iter_t& high)
+const CrossingHalf FindRightCrossingSum(iter_t& mid, iter_t& high)
 {
 	// The iterator to the furtherst to the left satisfactory element
-	auto max_right_i = mid+1;
+	auto max_i = mid;
 	// A sentinel 
-	auto right_result_sum = INT_MIN;
+	auto result_sum = INT_MIN;
 	auto current_sum = 0;
 
-	for(auto& i = mid; i != high; --i)
+	for(auto& i = mid; i != high; ++i)
 	{
 		current_sum += *i;
-		if (current_sum > right_result_sum)
+		if (current_sum > result_sum)
 		{
-			right_result_sum = current_sum;
-			max_right_i = i;
+			result_sum = current_sum;
+			max_i = i;
 		}
 	}
-	return std::pair<iter_t, int>(max_right_i, current_sum);
+	return CrossingHalf{max_i, result_sum};
 }
+
+result_t FindMaxCrossingSubarray(container_t& container, iter_t& low, iter_t& mid, iter_t& high)
+{
+	auto left = FindLeftCrossingSum(low, mid);
+	auto right = FindRightCrossingSum(++mid, high);
+	return {Range(left.iterator, right.iterator), left.sum + right.sum};
+	
+}
+
 
 
 int main() {
