@@ -35,8 +35,8 @@ void insertion_sort(std::vector<int>& lt)
 		auto key = *beg;
 		auto iter = beg-1;
 
-		for (; iter != lt.begin() && key<*iter; --iter)
-			*(iter+1)=*iter;
+		for (; iter != lt.begin() && key < *iter; --iter)
+			*(iter+1) = *iter;
 			
 		*(iter+1) = key;
 	}
