@@ -23,7 +23,7 @@ void insertion_sort(int (&arr)[N])
 		for(; i >= 0 && key < arr[i]; --i)
 			arr[i+1] = arr[i];
 
-		// We done going down the subarray
+		// We are done going down the subarray
 		arr[i+1] = key;
 	}
 }
