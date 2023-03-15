@@ -41,5 +41,3 @@ void insertion_sort(std::vector<int> & lt)
 		*(iter+1) = key;
 	}
 }
-
-int main() {}

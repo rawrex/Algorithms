@@ -20,7 +20,7 @@ int binsearch(const int& n)
 	return mid;
 }
 
-int main()
+void bad_version_main()
 {
 	auto result = binsearch(33);
 	std::cout << result << std::endl;
