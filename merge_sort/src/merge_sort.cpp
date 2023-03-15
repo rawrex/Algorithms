@@ -68,12 +68,11 @@ void merge(std::vector<int>& vec, iter& a, iter& b, iter& c)
 		append_leftover(left_iter, left.end());
 }
 
-
 void mergeSort(std::vector<int>& vec, iter a, iter b)
 {
 	if (a >= b) return;	
 
-	auto middle = a + (b-a) / 2;
+	auto middle = a + (b-a)/2;
 
 	mergeSort(vec, a, middle);
 	mergeSort(vec, middle+1, b);
@@ -86,7 +85,6 @@ void sort(std::vector<int>& vec)
 	auto beg = vec.begin(), end = vec.end();
 	mergeSort(vec, beg, end);
 }
-
 
 int main() 
 {
