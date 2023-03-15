@@ -84,10 +84,10 @@ public:
 };
 
 
-int main()
-{
-	print(&head);
-	Solution s;
-	ListNode* result = s.insertionSortList(&head);
-	print(result);
-}
+//int main()
+//{
+//	print(&head);
+//	Solution s;
+//	ListNode* result = s.insertionSortList(&head);
+//	print(result);
+//}
