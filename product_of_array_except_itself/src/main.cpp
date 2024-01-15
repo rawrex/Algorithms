@@ -42,14 +42,16 @@ private:
         vector<int> postfixes;
         postfixes.reserve(size);
 
+        // Prefix to the first element is 1
+        // Postfix to the last elemnt is 1 as well
+        int current_prefix_product = 1;
+        int current_postfix_product = 1;
+
         // Iterators preparation
         auto iterator = input_numbers.cbegin();
         auto riterator = input_numbers.crbegin();
         auto end = input_numbers.cend();
         auto rend = input_numbers.crend();
-
-        int current_prefix_product = 1;
-        int current_postfix_product = 1;
 
         // Fill the prefix, postfix containers
         for(; iterator != end && riterator != rend; ++iterator, ++riterator)
@@ -61,8 +63,10 @@ private:
             current_postfix_product *= *riterator;
         }
 
+        // Correct the order in which the elements are going
         std::reverse(postfixes.begin(), postfixes.end());
 
+        // Fill the result container
         for(size_t i = 0; i != size; ++i)
             result.emplace_back(prefixes[i] * postfixes[i]);
 
