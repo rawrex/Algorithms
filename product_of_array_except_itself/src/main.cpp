@@ -48,18 +48,16 @@ private:
         int current_postfix_product = 1;
 
         // Iterators preparation
-        auto iterator = input_numbers.cbegin();
-        auto riterator = input_numbers.crbegin();
-        auto end = input_numbers.cend();
-        auto rend = input_numbers.crend();
 
         // Fill the prefix, postfix containers
-        for(; iterator != end && riterator != rend; ++iterator, ++riterator)
+        for(const int i : input_numbers)
         {
             prefixes.emplace_back(current_prefix_product);
+            current_prefix_product *= i;
+        }
+        for(auto riterator = input_numbers.crbegin(), rend = input_numbers.crend(); riterator != rend; ++riterator)
+        {
             postfixes.emplace_back(current_postfix_product);
-
-            current_prefix_product *= *iterator;
             current_postfix_product *= *riterator;
         }
 
