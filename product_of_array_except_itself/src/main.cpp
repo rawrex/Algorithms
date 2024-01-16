@@ -33,40 +33,32 @@ private:
 
     vector<int> prefixPostfix(const vector<int>& input_numbers)
     {
-        // Preallocate
-        auto size = input_numbers.size();
         vector<int> result;
-        result.reserve(size);
-        vector<int> prefixes;
-        prefixes.reserve(size);
-        vector<int> postfixes;
-        postfixes.reserve(size);
+        // Preallocate
+        result.reserve(input_numbers.size());
 
         // Prefix to the first element is 1
         // Postfix to the last elemnt is 1 as well
         int current_prefix_product = 1;
         int current_postfix_product = 1;
 
-        // Iterators preparation
-
-        // Fill the prefix, postfix containers
+        // Fill the result with the prefix values
         for(const int i : input_numbers)
         {
-            prefixes.emplace_back(current_prefix_product);
+            result.emplace_back(current_prefix_product);
             current_prefix_product *= i;
         }
-        for(auto riterator = input_numbers.crbegin(), rend = input_numbers.crend(); riterator != rend; ++riterator)
+
+        auto result_riterator = result.rbegin();
+        auto result_rend = result.rend();
+        auto riterator = input_numbers.crbegin();
+        auto rend = input_numbers.crend();
+
+        for(; riterator != rend && result_riterator != result_rend; ++riterator, ++result_riterator)
         {
-            postfixes.emplace_back(current_postfix_product);
+            *result_riterator = *result_riterator * current_postfix_product;
             current_postfix_product *= *riterator;
         }
-
-        // Correct the order in which the elements are going
-        std::reverse(postfixes.begin(), postfixes.end());
-
-        // Fill the result container
-        for(size_t i = 0; i != size; ++i)
-            result.emplace_back(prefixes[i] * postfixes[i]);
 
         return result;
     }
