@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -28,8 +29,27 @@ vector<vector<char>> bad =
     {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
 };
 
+void print(char c)
+{
+    std::cout << c << ' ';
+}
+
+bool flat(const vector<vector<char>>& input) noexcept
+{
+    for (size_t i = 0; i != 81; ++i)
+    {
+        auto column = static_cast<size_t>(i % 9);
+        auto row = static_cast<size_t>(i / 9);
+
+        print(input[row][column]);
+    }
+
+    return true;
+}
 
 int main()
 {
-
+    std::cout << std::boolalpha;
+    std::cout << naive(good) << std::endl; 
+    std::cout << naive(bad) << std::endl;
 }
