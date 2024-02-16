@@ -1,5 +1,7 @@
 #include <vector>
 #include <iostream>
+#include <unordered_map>
+#include <unordered_set>
 
 using namespace std;
 
@@ -36,12 +38,21 @@ void print(char c)
 
 bool flat(const vector<vector<char>>& input) noexcept
 {
+    unordered_map<size_t, unordered_set<char>> tracker;
+
     for (size_t i = 0; i != 81; ++i)
     {
         auto column = static_cast<size_t>(i % 9);
         auto row = static_cast<size_t>(i / 9);
 
-        print(input[row][column]);
+        auto box = (column / 3) + (row / 3);
+
+        auto& item = input[row][column];
+
+        // in the end the total sum should be zero (?)
+        std::cout << "box: " << box << std::endl;
+        
+        // print(input[row][column]);
     }
 
     return true;
@@ -50,6 +61,6 @@ bool flat(const vector<vector<char>>& input) noexcept
 int main()
 {
     std::cout << std::boolalpha;
-    std::cout << naive(good) << std::endl; 
-    std::cout << naive(bad) << std::endl;
+    std::cout << flat(good) << std::endl; 
+    // std::cout << flat(bad) << std::endl;
 }
