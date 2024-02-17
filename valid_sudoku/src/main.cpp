@@ -52,12 +52,12 @@ struct Position
 	size_t m_box = -1;
 };
 
-bool operator==(const Position& a, const Position& b)
+bool operator==(const Position& a, const Position& b) noexcept
 {
 	return a.m_row == b.m_row || a.m_column == b.m_column || a.m_box == b.m_box;
 }
 
-bool flat(const vector<vector<char>>& input) noexcept
+bool flatCharToPosition(const vector<vector<char>>& input) noexcept
 {
     unordered_map<char, vector<Position>> tracker;
 
@@ -92,10 +92,40 @@ bool flat(const vector<vector<char>>& input) noexcept
     return true;
 }
 
+bool flatPositionToChar(const vector<vector<char>>& input) noexcept
+{
+    unordered_map<size_t, unordered_set<char>> tracker;
+
+    for (size_t i = 0; i != 81; ++i)
+    {
+        const auto row = static_cast<size_t>(i / 9);
+        const auto column = static_cast<size_t>(i % 9);
+        const auto box = (column / 3) + (row / 3) * 3;
+
+        auto& item = input[row][column];
+
+        if (item == '.')
+            continue;
+
+        const auto column_id = column;
+        const auto row_id = row + 10;
+        const auto box_id = box + 100;
+
+        if (!tracker[column_id].emplace(item).second)
+            return false;
+        if (!tracker[row_id].emplace(item).second)
+            return false;
+        if (!tracker[box_id].emplace(item).second)
+            return false;
+    }
+
+    return true;
+}
+
 int main()
 {
     std::cout << std::boolalpha;
-    std::cout << flat(good) << std::endl; 
-    std::cout << flat(bad) << std::endl;
-    std::cout << flat(bad_2) << std::endl;
+    std::cout << flatPositionToChar(good) << std::endl; 
+    std::cout << flatPositionToChar(bad) << std::endl;
+    std::cout << flatPositionToChar(bad_2) << std::endl;
 }
