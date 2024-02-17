@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
@@ -31,9 +32,18 @@ vector<vector<char>> bad =
     {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
 };
 
-void print(char c)
+void print(size_t i, const std::string& message = {})
 {
-    std::cout << c << ' ';
+    std::cout << message << ' ';
+    if (!((i+1) % 9))
+        std::cout << std::endl;
+}
+
+void print(size_t i, char c, const std::string& message = {})
+{
+    std::cout << c << ' ' << message;
+    if (!((i+1) % 9))
+        std::cout << std::endl;
 }
 
 bool flat(const vector<vector<char>>& input) noexcept
@@ -44,15 +54,11 @@ bool flat(const vector<vector<char>>& input) noexcept
     {
         auto column = static_cast<size_t>(i % 9);
         auto row = static_cast<size_t>(i / 9);
-
-        auto box = (column / 3) + (row / 3);
+        auto box = (column / 3) + (row / 3) * 3;
 
         auto& item = input[row][column];
 
-        // in the end the total sum should be zero (?)
-        std::cout << "box: " << box << std::endl;
-        
-        // print(input[row][column]);
+        print(i, std::to_string(box));
     }
 
     return true;
