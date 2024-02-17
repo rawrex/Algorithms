@@ -45,21 +45,6 @@ vector<vector<char>> bad_2 =
     { '.', '.', '.', '.', '.', '.', '.', '.', '.' }
 };
 
-void print(size_t i, const std::string& message = {})
-{
-    std::cout << message << ' ';
-    if (!((i+1) % 9))
-        std::cout << std::endl;
-}
-
-void print(size_t i, char c, const std::string& message = {})
-{
-    std::cout << c << ' ' << message;
-    if (!((i+1) % 9))
-        std::cout << std::endl;
-}
-
-
 struct Position
 {
 	size_t m_row = -1;
@@ -83,6 +68,7 @@ bool flat(const vector<vector<char>>& input) noexcept
         auto box = (column / 3) + (row / 3) * 3;
 
         auto& item = input[row][column];
+
         if (item == '.')
             continue;
 
