@@ -95,6 +95,7 @@ bool flatCharToPosition(const vector<vector<char>>& input) noexcept
 bool flatPositionToChar(const vector<vector<char>>& input) noexcept
 {
     unordered_map<size_t, unordered_set<char>> tracker;
+    tracker.reserve(input.size() / 2);
 
     for (size_t i = 0; i != 81; ++i)
     {
