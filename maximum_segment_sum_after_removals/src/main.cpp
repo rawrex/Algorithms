@@ -40,7 +40,7 @@ private:
         long long current_sum = 0;
 	long long max_sum = 0;
 
-        for(/* empty */; index != 0; --index)
+        for(/* empty */; index >= 0; --index)
         {
 		if(nums[index] != 0)
 		{
