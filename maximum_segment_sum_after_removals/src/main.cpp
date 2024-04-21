@@ -1,4 +1,5 @@
 #include <vector>
+#include <unordered_map>
 #include <iostream>
 
 using namespace std;
@@ -24,11 +25,12 @@ private:
     {
         vector<long long> result(m_size);
 
-        int counter = 0;
-        for(auto index : queries)
+        for(size_t query_index = 0; query_index != m_size; ++query_index)
         {
+            auto index = queries[query_index];
             nums[index] = 0;
-            result[counter++] = std::max(maxSumLeft(nums, index), maxSumRight(nums, index));
+             
+            result[query_index] = std::max(maxSumLeft(nums, index), maxSumRight(nums, index));
         }
         return result;
     }
@@ -80,9 +82,9 @@ private:
 private:
     int            m_size;
 
-    std::unoredred_map<size_t, int>     m_index_to_left_right_maximums;
-    std::unoredred_map<size_t, size_t>  m_beg_to_end;
-    std::unoredred_map<size_t, size_t>  m_end_to_beg;
+    std::unordered_map<size_t, int>     m_index_to_left_right_maximums;
+    std::unordered_map<size_t, size_t>  m_beg_to_end;
+    std::unordered_map<size_t, size_t>  m_end_to_beg;
 };
 
 void print(const vector<long long>& vec)
