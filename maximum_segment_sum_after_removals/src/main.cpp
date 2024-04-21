@@ -20,13 +20,11 @@ public:
     }
 
 private:
-    using result_container_t = vector<long long>;
-
-    result_container_t naive(vector<int>& nums, vector<int>& queries) noexcept
+    vector<long long> naive(vector<int>& nums, vector<int>& queries) noexcept
     {
-        result_container_t result(m_size);
+        vector<long long> result(m_size);
 
-	int counter = 0;
+        int counter = 0;
         for(auto index : queries)
         {
             nums[index] = 0;
@@ -38,22 +36,22 @@ private:
     long long maxSumLeft(const vector<int>& nums, int index) const noexcept
     {
         long long current_sum = 0;
-	long long max_sum = 0;
+        long long max_sum = 0;
 
         for(/* empty */; index >= 0; --index)
         {
-		if(nums[index] != 0)
-		{
-			current_sum += nums[index];
-		}
-		else
-		{
-			max_sum = std::max(max_sum, current_sum);
-			current_sum = 0;
-		}
-	}
+            if(nums[index] != 0)
+            {
+                current_sum += nums[index];
+            }
+            else
+            {
+                max_sum = std::max(max_sum, current_sum);
+                current_sum = 0;
+            }
+        }
 
-	max_sum = std::max(max_sum, current_sum);
+    max_sum = std::max(max_sum, current_sum);
         return max_sum;
     }
 
@@ -64,18 +62,18 @@ private:
 
         for(/* empty */; index != m_size; ++index)
         {
-		if(nums[index] != 0)
-		{
-			current_sum += nums[index];
-		}
-		else
-		{
-			max_sum = std::max(max_sum, current_sum);
-			current_sum = 0;
-		}
+            if(nums[index] != 0)
+            {
+                current_sum += nums[index];
+            }
+            else
+            {
+                max_sum = std::max(max_sum, current_sum);
+                current_sum = 0;
+            }
         }
 
-	max_sum = std::max(max_sum, current_sum);
+        max_sum = std::max(max_sum, current_sum);
         return max_sum;
     }
 
@@ -85,13 +83,13 @@ private:
 
 void print(const vector<long long>& vec)
 {
-	for(const auto& i : vec)
-		std::cout << i << ' ';
-	std::cout << std::endl;
+    for(const auto& i : vec)
+        std::cout << i << ' ';
+    std::cout << std::endl;
 }
 
 int main()
 {
-	auto result = Solution().solve(n2, q2);
-	print(result);
+    auto result = Solution().solve(n2, q2);
+    print(result);
 }
