@@ -79,6 +79,10 @@ private:
 
 private:
     int            m_size;
+
+    std::unoredred_map<size_t, int>     m_index_to_left_right_maximums;
+    std::unoredred_map<size_t, size_t>  m_beg_to_end;
+    std::unoredred_map<size_t, size_t>  m_end_to_beg;
 };
 
 void print(const vector<long long>& vec)
