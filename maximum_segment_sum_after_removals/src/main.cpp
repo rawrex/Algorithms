@@ -1,4 +1,5 @@
 #include <vector>
+#include <unordered_map>
 #include <iostream>
 
 using namespace std;
@@ -22,18 +23,24 @@ public:
 
 private:
 	using result_container_t = vector<long long>;
+
 	int m_size;
 
-	result_container_t naive(vector<int>& nums, vector<int>& queries) noexcept
-	{
-		result_container_t result(m_size);
-		int counter = 0;
+	std::unordered_map<size_t, int>     m_index_to_left_right_maximums;
+	std::unordered_map<size_t, size_t>  m_beg_to_end;
+	std::unordered_map<size_t, size_t>  m_end_to_beg;
 
-		for(auto index : queries)
+private:
+	vector<long long> naive(vector<int>& nums, vector<int>& queries) noexcept
+	{
+		vector<long long> result(m_size);
+
+		for(size_t query_index = 0; query_index != m_size; ++query_index)
 		{
+			auto index = queries[query_index];
 			nums[index] = 0;
-			result[counter] = std::max(maxSumLeft(nums, index), maxSumRight(nums, index));
-			++counter;;
+			 
+			result[query_index] = std::max(maxSumLeft(nums, index), maxSumRight(nums, index));
 		}
 		return result;
 	}
@@ -67,21 +74,20 @@ private:
 
 		for(/* empty */; index != m_size; ++index)
 		{
-		if(nums[index] != 0)
-		{
-			current_sum += nums[index];
-		}
-		else
-		{
-			max_sum = std::max(max_sum, current_sum);
-			current_sum = 0;
-		}
+			if(nums[index] != 0)
+			{
+				current_sum += nums[index];
+			}
+			else
+			{
+				max_sum = std::max(max_sum, current_sum);
+				current_sum = 0;
+			}
 		}
 
-	max_sum = std::max(max_sum, current_sum);
+		max_sum = std::max(max_sum, current_sum);
 		return max_sum;
 	}
-
 };
 
 void print(const vector<long long>& vec)
