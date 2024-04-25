@@ -3,10 +3,11 @@
 
 using namespace std;
 
+// [14, 7, 2, 2, 0]
 vector<int> n1 { 1, 2, 5, 6, 1 };
 vector<int> q1 { 0, 3, 2, 4, 1 };
 
-// [16,5,3,0]
+// [16, 5, 3, 0]
 vector<int> n2 {3,2,11,1};
 vector<int> q2 {3,2,1,0};
 
@@ -42,7 +43,7 @@ private:
 		long long current_sum = 0;
 		long long max_sum = 0;
 
-		for(/* empty */; index != 0; --index)
+		for(/* empty */; index >= 0; --index)
 		{
 			if(nums[index] != 0)
 			{
@@ -92,6 +93,6 @@ void print(const vector<long long>& vec)
 
 int main()
 {
-	auto result = Solution().solve(n1, q1);
+	auto result = Solution().solve(n2, q2);
 	print(result);
 }
