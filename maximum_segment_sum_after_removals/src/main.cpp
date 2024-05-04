@@ -1,6 +1,7 @@
 #include <vector>
 #include <unordered_map>
 #include <iostream>
+#include "../../utils/source/print.h"
 
 using namespace std;
 
@@ -89,13 +90,6 @@ private:
 		return max_sum;
 	}
 };
-
-void print(const vector<long long>& vec)
-{
-	for(const auto& i : vec)
-		std::cout << i << ' ';
-	std::cout << std::endl;
-}
 
 int main()
 {
