@@ -1,5 +1,7 @@
 #include <string>
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -43,15 +45,25 @@ private:
 class Parser
 {
 public:
-    explicit Parser(const string& input) noexcept : m_raw_data(input) {}
-
-    NodePtr parse() const noexcept
+    int parse(const string& input) const noexcept
     {
-        return nullptr;
+        vector<string> sums_and_diffs;
+
+        auto i = input.find_first_of(m_mul_div);
+        decltype(i) j = 0;
+
+        while (i != std::string::npos)
+        {
+            sums_and_diffs.emplace_back(input.substr(j, i));
+            j = i;
+            i = input.find_first_of(m_mul_div, i+1);
+        }
+
+        return -1;
     }
 
 private:
-    const std::string& m_raw_data;
+    std::string m_mul_div = "*/";
 };
 
 class Solution
@@ -65,11 +77,8 @@ public:
 private:
     int naive(const string& input) const noexcept 
     {
-        Parser parser(input);
-
-        auto root = parser.parse();
-
-        return root->eval();
+        Parser parser;
+        return parser.parse(input);
     }
 };
 
