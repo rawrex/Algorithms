@@ -14,6 +14,9 @@ private:
     Type m_type;
 };
 
+class Node;
+using NodePtr = std::unique_ptr<Node>;
+
 class Node
 {
 public:
@@ -33,8 +36,22 @@ private:
     };
     
 private:
-    Node* m_left;
-    Node* m_right;
+    NodePtr m_left;
+    NodePtr m_right;
+};
+
+class Parser
+{
+public:
+    explicit Parser(const string& input) noexcept : m_raw_data(input) {}
+
+    NodePtr parse() const noexcept
+    {
+        return nullptr;
+    }
+
+private:
+    const std::string& m_raw_data;
 };
 
 class Solution
@@ -48,7 +65,11 @@ public:
 private:
     int naive(const string& input) const noexcept 
     {
-        return -1;
+        Parser parser(input);
+
+        auto root = parser.parse();
+
+        return root->eval();
     }
 };
 
