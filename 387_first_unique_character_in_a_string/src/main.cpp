@@ -43,18 +43,14 @@ private:
 		return -1;
 	}
 
-		// return naive(input);
-		return counter(input);
-	}
-
 private:
 	int counter(const std::string& input) noexcept
 	{
 		for (const auto& ch : input)
-			++m_tracker[ch];
+			++m_frequncies[ch];
 
 		for (int i = 0; i != input.size(); ++i)
-			if (m_tracker[input[i]] == 1)
+			if (m_frequncies[input[i]] == 1)
 				return i;
 
 		return -1;
