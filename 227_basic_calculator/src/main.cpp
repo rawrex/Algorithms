@@ -48,16 +48,31 @@ public:
     int parse(const string& input) const noexcept
     {
         vector<string> muls_divs;
+        vector<string> sum_dif_ops;
 
+        // Simplify the management of the substrings by cutting the head of the string
+        // This we will need to avoid later
         string tmp = input;
-        auto i = tmp.find_first_of(m_sum_dif);
 
+        auto i = tmp.find_first_of(m_sum_dif);
         while (i != std::string::npos)
         {
+            // Collect the numbers and mul/div subexpressions first
             muls_divs.emplace_back(tmp.substr(0, i));
-            tmp = tmp.substr(i);
+            // Collect the found sum/dif operators
+            sum_dif_ops.emplace_back(tmp.substr(i, 1));
 
-            i = tmp.find_first_of(m_sum_dif, i);
+            // Truncate the just found sum/dif operator from the string
+            tmp = tmp.substr(++i);
+
+            // Try to find the next occurance of the sum/dif operator
+            i = tmp.find_first_of(m_sum_dif);
+        }
+
+        // There is a number or a one or more mul/div subexpressions
+        if (!tmp.empty())
+        {
+
         }
 
         return -1;
