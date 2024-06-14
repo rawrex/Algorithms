@@ -47,16 +47,17 @@ class Parser
 public:
     int parse(const string& input) const noexcept
     {
-        vector<string> sums_and_diffs;
+        vector<string> muls_divs;
 
-        auto i = input.find_first_of(m_mul_div);
-        decltype(i) j = 0;
+        string tmp = input;
+        auto i = tmp.find_first_of(m_sum_dif);
 
         while (i != std::string::npos)
         {
-            sums_and_diffs.emplace_back(input.substr(j, i));
-            j = i;
-            i = input.find_first_of(m_mul_div, i+1);
+            muls_divs.emplace_back(tmp.substr(0, i));
+            tmp = tmp.substr(i);
+
+            i = tmp.find_first_of(m_sum_dif, i);
         }
 
         return -1;
@@ -64,6 +65,7 @@ public:
 
 private:
     std::string m_mul_div = "*/";
+    std::string m_sum_dif = "+-";
 };
 
 class Solution
