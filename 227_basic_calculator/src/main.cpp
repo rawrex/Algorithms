@@ -143,5 +143,5 @@ private:
 int main()
 {
     std::cout << Solution().calculate(test_str_1) << std::endl;
-    // std::cout << Solution().calculate(test_str_2) << std::endl;
+    std::cout << Solution().calculate(test_str_2) << std::endl;
 }
