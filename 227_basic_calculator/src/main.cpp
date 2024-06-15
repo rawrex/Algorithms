@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <array>
+#include <functional>
 
 using namespace std;
 
@@ -21,6 +23,7 @@ class Parser
 public:
     int parse(const string& input) const noexcept
     {
+        int result = 0;
         vector<string> muls_divs;
         vector<string> sum_dif_ops;
 
@@ -28,31 +31,70 @@ public:
         // This we will need to avoid later
         string tmp = input;
 
-        auto i = tmp.find_first_of(m_sum_dif);
-        while (i != std::string::npos)
+        auto index = tmp.find_first_of(m_sum_dif);
+        while (index != std::string::npos)
         {
             // Collect the numbers and mul/div subexpressions first
-            muls_divs.emplace_back(tmp.substr(0, i));
+            muls_divs.emplace_back(tmp.substr(0, index));
             // Collect the found sum/dif operators
-            sum_dif_ops.emplace_back(tmp.substr(i, 1));
+            sum_dif_ops.emplace_back(tmp.substr(index, 1));
 
             // Truncate the just found sum/dif operator from the string
-            tmp = tmp.substr(++i);
+            tmp = tmp.substr(++index);
 
             // Try to find the next occurance of the sum/dif operator
-            i = tmp.find_first_of(m_sum_dif);
+            index = tmp.find_first_of(m_sum_dif);
         }
 
         // There is a number or a one or more mul/div subexpressions
         if (!tmp.empty())
             muls_divs.emplace_back(tmp);
 
-        return -1;
+        auto numbers = processMulsDivs(muls_divs);
+        
+        for (size_t i = 0; i != sum_dif_ops.size(); ++i)
+        {
+            const auto& current_operation_str = sum_dif_ops[i];
+            const auto& lhs = numbers[i];
+            const auto& rhs = numbers[i+1];
+    
+            auto operation = makeOperation(current_operation_str);
+
+            result += operation(lhs, rhs);
+        }
+
+        return result;
+    }
+
+    vector<int> processMulsDivs(const vector<string>& muls_divs) const
+    {
+        vector<int> result;
+         
+        return result;
+    }
+
+    std::function<int(int, int)> makeOperation(const std::string& operation_str) const
+    {
+        switch (operation_str[0])
+        {
+            case '+':
+                return m_operators[0];
+            case '-':
+                return m_operators[1];
+            case '*':
+                return m_operators[2];
+            case '/':
+                return m_operators[3];
+			default:
+                throw(std::logic_error("Wrong operation string"));
+        }
     }
 
 private:
     std::string m_mul_div = "*/";
     std::string m_sum_dif = "+-";
+
+    std::array<std::function<int(int, int)>, 4> m_operators;
 };
 
 class Solution
