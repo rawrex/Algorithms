@@ -45,9 +45,7 @@ public:
 
         // There is a number or a one or more mul/div subexpressions
         if (!tmp.empty())
-        {
-
-        }
+            muls_divs.emplace_back(tmp);
 
         return -1;
     }
