@@ -16,32 +16,6 @@ private:
     Type m_type;
 };
 
-class Node;
-using NodePtr = std::unique_ptr<Node>;
-
-class Node
-{
-public:
-    int eval() const noexcept
-    {
-        return -1;
-    }
-
-private:
-    enum class Type { num = 1, op = 2 };
-    Type m_type;
-
-    union
-    {
-        int number;
-        Operator op;
-    };
-    
-private:
-    NodePtr m_left;
-    NodePtr m_right;
-};
-
 class Parser
 {
 public:
