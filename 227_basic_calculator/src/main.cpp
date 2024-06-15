@@ -9,6 +9,8 @@ using namespace std;
 
 const string test_str_1 = "3*4 - 4 / 2";
 const string test_str_2 = "3+2*2";
+const string test_str_3 = " 3/2 ";
+const string test_str_4 = "1+1+1";
 
 class Operator
 {
@@ -29,6 +31,9 @@ public:
         vector<string> muls_divs = split(input, m_sum_dif, sumdif_delimiters);
 
         auto numbers = processMulsDivs(muls_divs);
+
+        if (numbers.size() == 1)
+            return numbers[0];
         
         for (size_t i = 0; i != sumdif_delimiters.size(); ++i)
         {
@@ -38,6 +43,7 @@ public:
     
             auto operation = makeOperation(current_operation_str);
 
+            // The logic here seems to be faulty
             result += operation(lhs, rhs);
         }
 
@@ -83,6 +89,9 @@ public:
         {
             vector<string> muldiv_delimiters;
             vector<string> numbers_str = split(expression, m_mul_div, muldiv_delimiters);
+
+            if (numbers_str.size() == 1)
+                result.emplace_back(std::stoi(numbers_str[0]));
 
             for (size_t i = 0; i != muldiv_delimiters.size(); ++i)
             {
@@ -142,6 +151,8 @@ private:
 
 int main()
 {
-    std::cout << Solution().calculate(test_str_1) << std::endl;
-    std::cout << Solution().calculate(test_str_2) << std::endl;
+    // std::cout << Solution().calculate(test_str_1) << std::endl;
+    // std::cout << Solution().calculate(test_str_2) << std::endl;
+    // std::cout << Solution().calculate(test_str_3) << std::endl;
+    std::cout << Solution().calculate(test_str_4) << std::endl;
 }
