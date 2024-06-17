@@ -38,10 +38,10 @@ public:
         for (size_t i = 0; i != sumdif_delimiters.size(); ++i)
         {
             const auto& current_operation_str = sumdif_delimiters[i];
+            auto operation = makeOperation(current_operation_str);
+
             const auto& lhs = numbers[i];
             const auto& rhs = numbers[i+1];
-    
-            auto operation = makeOperation(current_operation_str);
 
             // The logic here seems to be faulty
             result += operation(lhs, rhs);
