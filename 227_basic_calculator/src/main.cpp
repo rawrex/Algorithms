@@ -11,6 +11,7 @@ const string test_str_1 = "3*4 - 4 / 2";
 const string test_str_2 = "3+2*2";
 const string test_str_3 = " 3/2 ";
 const string test_str_4 = "1+1+1";
+const string test_str_5 = "2*3*4";
 
 class Operator
 {
@@ -34,19 +35,22 @@ public:
 
         if (numbers.size() == 1)
             return numbers[0];
-        
-        for (size_t i = 0; i != sumdif_delimiters.size(); ++i)
+
+        for (size_t i = 0; i != numbers.size(); ++i)
         {
-            const auto& current_operation_str = sumdif_delimiters[i];
-            auto operation = makeOperation(current_operation_str);
+            const auto& number = numbers[i];
 
-            const auto& lhs = numbers[i];
-            const auto& rhs = numbers[i+1];
+            if (i == 0)
+                result = number;
+            else
+            {
+                const auto& current_operation_str = sumdif_delimiters[i-1];
+                auto operation = makeOperation(current_operation_str);
 
-            // The logic here seems to be faulty
-            result += operation(lhs, rhs);
+                result = operation(result, number);
+            }
         }
-
+        
         return result;
     }
 
@@ -71,7 +75,7 @@ public:
             tmp = tmp.substr(++index);
 
             // Try to find the next occurance of the sum/dif operator
-            index = tmp.find_first_of(m_sum_dif);
+            index = tmp.find_first_of(delimiters);
         }
 
         // There is a number or a one or more mul/div subexpressions
@@ -154,5 +158,6 @@ int main()
     // std::cout << Solution().calculate(test_str_1) << std::endl;
     // std::cout << Solution().calculate(test_str_2) << std::endl;
     // std::cout << Solution().calculate(test_str_3) << std::endl;
-    std::cout << Solution().calculate(test_str_4) << std::endl;
+    // std::cout << Solution().calculate(test_str_4) << std::endl;
+    std::cout << Solution().calculate(test_str_5) << std::endl;
 }
