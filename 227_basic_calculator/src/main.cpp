@@ -91,23 +91,33 @@ public:
 
         for (const auto& expression : muls_divs)
         {
+            int current_result = 0;
+
             vector<string> muldiv_delimiters;
             vector<string> numbers_str = split(expression, m_mul_div, muldiv_delimiters);
 
             if (numbers_str.size() == 1)
-                result.emplace_back(std::stoi(numbers_str[0]));
-
-            for (size_t i = 0; i != muldiv_delimiters.size(); ++i)
             {
-				const auto& current_operation_str = muldiv_delimiters[i];
-
-                auto lhs = std::stoi(numbers_str[i]);
-                auto rhs = std::stoi(numbers_str[i + 1]);
-		
-				auto operation = makeOperation(current_operation_str);
-
-                result.emplace_back(operation(lhs, rhs));
+                result.emplace_back(std::stoi(numbers_str[0]));
+                continue;
             }
+
+			for (size_t i = 0; i != numbers_str.size(); ++i)
+			{
+                auto number = std::stoi(numbers_str[i]);
+
+                if (i == 0)
+                    current_result = number;
+				else
+				{
+					const auto& current_operation_str = muldiv_delimiters[i - 1];
+					auto operation = makeOperation(current_operation_str);
+
+                    current_result = operation(current_result, number);
+				}
+			}
+    
+            result.emplace_back(current_result);
         }
          
         return result;
@@ -156,7 +166,7 @@ private:
 int main()
 {
     // std::cout << Solution().calculate(test_str_1) << std::endl;
-    // std::cout << Solution().calculate(test_str_2) << std::endl;
+    std::cout << Solution().calculate(test_str_2) << std::endl;
     // std::cout << Solution().calculate(test_str_3) << std::endl;
     // std::cout << Solution().calculate(test_str_4) << std::endl;
     std::cout << Solution().calculate(test_str_5) << std::endl;
