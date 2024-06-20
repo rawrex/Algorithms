@@ -12,6 +12,7 @@ const string test_str_2 = "3+2*2";
 const string test_str_3 = " 3/2 ";
 const string test_str_4 = "1+1+1";
 const string test_str_5 = "2*3*4";
+const string test_str_6 = "1*2-3/4+5*6-7*8+9/10";
 
 class Operator
 {
@@ -28,7 +29,7 @@ public:
     int parse(const string& input) const noexcept
     {
         int result = 0;
-        vector<string> sumdif_delimiters;
+        vector<char> sumdif_delimiters;
         vector<string> muls_divs = split(input, m_sum_dif, sumdif_delimiters);
 
         auto numbers = processMulsDivs(muls_divs);
@@ -54,33 +55,27 @@ public:
         return result;
     }
 
-    vector<string> split(const string& input, const string& delimiters, vector<string>& found_delimiters) const
+    vector<string> split(const string& input, const string& delimiters, vector<char>& found_delimiters) const
     {
         vector<string> result;
-
-        // Simplify the management of the substrings by cutting the head of the string
-        // This we will need to avoid later
-        auto tmp = input;
         
-        auto index = tmp.find_first_of(delimiters);
+        auto index = input.find_first_of(delimiters);
+        size_t previous = 0;
         while (index != std::string::npos)
         {
             // Collect the numbers and mul/div subexpressions first
-            result.emplace_back(tmp.substr(0, index));
+            result.emplace_back(input.substr(previous, index - previous));
 
             // Collect the found sum/dif operators
-            found_delimiters.emplace_back(tmp.substr(index, 1));
-
-            // Truncate the just found sum/dif operator from the string
-            tmp = tmp.substr(++index);
+            found_delimiters.emplace_back(input[index]);
 
             // Try to find the next occurance of the sum/dif operator
-            index = tmp.find_first_of(delimiters);
+            previous = index+1;
+            index = input.find_first_of(delimiters, previous+1);
         }
 
-        // There is a number or a one or more mul/div subexpressions
-        if (!tmp.empty())
-            result.emplace_back(tmp);
+        // need to process the remainigs of the input if the last part was just a number
+        result.emplace_back(input.substr(previous, index));
 
         return result;
     }
@@ -93,7 +88,7 @@ public:
         {
             int current_result = 0;
 
-            vector<string> muldiv_delimiters;
+            vector<char> muldiv_delimiters;
             vector<string> numbers_str = split(expression, m_mul_div, muldiv_delimiters);
 
             if (numbers_str.size() == 1)
@@ -123,9 +118,9 @@ public:
         return result;
     }
 
-    std::function<int(int, int)> makeOperation(const std::string& operation_str) const
+    std::function<int(int, int)> makeOperation(char operation_character) const
     {
-        switch (operation_str[0])
+        switch (operation_character)
         {
             case '+':
                 return m_operators[0];
@@ -166,8 +161,9 @@ private:
 int main()
 {
     // std::cout << Solution().calculate(test_str_1) << std::endl;
-    std::cout << Solution().calculate(test_str_2) << std::endl;
+    // std::cout << Solution().calculate(test_str_2) << std::endl;
     // std::cout << Solution().calculate(test_str_3) << std::endl;
     // std::cout << Solution().calculate(test_str_4) << std::endl;
-    std::cout << Solution().calculate(test_str_5) << std::endl;
+    // std::cout << Solution().calculate(test_str_5) << std::endl;
+    std::cout << Solution().calculate(test_str_6) << std::endl;
 }
