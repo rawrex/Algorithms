@@ -142,19 +142,25 @@ private:
     std::array<std::function<int(int, int)>, 4> m_operators = { std::plus<int>(), std::minus<int>(), std::multiplies<int>(), std::divides<int>() };
 };
 
+class StackSolution
+{
+public:
+    int solve(const string& input)
+    {
+        return 0;
+    }
+};
+
 class Solution
 {
 public:
-    int calculate(const string& s)
+    int calculate(const string& input)
     {
-        return naive(s);
-    }
+//      Parser parser;
+//      return parser.parse(input);
 
-private:
-    int naive(const string& input) const noexcept 
-    {
-        Parser parser;
-        return parser.parse(input);
+        StackSolution stackSolution;
+        return stackSolution.solve(input);
     }
 };
 
