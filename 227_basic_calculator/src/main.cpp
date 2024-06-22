@@ -147,7 +147,45 @@ class StackSolution
 public:
     int solve(const string& input)
     {
+        auto size = input.size();
+        stack<int> numbers;
+        stack<char> operations;
+
+        for(size_t i = 0; i != size; ++i)
+        {
+            auto current = input[i];
+            if(isdigit(current))
+            {
+                numbers.push(makeNumber(i, current, input));
+            }
+            else if(isspace(current))
+            {
+                continue;
+            }
+            else
+            {
+                
+            }
+        }
         return 0;
+    }
+
+private:
+    int makeNumber(size_t index, const char c, const string& input)
+    {
+        int resulting_number = c - '0';
+        while(index+1 < input.size() && isdigit(input[index+1])
+        {
+            resulting_number = resulting_number*10 + (input[index+1] - '0');
+            ++index;
+        }
+
+        return resulting_number;
+    }
+
+    bool isOperation(char c)
+    {
+        return c == '*' || c == '/' || c == '+' || c == '-';
     }
 };
 
