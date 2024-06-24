@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <array>
+#include <stack>
 #include <functional>
 
 using namespace std;
@@ -148,44 +149,56 @@ public:
     int solve(const string& input)
     {
         auto size = input.size();
-        stack<int> numbers;
-        stack<char> operations;
+        stack<int> processed;
+
+        int number = 0;
+        char pending_operation = '+';
 
         for(size_t i = 0; i != size; ++i)
         {
             auto current = input[i];
+
             if(isdigit(current))
+                number = number * 10 + (current - '0');
+
+            if(i == size - 1 || current == '+' || current == '-' || current == '*' || current == '/')
             {
-                numbers.push(makeNumber(i, current, input));
-            }
-            else if(isspace(current))
-            {
-                continue;
-            }
-            else
-            {
-                
+                switch(pending_operation)
+                {
+                    case '+':
+                        processed.push(number);
+                        break;
+                    case '-':
+                        processed.push(-number);
+                        break;
+                    case '*':
+                    {
+                        auto lhs = processed.top();
+                        processed.pop();
+                        processed.push(lhs * number);
+                        break;
+                    }
+                    case '/':
+                    {
+                        auto lhs = processed.top();
+                        processed.pop();
+                        processed.push(lhs / number);
+                        break;
+                    }
+                }
+                number = 0;
+                pending_operation = current;
             }
         }
-        return 0;
-    }
 
-private:
-    int makeNumber(size_t index, const char c, const string& input)
-    {
-        int resulting_number = c - '0';
-        while(index+1 < input.size() && isdigit(input[index+1])
+        int result = 0;
+        while(!processed.empty())
         {
-            resulting_number = resulting_number*10 + (input[index+1] - '0');
-            ++index;
+            result += processed.top();
+            processed.pop();
         }
 
-        return resulting_number;
-    }
-
-    bool isOperation(char c)
-    {
-        return c == '*' || c == '/' || c == '+' || c == '-';
+        return result;
     }
 };
 
