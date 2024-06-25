@@ -1,28 +1,12 @@
 ﻿#include <string>
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <array>
 #include <stack>
 #include <functional>
 
 using namespace std;
 
-const string test_str_1 = "3*4 - 4 / 2";
-const string test_str_2 = "3+2*2";
-const string test_str_3 = " 3/2 ";
-const string test_str_4 = "1+1+1";
-const string test_str_5 = "2*3*4";
 const string test_str_6 = "1*2-3/4+5*6-7*8+9/10";
-
-class Operator
-{
-public:
-
-private:
-    enum class Type { plus = 0, minus = 1, mult = 2, div = 3 };
-    Type m_type;
-};
 
 class Parser
 {
@@ -207,20 +191,15 @@ class Solution
 public:
     int calculate(const string& input)
     {
-//      Parser parser;
-//      return parser.parse(input);
-
-        StackSolution stackSolution;
-        return stackSolution.solve(input);
+        return stack_solution.solve(input);
     }
+
+private:
+    Parser parser_solution;
+    StackSolution stack_solution;
 };
 
 int main()
 {
-    // std::cout << Solution().calculate(test_str_1) << std::endl;
-    // std::cout << Solution().calculate(test_str_2) << std::endl;
-    // std::cout << Solution().calculate(test_str_3) << std::endl;
-    // std::cout << Solution().calculate(test_str_4) << std::endl;
-    // std::cout << Solution().calculate(test_str_5) << std::endl;
     std::cout << Solution().calculate(test_str_6) << std::endl;
 }
