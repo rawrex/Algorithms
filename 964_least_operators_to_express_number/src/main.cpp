@@ -9,11 +9,21 @@ struct Solution
 private:
     int firstAttempt(int x, int target)
     {
-        return 0;
+        return estimate(x, target);
+    }
+
+    int estimate(int x, int target) 
+    {
+        int e = x;
+
+        for(unsigned i = 0; e < target; ++i)
+            e *= x;
+
+        return e;
     }
 };
 
 int main()
 {
-
+    std::cout << Solution().leastOpsExpessTarget(3, 19) << std::endl;
 }
