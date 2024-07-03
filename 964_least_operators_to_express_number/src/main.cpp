@@ -1,4 +1,8 @@
 #include <iostream>
+#include <functional>
+#include <unordered_map>
+
+using namespace std;
 
 struct Operation
 {
@@ -74,7 +78,59 @@ private:
     int m_target = 0;
 };
 
+class FoundSolution
+{
+public:
+	int leastOpsExpressTarget(int x, int target) 
+    {
+        m_step = x;
+        m_target = target;
+
+		return dfs(target);
+	}
+
+private:
+	// A recursive function, defined using a lambda, that does the work.
+	// It calculates the least number of operations to express 'value'.
+	int dfs(int value)
+	{
+		// If x is greater than or equal to the target value, we calculate the minimum number of operations.
+		if (m_step >= value) 
+			return min(value * 2 - 1, 2 * (m_step - value));
+
+		// Check if the result has been memoized; if so, return it.
+		if (m_memo.count(value)) 
+			return m_memo[value];
+
+		int operations_count = 2; // The operation count starts at 2 (representing x/x).
+		long long power = m_step * m_step; // Start with x squared.
+
+		// Increase 'power' by multiplying with x until it just exceeds or equals 'value'.
+		while (power < value) 
+        {
+			power *= m_step;
+			++operations_count; // Increment operation count each time we multiply with x.
+		}
+
+		// Compute the minimum operations if we use 'power' just less than 'value':
+		int ans = operations_count - 1 + dfs(value - power / m_step);
+
+		// If the remaining value (power - value) is less than the original 'value',
+		// it might be more optimal to also consider this path.
+		if (power - value < value) 
+			ans = min(ans, operations_count + dfs(power - value));
+
+		// Memoize the answer for 'value'.
+		m_memo[value] = ans;
+		return ans;
+	}
+
+    int m_step = 0;
+    int m_target = 0;
+	unordered_map<int, int> m_memo;
+};
+
 int main()
 {
-    std::cout << Solution().leastOpsExpessTarget(3, 19) << std::endl;
+    std::cout << FoundSolution().leastOpsExpressTarget(3, 19) << std::endl;
 }
