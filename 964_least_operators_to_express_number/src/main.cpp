@@ -83,50 +83,60 @@ class FoundSolution
 public:
 	int leastOpsExpressTarget(int x, int target) 
     {
-        m_step = x;
-        m_target = target;
-
-		return dfs(target);
+        m_x = x;
+		return depthFirstSearch(target);
 	}
 
 private:
-	// A recursive function, defined using a lambda, that does the work.
-	// It calculates the least number of operations to express 'value'.
-	int dfs(int value)
+	int depthFirstSearch(int value)
 	{
 		// If x is greater than or equal to the target value, we calculate the minimum number of operations.
-		if (m_step >= value) 
-			return min(value * 2 - 1, 2 * (m_step - value));
-
-		// Check if the result has been memoized; if so, return it.
-		if (m_memo.count(value)) 
-			return m_memo[value];
-
-		int operations_count = 2; // The operation count starts at 2 (representing x/x).
-		long long power = m_step * m_step; // Start with x squared.
-
-		// Increase 'power' by multiplying with x until it just exceeds or equals 'value'.
-		while (power < value) 
+        if (m_x >= value)
         {
-			power *= m_step;
-			++operations_count; // Increment operation count each time we multiply with x.
-		}
+            // To get to the value, we use m_x/m_x to get a unit (1, each of which takes one operation, division),
+            // then we use addition (plus one operation), for each next unit in the value,
+            // thus, for each unit (except for the very first one) in the value we use two operations
+			auto a = value * 2 - 1;
 
-		// Compute the minimum operations if we use 'power' just less than 'value':
-		int ans = operations_count - 1 + dfs(value - power / m_step);
+            // To get to the value we use the same m_x/m_x to get a unit (1, each takes one operation, division)
+            // each such unit then subtracted, which adds another operation, 
+            // thus, for each unit in the difference we need two operations
+			auto b = 2 * (m_x - value);
 
-		// If the remaining value (power - value) is less than the original 'value',
-		// it might be more optimal to also consider this path.
-		if (power - value < value) 
-			ans = min(ans, operations_count + dfs(power - value));
+			return min(a, b);
+        }
 
-		// Memoize the answer for 'value'.
-		m_memo[value] = ans;
-		return ans;
+		// Check if the result has been memoized
+        if (auto iter = m_memo.find(value); iter != m_memo.cend())
+            return iter->second;
+
+        // The operation count starts at 2, representing x * x
+		auto operations_count = 2;      
+
+        // Start with x squared.
+		auto exponent = m_x * m_x; 
+
+		// Exponentiate until we just overshoot (or hit rigth at) the target value
+        for (/* empty */; exponent < value; ++operations_count)
+			exponent *= m_x;
+
+		// Compute the minimum operations if we use an "exponent" before the overshoot
+        // So, we "undo" one multiplication from the above (hence, the operations_count-1)
+        // And then we recursively consider the number of operations for the case where the exponent being just before the overshoot (hence, the exponent/m_x)
+		auto current_answer = (operations_count - 1) + depthFirstSearch(value - exponent/m_x);
+
+        // Consdier is it being more optimal to get to the current "value" by constructing a complement, the "exponent - value"
+		// If the remaining value (exponent-value) is less than the original "value", it may be optimal to consider this path
+		if ((exponent - value) < value) 
+			current_answer = min(current_answer, operations_count + depthFirstSearch(exponent - value));
+
+		// Memoize the current_answerwer for the current "value"
+		m_memo[value] = current_answer;
+
+		return current_answer;
 	}
 
-    int m_step = 0;
-    int m_target = 0;
+    int m_x = 0;
 	unordered_map<int, int> m_memo;
 };
 
