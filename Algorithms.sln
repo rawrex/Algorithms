@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "227_basic_calculator", "227
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "964_least_operators_to_express_number", "964_least_operators_to_express_number\964_least_operators_to_express_number.vcxproj", "{0815C419-44EF-40C0-ADC2-DEACC6FFC29C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2058_find_the_min_and_max_number_of_nodes_between_critical_points", "2058_find_the_min_and_max_number_of_nodes_between_critical_points\2058_find_the_min_and_max_number_of_nodes_between_critical_points.vcxproj", "{F26A3E79-A645-4EFE-8993-E3ACAD5AABF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -111,6 +113,14 @@ Global
 		{0815C419-44EF-40C0-ADC2-DEACC6FFC29C}.Release|x64.Build.0 = Release|x64
 		{0815C419-44EF-40C0-ADC2-DEACC6FFC29C}.Release|x86.ActiveCfg = Release|Win32
 		{0815C419-44EF-40C0-ADC2-DEACC6FFC29C}.Release|x86.Build.0 = Release|Win32
+		{F26A3E79-A645-4EFE-8993-E3ACAD5AABF3}.Debug|x64.ActiveCfg = Debug|x64
+		{F26A3E79-A645-4EFE-8993-E3ACAD5AABF3}.Debug|x64.Build.0 = Debug|x64
+		{F26A3E79-A645-4EFE-8993-E3ACAD5AABF3}.Debug|x86.ActiveCfg = Debug|Win32
+		{F26A3E79-A645-4EFE-8993-E3ACAD5AABF3}.Debug|x86.Build.0 = Debug|Win32
+		{F26A3E79-A645-4EFE-8993-E3ACAD5AABF3}.Release|x64.ActiveCfg = Release|x64
+		{F26A3E79-A645-4EFE-8993-E3ACAD5AABF3}.Release|x64.Build.0 = Release|x64
+		{F26A3E79-A645-4EFE-8993-E3ACAD5AABF3}.Release|x86.ActiveCfg = Release|Win32
+		{F26A3E79-A645-4EFE-8993-E3ACAD5AABF3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
