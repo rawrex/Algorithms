@@ -111,10 +111,10 @@ private:
             return iter->second;
 
         // The operation count starts at 2, representing x * x
-		auto operations_count = 2;      
+		int operations_count = 2;      
 
         // Start with x squared.
-		auto exponent = m_x * m_x; 
+		long long exponent = m_x * m_x; 
 
 		// Exponentiate until we just overshoot (or hit rigth at) the target value
         for (/* empty */; exponent < value; ++operations_count)
