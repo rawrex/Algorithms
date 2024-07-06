@@ -32,6 +32,8 @@ struct Solution
 
 				if (m_current_distance_min > m_record_distance_min)
 					m_record_distance_min = m_current_distance_min;
+
+				m_current_distance_min = 0;
 			}
 
 			// current node is local maximum
@@ -41,6 +43,8 @@ struct Solution
 
 				if (m_current_distance_max > m_record_distance_max)
 					m_record_distance_max = m_current_distance_max;
+
+				m_current_distance_max = 0;
 			}
 
 			++m_current_distance_min;
