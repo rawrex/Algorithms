@@ -23,25 +23,25 @@ struct Solution
 
 		m_prev_value = head->val;
 
-		if (head->next)
-			return traverse(head->next);
-		else
+		if (!head->next)
 			return { 1, 1 };
+			
+		return traverse(head->next);
 	}
 
 	vector<int> traverse(ListNode* node)
 	{
-		for (/* empty */; node; node = node->next, ++m_current_distance)
+		for (/* empty */; node; ++m_current_distance, m_prev_value = node->val, node = node->next)
 		{
-			if (isCritical(node))
-			{
-				m_record_distance_max = std::max(m_current_distance, m_record_distance_max);
-				m_record_distance_min = std::min(m_current_distance, m_record_distance_min);
-				m_current_distance = 0;
-			}
+			if (!isCritical(node))
+				continue;
 
-			m_prev_value = node->val;
+			m_record_distance_max = std::max(m_current_distance, m_record_distance_max);
+			m_record_distance_min = std::min(m_current_distance, m_record_distance_min);
+
+			m_current_distance = 0;
 		}
+
 		return { m_record_distance_min, m_record_distance_max };
 	}
 
@@ -49,6 +49,7 @@ struct Solution
 	{
 		if (!node->next)
 			return false;
+
 		return (node->val < m_prev_value && node->val < node->next->val) || (node->val > m_prev_value && node->val > node->next->val);
 	}
 
