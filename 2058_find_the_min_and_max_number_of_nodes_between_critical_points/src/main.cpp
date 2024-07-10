@@ -18,54 +18,45 @@ struct Solution
 {
 	vector<int> nodesBetweenCriticalPoints(ListNode* head)
 	{
-		return traverse(head);
+		if (!head)
+			return { -1, -1 };
+
+		m_prev_value = head->val;
+
+		if (head->next)
+			return traverse(head->next);
+		else
+			return { 1, 1 };
 	}
 
 	vector<int> traverse(ListNode* node)
 	{
-		while (node->next)
+		for (/* empty */; node; node = node->next, ++m_current_distance)
 		{
-			// current node is local minimum
-			if (node->val < m_current_min && node->val < node->next->val)
+			if (isCritical(node))
 			{
-				m_current_min = node->val;
-
-				if (m_current_distance_min > m_record_distance_min)
-					m_record_distance_min = m_current_distance_min;
-
-				m_current_distance_min = 0;
+				m_record_distance_max = std::max(m_current_distance, m_record_distance_max);
+				m_record_distance_min = std::min(m_current_distance, m_record_distance_min);
+				m_current_distance = 0;
 			}
 
-			// current node is local maximum
-			if (node->val > m_current_max && node->val > node->next->val)
-			{
-				m_current_max = node->val;
-
-				if (m_current_distance_max > m_record_distance_max)
-					m_record_distance_max = m_current_distance_max;
-
-				m_current_distance_max = 0;
-			}
-
-			++m_current_distance_min;
-			++m_current_distance_max;
-
-			// iterate further
-			node = node->next;
+			m_prev_value = node->val;
 		}
-
 		return { m_record_distance_min, m_record_distance_max };
 	}
 
+	bool isCritical(const ListNode* node) const noexcept
+	{
+		if (!node->next)
+			return false;
+		return (node->val < m_prev_value && node->val < node->next->val) || (node->val > m_prev_value && node->val > node->next->val);
+	}
+
 private:
-	int m_record_distance_min = -1;
-	int m_record_distance_max = -1;
-
-	int m_current_distance_min = -1;
-	int m_current_distance_max = -1;
-
-	int m_current_min = std::numeric_limits<int>::max();
-	int m_current_max = std::numeric_limits<int>::min();
+	int m_prev_value = 0;
+	int m_current_distance = 0;
+	int m_record_distance_min = std::numeric_limits<int>::max();
+	int m_record_distance_max = std::numeric_limits<int>::min();
 };
 
 // [5,3,1,2,5,1,2]
