@@ -63,9 +63,9 @@ class Solution
                 {
                     auto& other_robot_ptr = position2robot[current_robot.position()];
                     collide(current_robot, *other_robot_ptr);
-                     
                 }
             }
+            position2robot.clear();
         }
 
         void collide(Robot& a, Robot& b)
