@@ -1,13 +1,14 @@
+#include <unordered_map>
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <unordered_map>
 #include <list>
 
 using namespace std;
 
 struct Robot
 {
-    Robot(int i, int pos, int hp, const string& dir) : m_original_index(i), m_position(pos), m_hp(hp), m_increment(dir == "R" ? 1 : -1) 
+    Robot(int i, int pos, int hp, char dir) : m_original_index(i), m_position(pos), m_hp(hp), m_increment(dir == 'R' ? 1 : -1) 
     {
 
     }
@@ -159,7 +160,7 @@ struct Solution2
 };
 
 
-struct Solution2
+struct Solution3
 {
     vector<int> survivedRobotsHealths(vector<int>& positions, vector<int>& healths, const string& directions) 
     {
@@ -168,13 +169,13 @@ struct Solution2
         for(int i = 0; i != total_size; ++i)
         {
             if(directions[i] == 'L')
-                m_left.emplace(i, positions[i], healths[i], directions[i]);
+                m_left.emplace_back(i, positions[i], healths[i], directions[i]);
             else
-                m_right.emplace(i, positions[i], healths[i], directions[i]);
+                m_right.emplace_back(i, positions[i], healths[i], directions[i]);
         }
 
-        std::sort(m_left.beging(), m_left.end(), [](const auto& a, const auto& b) { return a.m_position < b.m_position; });
-        std::sort(m_right.beging(), m_right.end(), [](const auto& a, const auto& b) { return a.m_position < b.m_position; });
+        std::sort(m_left.begin(), m_left.end(), [](const auto& a, const auto& b) { return a.position() < b.position(); });
+        std::sort(m_right.begin(), m_right.end(), [](const auto& a, const auto& b) { return a.position() < b.position(); });
 
         auto min_size = std::min(m_left.size(), m_right.size());
         
