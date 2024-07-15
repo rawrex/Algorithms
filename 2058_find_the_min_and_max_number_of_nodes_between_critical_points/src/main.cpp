@@ -18,7 +18,8 @@ struct Solution
 {
 	vector<int> nodesBetweenCriticalPoints(ListNode* head)
 	{
-		if (!head || !head->next || !head->next->next)
+        // Explicit test for the requirement for amount of nodes
+		if (!head || !head->next || !head->next->next || !head->next->next->next)
 			return { -1, -1 };
 
 		m_prev_value = head->val;
