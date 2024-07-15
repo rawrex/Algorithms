@@ -116,18 +116,15 @@ class Solution
             int max_left_position = std::numeric_limits<int>::min();
             int min_right_position = std::numeric_limits<int>::max();
 
-            for(auto it = m_robots.begin(); it != m_robots.end(); ++it)
+            for(const auto& robot : m_robots)
             {
-                if (it->isDead())
-                {
-                    m_robots.erase(it);
+                if (robot.isDead())
                     continue;
-                }
 
-                if (it->direction() == 'L')
-                    max_left_position = std::max(it->position(), max_left_position);
+                if (robot.direction() == 'L')
+                    max_left_position = std::max(robot.position(), max_left_position);
                 else
-                    min_right_position = std::min(it->position(), min_right_position);
+                    min_right_position = std::min(robot.position(), min_right_position);
             }
 
             // There are no left-moving robots in front of any of the right moving
@@ -150,7 +147,7 @@ class Solution
             return result;
         }
 
-        list<Robot> m_robots;
+        vector<Robot> m_robots;
     };
 
 public:
