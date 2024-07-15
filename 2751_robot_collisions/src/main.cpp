@@ -8,54 +8,71 @@ using namespace std;
 
 struct Robot
 {
-    Robot(int i, int pos, int hp, char dir) : m_original_index(i), m_position(pos), m_hp(hp), m_increment(dir == 'R' ? 1 : -1) 
-    {
+	Robot(int i, int pos, int hp, char dir) : m_original_index(i), m_position(pos), m_hp(hp), m_increment(dir == 'R' ? 1 : -1)
+	{
 
-    }
+	}
 
-    int onTick()
-    {
-        return m_position += m_increment; 
-    }
+	int onTick()
+	{
+		return m_position += m_increment;
+	}
 
-    int position() const noexcept
-    {
-        return m_position;
-    }
+	int position() const noexcept
+	{
+		return m_position;
+	}
 
-    int hp() const noexcept
-    {
-        return m_hp;
-    }
+	int originalPosition() const noexcept
+	{
+		return m_original_index;
+	}
 
-    void kill() noexcept
-    {
-        m_hp = 0;
-    }
+	int hp() const noexcept
+	{
+		return m_hp;
+	}
 
-    void damage() noexcept
-    {
-        --m_hp;
-    }
+	char direction() const noexcept
+	{
+		return m_increment == -1 ? 'L' : 'R';
+	}
 
-    bool isDead() const noexcept
-    {
-        return m_hp == 0;
-    }
+	void kill() noexcept
+	{
+		m_hp = 0;
+	}
+
+	void damage() noexcept
+	{
+		--m_hp;
+	}
+
+	bool isDead() const noexcept
+	{
+		return m_hp == 0;
+	}
 
 private:
-    int m_original_index = 0;
-    int m_position = 0;
-    int m_hp = 0;
-    int m_increment = 0;
+	int m_original_index = 0;
+	int m_position = 0;
+	int m_hp = 0;
+	int m_increment = 0;
 };
 
 class Solution 
 {
-
     struct Scene
     {
-        bool tick() 
+        Scene(const std::vector<int>& p, const std::vector<int>& hp, const std::string& d)
+        {
+            auto size = static_cast<int>(p.size());
+
+            for (int i = 0; i != size; ++i)
+                m_robots.emplace_back(i, p[i], hp[i], d[i]);
+        }
+
+        void tick()
         {
             unordered_map<int, Robot*> position2robot;
 
@@ -70,15 +87,9 @@ class Solution
                     collide(current_robot, *other_robot_ptr);
                 }
             }
-
-            if(done())
-                return false;
-
-            position2robot.clear();
-            return true;
         }
 
-        void collide(Robot& a, Robot& b)
+        void collide(Robot& a, Robot& b) const noexcept
         {
             if(a.hp() == b.hp())
             {
@@ -102,11 +113,41 @@ class Solution
 
         bool done()
         {
-            // ... ?
-            for(const auto& robot : m_robots)
+            int max_left_position = std::numeric_limits<int>::min();
+            int min_right_position = std::numeric_limits<int>::max();
+
+            for(auto it = m_robots.begin(); it != m_robots.end(); ++it)
             {
-                
+                if (it->isDead())
+                {
+                    m_robots.erase(it);
+                    continue;
+                }
+
+                if (it->direction() == 'L')
+                    max_left_position = std::max(it->position(), max_left_position);
+                else
+                    min_right_position = std::min(it->position(), min_right_position);
             }
+
+            // There are no left-moving robots in front of any of the right moving
+            return max_left_position < min_right_position;
+        }
+
+        std::vector<int> finish() const
+        {
+            std::vector<Robot> alive;
+
+            for (auto& robot : m_robots)
+                alive.emplace_back(robot);
+
+            std::sort(alive.begin(), alive.end(), [](const auto& a, const auto& b) { return a.originalPosition() < b.originalPosition(); });
+
+            std::vector<int> result;
+            for (const auto& r : alive)
+                result.emplace_back(r.hp());
+
+            return result;
         }
 
         list<Robot> m_robots;
@@ -115,14 +156,12 @@ class Solution
 public:
     vector<int> survivedRobotsHealths(vector<int>& positions, vector<int>& healths, string directions) 
     {
-        return first(positions, healths, directions);
-    }
+        Scene scene(positions, healths, directions);
 
-private:
-    vector<int> first(vector<int>& positions, vector<int>& healths, const string& directions)
-    {
+        while (!scene.done())
+            scene.tick();
 
-        return {};
+        return scene.finish();
     }
 };
 
