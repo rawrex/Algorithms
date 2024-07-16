@@ -233,7 +233,15 @@ private:
     std::vector<Robot> m_right;
 };
 
+vector<int> positions = {1, 2, 5, 6};
+vector<int> healths = {10, 10, 11, 11};
+string directions = "RLRL";
+
 int main()
 {
+    auto result = Solution().survivedRobotsHealths(positions, healths, directions);
 
+    for (auto hp : result)
+        std::cout << hp << ' ';
+    std::cout << std::endl;
 }
