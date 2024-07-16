@@ -136,7 +136,8 @@ class Solution
             std::vector<Robot> alive;
 
             for (auto& robot : m_robots)
-                alive.emplace_back(robot);
+                if(!robot.isDead())
+                    alive.emplace_back(robot);
 
             std::sort(alive.begin(), alive.end(), [](const auto& a, const auto& b) { return a.originalPosition() < b.originalPosition(); });
 
