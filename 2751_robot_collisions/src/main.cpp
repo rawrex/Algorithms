@@ -76,30 +76,40 @@ class Solution
         void tick()
         {
             unordered_map<int, Robot*> current_positions;
-            unordered_map<int, Robot*> new_positions;
+//            unordered_map<int, Robot*> new_positions;
 
             for (auto& current_robot : m_robots)
+            {
+                if(current_robot.isDead())
+                    continue;
+
                 current_positions.emplace(current_robot.position(), &current_robot);
+            }
 
             for(auto& current_robot : m_robots)
             {
                 if(current_robot.isDead())
                     continue;
 
-                auto new_position = current_robot.onTick();
+                auto current_robot_new_position = current_robot.onTick();
 
-                if (!current_positions.emplace(new_position, &current_robot).second)
+                if (!current_positions.emplace(current_robot_new_position, &current_robot).second)
                 {
-                    auto& other_robot_ptr = current_positions[new_position];
+                    auto& other_robot_ptr = current_positions[current_robot_new_position];
+
+                    if (other_robot_ptr->isDead())
+                        continue;
+
                     if(other_robot_ptr->direction() != current_robot.direction())
                         collide(current_robot, *other_robot_ptr);
                 }
 
-                if(!new_positions.emplace(new_position, &current_robot).second)
-                {
-                    auto& other_robot_ptr = new_positions[new_position];
-                    collide(current_robot, *other_robot_ptr);
-                }
+//                if(!new_positions.emplace(new_position, &current_robot).second)
+//                {
+//                    auto& other_robot_ptr = new_positions[new_position];
+//                    if(other_robot_ptr->direction() != current_robot.direction() && !other_robot_ptr->isDead())
+//                        collide(current_robot, *other_robot_ptr);
+//                }
             }
         }
 
@@ -252,9 +262,13 @@ private:
 //vector<int> healths = {10, 10, 11, 11};
 //string directions = "RLRL";
 
-vector<int> positions = { 3, 5, 2, 6 };
-vector<int> healths = { 10, 10, 15, 12 };
-string directions = "RLRL";
+//vector<int> positions = { 3, 5, 2, 6 };
+//vector<int> healths = { 10, 10, 15, 12 };
+//string directions = "RLRL";
+
+vector<int> positions = { 13, 3 };
+vector<int> healths = { 17, 2 };
+string directions = "LR";
 
 int main()
 {
