@@ -91,7 +91,8 @@ class Solution
                 if (!current_positions.emplace(new_position, &current_robot).second)
                 {
                     auto& other_robot_ptr = current_positions[new_position];
-                    collide(current_robot, *other_robot_ptr);
+                    if(other_robot_ptr->direction() != current_robot.direction())
+                        collide(current_robot, *other_robot_ptr);
                 }
 
                 if(!new_positions.emplace(new_position, &current_robot).second)
