@@ -8,14 +8,15 @@ using namespace std;
 
 struct Robot
 {
-	Robot(int i, int pos, int hp, char dir) : m_original_index(i), m_position(pos), m_hp(hp), m_increment(dir == 'R' ? 1 : -1)
+	Robot(int i, int pos, int hp, char dir) noexcept : m_original_index(i), m_position(pos), m_hp(hp), m_increment(dir == 'R' ? 1 : -1)
 	{
 
 	}
 
-	int onTick()
+	int onTick() noexcept
 	{
-		return m_position += m_increment;
+		m_position += m_increment;
+        return m_position;
 	}
 
 	int position() const noexcept
