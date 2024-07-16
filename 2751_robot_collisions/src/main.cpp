@@ -60,7 +60,7 @@ private:
 	int m_increment = 0;
 };
 
-class Solution 
+class Solution1
 {
     struct Scene
     {
@@ -193,9 +193,9 @@ struct Solution2
        // left is empty 
        // right is empty 
        // positions are safe
+        return true;
     }
 };
-
 
 struct Solution3
 {
@@ -227,6 +227,7 @@ struct Solution3
        // left is empty 
        // right is empty 
        // positions are safe
+        return true;
     }
 private:
     std::vector<Robot> m_left;
@@ -239,7 +240,7 @@ string directions = "RLRL";
 
 int main()
 {
-    auto result = Solution().survivedRobotsHealths(positions, healths, directions);
+    auto result = Solution1().survivedRobotsHealths(positions, healths, directions);
 
     for (auto hp : result)
         std::cout << hp << ' ';
