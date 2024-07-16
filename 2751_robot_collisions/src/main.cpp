@@ -61,7 +61,7 @@ private:
 	int m_increment = 0;
 };
 
-class Solution1
+class Solution
 {
     struct Scene
     {
@@ -75,16 +75,28 @@ class Solution1
 
         void tick()
         {
-            unordered_map<int, Robot*> position2robot;
+            unordered_map<int, Robot*> current_positions;
+            unordered_map<int, Robot*> new_positions;
+
+            for (auto& current_robot : m_robots)
+                current_positions.emplace(current_robot.position(), &current_robot);
 
             for(auto& current_robot : m_robots)
             {
                 if(current_robot.isDead())
                     continue;
 
-                if(!position2robot.emplace(current_robot.onTick(), &current_robot).second)
+                auto new_position = current_robot.onTick();
+
+                if (!current_positions.emplace(new_position, &current_robot).second)
                 {
-                    auto& other_robot_ptr = position2robot[current_robot.position()];
+                    auto& other_robot_ptr = current_positions[new_position];
+                    collide(current_robot, *other_robot_ptr);
+                }
+
+                if(!new_positions.emplace(new_position, &current_robot).second)
+                {
+                    auto& other_robot_ptr = new_positions[new_position];
                     collide(current_robot, *other_robot_ptr);
                 }
             }
