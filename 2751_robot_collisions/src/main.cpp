@@ -187,97 +187,94 @@ vector<int> naive(vector<int>& positions, vector<int>& healths, string direction
 
 class Solution
 {
-    vector<int> stackSolution(const vector<int>& positions, const vector<int>& healths, const string& directions) const
-    {
-        struct Robot 
-        {
-            int index = 0;
-            int pos = 0;
-            int hp = 0;
-            char dir = 0;
-        };
-
-        stack<Robot> R;
-        stack<Robot> L;
-		vector<int> healths_copy = healths;
-        auto size = positions.size();
-
-        for (int i = 0; i != size; ++i)
-        {
-            if (healths_copy[i] == 0)
-                continue;
-
-			Robot robot = { i, positions[i], healths_copy[i], directions[i] };
-            
-            if (robot.dir == 'R')
-            {
-                if (L.empty())
-                    R.push(robot);
-                else
-                {
-                    const auto& other = L.top();
-					if (robot.hp < other.hp)
-					{
-						healths_copy[robot.index] = 0;
-						--healths_copy[other.index];
-					}
-                    else if (robot.hp > other.hp)
-                    {
-						--healths_copy[robot.index];
-						healths_copy[other.index] = 0;
-                        R.push(robot);
-                    }
-                    else
-                    {
-						healths_copy[robot.index] = 0;
-						healths_copy[other.index] = 0;
-                        L.pop();
-                    }
-                }
-            }
-            else
-            {
-                if (R.empty())
-                    L.push(robot);
-                else
-                {
-                    const auto& other = R.top();
-					if (robot.hp < other.hp)
-					{
-						healths_copy[robot.index] = 0;
-						--healths_copy[other.index];
-					}
-                    else if (robot.hp > other.hp)
-                    {
-						--healths_copy[robot.index];
-						healths_copy[other.index] = 0;
-                        L.push(robot);
-                    }
-                    else
-                    {
-						healths_copy[robot.index] = 0;
-						healths_copy[other.index] = 0;
-                        R.pop();
-                    }
-                }
-            }
-        }
-
-        vector<int> resulting_hp;
-        for (int i = 0; i != size; ++i)
-        {
-			if(healths_copy[i])
-				resulting_hp.emplace_back(healths_copy[i]);
-        }
-
-        return resulting_hp;
-    }
-
 public:
     vector<int> survivedRobotsHealths(vector<int>& positions, vector<int>& healths, string directions) 
     {
         return stackSolution(positions, healths, directions);
     }
+
+private:
+	struct Robot
+	{
+		int index = 0;
+		int pos = 0;
+		int hp = 0;
+		char dir = 0;
+	};
+
+    vector<int> stackSolution(const vector<int>& positions, const vector<int>& healths, const string& directions)
+    {
+		m_healths = healths;
+        auto size = positions.size();
+
+        for (int i = 0; i != size; ++i)
+        {
+            if (m_healths[i] == 0)
+                continue;
+
+			Robot robot = { i, positions[i], m_healths[i], directions[i] };
+            
+			if (robot.dir == 'R')
+				processRobot(robot, R, L);
+			else
+				processRobot(robot, L, R);
+        }
+
+        vector<int> resulting_hp;
+        for (int i = 0; i != size; ++i)
+        {
+			if(m_healths[i])
+				resulting_hp.emplace_back(m_healths[i]);
+        }
+
+        return resulting_hp;
+    }
+
+	void processRobot(const Robot& robot, stack<Robot>& robot_stack, stack<Robot>& other_stack)
+	{
+		if (other_stack.empty())
+		{
+			robot_stack.push(robot);
+		}
+		else
+		{
+			const auto& other_robot = other_stack.top();
+
+			if (!willCollide(robot, other_robot))
+				return;
+
+			// Other wins, we keep the other one and do not add this one
+			if (robot.hp < other_robot.hp)
+			{
+				m_healths[robot.index] = 0;
+				--m_healths[other_robot.index];
+			}
+			// This wins and keeps on going with one less hp
+			else if (robot.hp > other_robot.hp)
+			{
+				--m_healths[robot.index];
+				m_healths[other_robot.index] = 0;
+				robot_stack.push(robot);
+			}
+			// Both die, we pop the other one and we do not add this one
+			else
+			{
+				m_healths[robot.index] = 0;
+				m_healths[other_robot.index] = 0;
+				other_stack.pop();
+			}
+		}
+	}
+
+	bool willCollide(const Robot& a, const Robot& b) const noexcept
+	{
+		// We will assume this are has been tested for having different directions at the call site
+		return (a.dir == 'L' && a.pos > b.pos) || (a.dir == 'R' && a.pos < b.pos);
+	}
+
+	vector<int> m_healths;
+	stack<Robot> R;
+	stack<Robot> L;
 };
 
 //vector<int> positions = {1, 2, 5, 6};
@@ -288,8 +285,12 @@ public:
 //vector<int> healths = { 10, 10, 15, 12 };
 //string directions = "RLRL";
 
-vector<int> positions = { 13, 3 };
-vector<int> healths = { 17, 2 };
+//vector<int> positions = { 13, 3 };
+//vector<int> healths = { 17, 2 };
+//string directions = "LR";
+
+vector<int> positions = { 3, 47 };
+vector<int> healths = { 46, 26 };
 string directions = "LR";
 
 int main()
