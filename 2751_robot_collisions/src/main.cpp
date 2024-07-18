@@ -207,18 +207,29 @@ private:
 		m_healths = healths;
         auto size = positions.size();
 
+		vector<Robot> sorted_L;
+		vector<Robot> sorted_R;
+
         for (int i = 0; i != size; ++i)
         {
-            if (m_healths[i] == 0)
-                continue;
-
 			Robot robot = { i, positions[i], m_healths[i], directions[i] };
             
 			if (robot.dir == 'R')
-				processRobot(robot, R, L);
+				sorted_R.emplace_back(robot);
 			else
-				processRobot(robot, L, R);
+				sorted_L.emplace_back(robot);
         }
+
+		std::sort(std::begin(sorted_L), std::end(sorted_L), [](const auto& a, const auto& b) { return a.pos < b.pos; });
+		std::sort(std::begin(sorted_R), std::end(sorted_R), [](const auto& a, const auto& b) { return a.pos < b.pos; });
+
+		for (const auto& robot : sorted_L)
+			L.push(robot);
+		for (const auto& robot : sorted_R)
+			R.push(robot);
+
+		while (!done())
+			processRobots();
 
         vector<int> resulting_hp;
         for (int i = 0; i != size; ++i)
@@ -230,39 +241,50 @@ private:
         return resulting_hp;
     }
 
-	void processRobot(const Robot& robot, stack<Robot>& robot_stack, stack<Robot>& other_stack)
+	bool done() const noexcept
 	{
-		if (other_stack.empty())
+		return L.empty() || R.empty();
+	}
+
+	void processRobots()
+	{
+		auto& l = L.top();
+		auto& r = R.top();
+
+		if (!willCollide(l, r))
 		{
-			robot_stack.push(robot);
+			L.pop();
+			R.pop();
+
+			return;
 		}
+
+		// R wins, we keep the R one and pop the L one
+		if (l.hp < r.hp)
+		{
+			--r.hp;
+			--m_healths[r.index];
+
+			m_healths[l.index] = 0;
+			L.pop();
+		}
+		// L wins, we keep the L one and pop the R one
+		else if (l.hp > r.hp)
+		{
+			--l.hp;
+			--m_healths[l.index];
+
+			m_healths[r.index] = 0;
+			R.pop();
+		}
+		// Both die, we pop both
 		else
 		{
-			const auto& other_robot = other_stack.top();
+			m_healths[l.index] = 0;
+			L.pop();
 
-			if (!willCollide(robot, other_robot))
-				return;
-
-			// Other wins, we keep the other one and do not add this one
-			if (robot.hp < other_robot.hp)
-			{
-				m_healths[robot.index] = 0;
-				--m_healths[other_robot.index];
-			}
-			// This wins and keeps on going with one less hp
-			else if (robot.hp > other_robot.hp)
-			{
-				--m_healths[robot.index];
-				m_healths[other_robot.index] = 0;
-				robot_stack.push(robot);
-			}
-			// Both die, we pop the other one and we do not add this one
-			else
-			{
-				m_healths[robot.index] = 0;
-				m_healths[other_robot.index] = 0;
-				other_stack.pop();
-			}
+			m_healths[r.index] = 0;
+			R.pop();
 		}
 	}
 
@@ -281,17 +303,21 @@ private:
 //vector<int> healths = {10, 10, 11, 11};
 //string directions = "RLRL";
 
-//vector<int> positions = { 3, 5, 2, 6 };
-//vector<int> healths = { 10, 10, 15, 12 };
-//string directions = "RLRL";
+vector<int> positions = { 3, 5, 2, 6 };
+vector<int> healths = { 10, 10, 15, 12 };
+string directions = "RLRL";
 
 //vector<int> positions = { 13, 3 };
 //vector<int> healths = { 17, 2 };
 //string directions = "LR";
 
-vector<int> positions = { 3, 47 };
-vector<int> healths = { 46, 26 };
-string directions = "LR";
+//vector<int> positions = { 3, 47 };
+//vector<int> healths = { 46, 26 };
+//string directions = "LR";
+
+//vector<int> positions = { 42,3,46,2 };
+//vector<int> healths = { 13,8,34,37 };
+//string directions = "LRLR";
 
 int main()
 {
