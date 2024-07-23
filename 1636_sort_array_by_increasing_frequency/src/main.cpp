@@ -1,13 +1,35 @@
 #include <iostream>
 #include <vector>
+#include <map>
+#include <set>
+#include <unordered_map>
 
 using namespace std;
 
-class Solution
+struct Solution
 {
 	vector<int> frequencySort(vector<int>& input)
 	{
+		vector<int> result;
+		unordered_map<int, unsigned> frequencies;
+		map<unsigned, set<int, std::greater<int>>> sorted;
 
+		for (int i : input)
+			++frequencies[i];
+
+		for (const auto& [number, freq] : frequencies)
+			sorted[freq].emplace(number);
+
+		for (const auto& [freq, numbers] : sorted)
+		{
+			for (int number : numbers)
+			{
+				auto tmp = std::vector(freq, number);
+				result.insert(result.cend(), std::make_move_iterator(tmp.begin()), std::make_move_iterator(tmp.end()));
+			}
+		}
+
+		return result;
 	}
 };
 
