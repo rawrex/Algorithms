@@ -29,6 +29,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2751_robot_collisions", "27
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1380_lucky_number_in_matrix", "1380_lucky_number_in_matrix\1380_lucky_number_in_matrix.vcxproj", "{10CD2554-FB07-45F6-91F7-16544BA65EB1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1636_sort_array_by_increasing_frequency", "1636_sort_array_by_increasing_frequency\1636_sort_array_by_increasing_frequency.vcxproj", "{ADB144CC-E735-440A-8E0B-42BECE5F2452}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -141,6 +143,14 @@ Global
 		{10CD2554-FB07-45F6-91F7-16544BA65EB1}.Release|x64.Build.0 = Release|x64
 		{10CD2554-FB07-45F6-91F7-16544BA65EB1}.Release|x86.ActiveCfg = Release|Win32
 		{10CD2554-FB07-45F6-91F7-16544BA65EB1}.Release|x86.Build.0 = Release|Win32
+		{ADB144CC-E735-440A-8E0B-42BECE5F2452}.Debug|x64.ActiveCfg = Debug|x64
+		{ADB144CC-E735-440A-8E0B-42BECE5F2452}.Debug|x64.Build.0 = Debug|x64
+		{ADB144CC-E735-440A-8E0B-42BECE5F2452}.Debug|x86.ActiveCfg = Debug|Win32
+		{ADB144CC-E735-440A-8E0B-42BECE5F2452}.Debug|x86.Build.0 = Debug|Win32
+		{ADB144CC-E735-440A-8E0B-42BECE5F2452}.Release|x64.ActiveCfg = Release|x64
+		{ADB144CC-E735-440A-8E0B-42BECE5F2452}.Release|x64.Build.0 = Release|x64
+		{ADB144CC-E735-440A-8E0B-42BECE5F2452}.Release|x86.ActiveCfg = Release|Win32
+		{ADB144CC-E735-440A-8E0B-42BECE5F2452}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
