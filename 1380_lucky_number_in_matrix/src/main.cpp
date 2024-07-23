@@ -19,38 +19,41 @@ private:
 	{
 		using index_t = vector<int>::size_type;
 
+		vector<int> result;
 		unordered_map<index_t, int> row_tracker;
 		unordered_map<index_t, int> col_tracker;
 
 		for (index_t row_i = 0; row_i != input.size(); ++row_i)
 		{
-			for (index_t col_i = 0; col_i != input[row_i].size(); ++col_i)
+			int row_min = std::numeric_limits<int>::max();
+
+			for (index_t col_i = 0; col_i != input[0].size(); ++col_i)
+				row_min = std::min(input[row_i][col_i], row_min);
+
+			row_tracker[row_i] = row_min;
+		}
+
+		for (index_t col_i = 0; col_i != input[0].size(); ++col_i)
+		{
+			int col_max = std::numeric_limits<int>::min();
+
+			for (index_t row_i = 0; row_i != input.size(); ++row_i)
+				col_max = std::max(input[row_i][col_i], col_max);
+
+			col_tracker[col_i] = col_max;
+		}
+
+		for (index_t row_i = 0; row_i != input.size(); ++row_i)
+		{
+			for (index_t col_i = 0; col_i != input[0].size(); ++col_i)
 			{
-				int number = input[row_i][col_i];
-
-				if (row_tracker.contains(row_i))
+				if (row_tracker[row_i] == col_tracker[col_i])
 				{
-					row_tracker[row_i] = std::min(row_tracker[row_i], number);
-				}
-				else
-				{
-					row_tracker[row_i] = number;
-				}
-
-				if (col_tracker.contains(col_i))
-				{
-					col_tracker[col_i] = std::max(col_tracker[col_i], number);
-				}
-				else
-				{
-					col_tracker[col_i] = number;
+					result.emplace_back(input[row_i][col_i]);
+					break;
 				}
 			}
 		}
-
-		vector<int> result;
-		for (const auto& [id, number] : row_tracker)
-			result.emplace_back(number);
 
 		return result;
 	}
