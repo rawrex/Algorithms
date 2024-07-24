@@ -25,7 +25,8 @@ struct Solution
 			for (int number : numbers)
 			{
 				auto tmp = std::vector(freq, number);
-				result.insert(result.cend(), std::make_move_iterator(tmp.begin()), std::make_move_iterator(tmp.end()));
+				result.reserve(result.size() + freq);
+				std::move(std::begin(tmp), std::end(tmp), std::back_inserter(result));
 			}
 		}
 
