@@ -1,9 +1,10 @@
-#include <iostream>
+#include <unordered_map>
 #include <algorithm>
+#include <iostream>
 #include <vector>
+#include <queue>
 #include <map>
 #include <set>
-#include <unordered_map>
 
 using namespace std;
 
@@ -12,7 +13,8 @@ struct Solution
 	vector<int> frequencySort(vector<int>& input)
 	{
 		// return naive(input);
-		return memory(input);
+		// return memory(input);
+		return speed(input);
 	}
 private:
 	vector<int> naive(vector<int>& input)
@@ -40,6 +42,7 @@ private:
 		return result;
 	}
 
+	// Memory oriented solution
 	vector<int> memory(vector<int>& input)
 	{
 		// Remembering that the values are from the -100 to 100
@@ -58,6 +61,49 @@ private:
 		});
 
 		return input;
+	}
+
+	// Runtime oriented solution
+	struct Data
+	{
+		friend bool operator<(const Data& a, const Data& b) noexcept
+		{
+			return a.frequency == b.frequency ? a.number < b.number : a.frequency > b.frequency;
+		}
+
+		Data(int num, unsigned freq) noexcept : number(num), frequency(freq)
+		{
+
+		}
+
+		int number;
+		unsigned frequency;
+	};
+
+	vector<int> speed(vector<int>& nums) 
+	{
+		vector<int> result;
+		result.reserve(100);
+
+		unordered_map<int, unsigned> count;
+		priority_queue<Data, vector<Data>> heap;
+
+		for (const int num : nums)
+			++count[num];
+
+		for (const auto& [num, freq] : count)
+			heap.emplace(num, freq);
+
+		while (!heap.empty()) 
+		{
+			const auto [num, freq] = heap.top();
+			heap.pop();
+
+			for (int i = 0; i < freq; ++i)
+				result.emplace_back(num);
+		}
+
+		return result;
 	}
 };
 
