@@ -33,6 +33,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1636_sort_array_by_increasi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2191_sort_the_jumbled_numbers", "2191_sort_the_jumbled_numbers\2191_sort_the_jumbled_numbers.vcxproj", "{A26D4E13-4B36-40FF-B774-BB8C8DAF0E43}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "912_sort_an_array", "912_sort_an_array\912_sort_an_array.vcxproj", "{E59C3F56-E40A-41AF-86DF-1AE954669DCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -161,6 +163,14 @@ Global
 		{A26D4E13-4B36-40FF-B774-BB8C8DAF0E43}.Release|x64.Build.0 = Release|x64
 		{A26D4E13-4B36-40FF-B774-BB8C8DAF0E43}.Release|x86.ActiveCfg = Release|Win32
 		{A26D4E13-4B36-40FF-B774-BB8C8DAF0E43}.Release|x86.Build.0 = Release|Win32
+		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Debug|x64.ActiveCfg = Debug|x64
+		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Debug|x64.Build.0 = Debug|x64
+		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Debug|x86.ActiveCfg = Debug|Win32
+		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Debug|x86.Build.0 = Debug|Win32
+		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Release|x64.ActiveCfg = Release|x64
+		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Release|x64.Build.0 = Release|x64
+		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Release|x86.ActiveCfg = Release|Win32
+		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
