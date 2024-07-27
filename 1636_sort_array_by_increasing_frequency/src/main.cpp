@@ -47,7 +47,6 @@ private:
 	{
 		// Remembering that the values are from the -100 to 100
 		vector<int> frequencies(201, 0);
-		map<unsigned, set<int, std::greater<int>>> sorted;
 
 		for (int i : input)
 			++frequencies[i + 100];	// value to improvised id correction, to avoid negative subscript
