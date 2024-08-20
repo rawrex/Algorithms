@@ -35,7 +35,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2191_sort_the_jumbled_numbe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "912_sort_an_array", "912_sort_an_array\912_sort_an_array.vcxproj", "{E59C3F56-E40A-41AF-86DF-1AE954669DCD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "650_2_keys_keyboard", "650_2_keys_keyboard\650_2_keys_keyboard.vcxproj", "{06C464DC-C67F-41CB-A211-20DED5F967D2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "650_2_keys_keyboard", "650_2_keys_keyboard\650_2_keys_keyboard.vcxproj", "{3984F03C-C0DC-4F21-A3CB-6D0F520F9B1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -173,14 +173,14 @@ Global
 		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Release|x64.Build.0 = Release|x64
 		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Release|x86.ActiveCfg = Release|Win32
 		{E59C3F56-E40A-41AF-86DF-1AE954669DCD}.Release|x86.Build.0 = Release|Win32
-		{06C464DC-C67F-41CB-A211-20DED5F967D2}.Debug|x64.ActiveCfg = Debug|x64
-		{06C464DC-C67F-41CB-A211-20DED5F967D2}.Debug|x64.Build.0 = Debug|x64
-		{06C464DC-C67F-41CB-A211-20DED5F967D2}.Debug|x86.ActiveCfg = Debug|Win32
-		{06C464DC-C67F-41CB-A211-20DED5F967D2}.Debug|x86.Build.0 = Debug|Win32
-		{06C464DC-C67F-41CB-A211-20DED5F967D2}.Release|x64.ActiveCfg = Release|x64
-		{06C464DC-C67F-41CB-A211-20DED5F967D2}.Release|x64.Build.0 = Release|x64
-		{06C464DC-C67F-41CB-A211-20DED5F967D2}.Release|x86.ActiveCfg = Release|Win32
-		{06C464DC-C67F-41CB-A211-20DED5F967D2}.Release|x86.Build.0 = Release|Win32
+		{3984F03C-C0DC-4F21-A3CB-6D0F520F9B1D}.Debug|x64.ActiveCfg = Debug|x64
+		{3984F03C-C0DC-4F21-A3CB-6D0F520F9B1D}.Debug|x64.Build.0 = Debug|x64
+		{3984F03C-C0DC-4F21-A3CB-6D0F520F9B1D}.Debug|x86.ActiveCfg = Debug|Win32
+		{3984F03C-C0DC-4F21-A3CB-6D0F520F9B1D}.Debug|x86.Build.0 = Debug|Win32
+		{3984F03C-C0DC-4F21-A3CB-6D0F520F9B1D}.Release|x64.ActiveCfg = Release|x64
+		{3984F03C-C0DC-4F21-A3CB-6D0F520F9B1D}.Release|x64.Build.0 = Release|x64
+		{3984F03C-C0DC-4F21-A3CB-6D0F520F9B1D}.Release|x86.ActiveCfg = Release|Win32
+		{3984F03C-C0DC-4F21-A3CB-6D0F520F9B1D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
