@@ -1,36 +1,77 @@
 #include <iostream>
+#include <vector>
+#include <numeric>
+
+using namespace std;
 
 struct Solution
 {
-	int minSteps(int n)
+	int minSteps(int n) const
 	{
-		if (n == 1)
-			return 0;
+        if (n <= 1)
+            return 0;
 
-		m_target = n;
+        vector<int> memoization;
+        memoization.reserve(static_cast<vector<int>::size_type>(n) + 1);
 
-		int current_amount = 2;
-		int operations_count = 2;
+        // Each element denotes the minimum steps to get the number of 'A's according to the element's index
+        // For now, we fill it with the values of the approach where we copy 'A' and then paste 'A' index - 1 times
+        iota(memoization.begin(), memoization.end(), 0);
 
-		return traverse(current_amount, operations_count);
+        for (int i = 2; i <= n; ++i)
+        {
+            for (int j = i / 2; j > 2; --j)
+            {
+                if (i % j == 0) 
+                {
+                    memoization[i] = memoization[j] + i / j;  // Paste dp[j] i / j times.
+                    break;
+                }
+
+            }
+        }
+        return memoization[n];
 	}
+};
 
-private:
-	int traverse(int current_amount, int operations_count)
-	{
-		if (current_amount > m_target)
-			return std::numeric_limits<int>::max();
+struct Solution2
+{
+    int minSteps(int n) 
+    {
+        // Initialize the memoization table
+        memo.assign(static_cast<vector<int>::size_type>(n) + 1, -1);
 
-		if (current_amount == m_target)
-			return operations_count;
+        return dfs(n);
+    }
 
-		if(m_target % current_amount)
-			return std::min(m_target / current_amount, traverse(current_amount * 2, operations_count + 2));
-		else
-			return traverse(current_amount + 1, operations_count + 1);
-	}
+    int dfs(int n) 
+    {
+        if (n <= 1) 
+            return 0;
 
-	int m_target = 0;
+        // Check the cache
+        if (memo[n] != -1) 
+            return memo[n];
+
+        // Initialize the answer with the non-optimal value (copying 'A' once and then pasting it)
+        int ans = n;
+
+        // Searching for the factors of n
+        for (int i = 2; i * i <= n; ++i) 
+        {
+            if (n % i)
+                continue;
+
+			// Recursively solve for the smaller problem 'n / i' and add 'i' steps 
+			// (the steps to copy 'A' once and then paste it i-1 times to get the i number of 'A's)
+			ans = min(ans, dfs(n / i) + i);
+        }
+
+        memo[n] = ans;
+        return ans;
+    }
+
+    vector<int> memo;
 };
 
 int main()
