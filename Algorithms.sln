@@ -39,6 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "650_2_keys_keyboard", "650_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "476_number_complement", "476_number_complement\476_number_complement.vcxproj", "{1BB7A640-545A-4F36-8490-1DFE9D7DDE5D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "592_fraction_addition_and_subtraction", "592_fraction_addition_and_subtraction\592_fraction_addition_and_subtraction.vcxproj", "{5274CCC7-B1FA-4ECE-A1E4-FF2173DD97CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -191,6 +193,14 @@ Global
 		{1BB7A640-545A-4F36-8490-1DFE9D7DDE5D}.Release|x64.Build.0 = Release|x64
 		{1BB7A640-545A-4F36-8490-1DFE9D7DDE5D}.Release|x86.ActiveCfg = Release|Win32
 		{1BB7A640-545A-4F36-8490-1DFE9D7DDE5D}.Release|x86.Build.0 = Release|Win32
+		{5274CCC7-B1FA-4ECE-A1E4-FF2173DD97CE}.Debug|x64.ActiveCfg = Debug|x64
+		{5274CCC7-B1FA-4ECE-A1E4-FF2173DD97CE}.Debug|x64.Build.0 = Debug|x64
+		{5274CCC7-B1FA-4ECE-A1E4-FF2173DD97CE}.Debug|x86.ActiveCfg = Debug|Win32
+		{5274CCC7-B1FA-4ECE-A1E4-FF2173DD97CE}.Debug|x86.Build.0 = Debug|Win32
+		{5274CCC7-B1FA-4ECE-A1E4-FF2173DD97CE}.Release|x64.ActiveCfg = Release|x64
+		{5274CCC7-B1FA-4ECE-A1E4-FF2173DD97CE}.Release|x64.Build.0 = Release|x64
+		{5274CCC7-B1FA-4ECE-A1E4-FF2173DD97CE}.Release|x86.ActiveCfg = Release|Win32
+		{5274CCC7-B1FA-4ECE-A1E4-FF2173DD97CE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
