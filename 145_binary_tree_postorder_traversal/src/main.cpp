@@ -1,4 +1,7 @@
+#include <stack>
+#include <algorithm>
 #include <vector>
+#include <unordered_set>
 
 using namespace std;
 
@@ -25,41 +28,35 @@ public:
 private:
     vector<int> iterative(TreeNode* root)
     {
-        processIterative(root);
-        return m_processed;
-    }
-    
-    void processIterative(TreeNode* root)
-    {
-        TreeNode* prev = nullptr;
-        TreeNode* node = root;
+		if (root == nullptr)
+			return {};
 
-        while(node)
+		vector<int> result;
+		stack<TreeNode*> stack{{root}};
+
+		while (!stack.empty()) 
         {
-            if(node->left)     
-            {
-                prev = node;
-                node = node->left;
-                continue;
-            }
+            auto node = stack.top();
+            stack.pop();
 
-            if(node->right)     
-            {
-                prev = node;
-                node = node->right;
-                continue;
-            }
+			result.emplace_back(node->val);
 
-            m_processed.emplace_back(node->val);
-            node = prev;
-        }
+			if (node->left)
+				stack.push(node->left);
+
+			if (node->right)
+				stack.push(node->right);
+		}
+
+        std::reverse(std::begin(result), std::end(result));
+		return result;
     }
 
 private:
     vector<int> trivial(TreeNode* root)
     {
         processTrivial(root);
-        return m_processed;
+        return m_result;
     }
 
     void processTrivial(TreeNode* root)
@@ -73,14 +70,18 @@ private:
         if(root->right)     
             processTrivial(root->right);
 
-        m_processed.emplace_back(root->val);
+        m_result.emplace_back(root->val);
     }
 
 private:
-    vector<int> m_processed;
+    vector<int> m_result;
 };
+
+TreeNode b(3, nullptr, nullptr);
+TreeNode a(1, &b, nullptr);
+TreeNode root(1, nullptr, &a);
 
 int main() 
 {
-    Solution().postorderTraversal(nullptr);
+    Solution().postorderTraversal(&root);
 }
