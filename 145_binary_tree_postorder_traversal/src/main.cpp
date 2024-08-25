@@ -18,20 +18,60 @@ class Solution
 public:
     vector<int> postorderTraversal(TreeNode* root) 
     {
-        process(root);
+        // return trivial(root);
+        return iterative(root);
+    }
+
+private:
+    vector<int> iterative(TreeNode* root)
+    {
+        processIterative(root);
+        return m_processed;
+    }
+    
+    void processIterative(TreeNode* root)
+    {
+        TreeNode* prev = nullptr;
+        TreeNode* node = root;
+
+        while(node)
+        {
+            if(node->left)     
+            {
+                prev = node;
+                node = node->left;
+                continue;
+            }
+
+            if(node->right)     
+            {
+                prev = node;
+                node = node->right;
+                continue;
+            }
+
+            m_processed.emplace_back(node->val);
+            node = prev;
+        }
+    }
+
+private:
+    vector<int> trivial(TreeNode* root)
+    {
+        processTrivial(root);
         return m_processed;
     }
 
-    void process(TreeNode* root)
+    void processTrivial(TreeNode* root)
     {
         if(!root)
             return;
 
         if(root->left)     
-            process(root->left);
+            processTrivial(root->left);
 
         if(root->right)     
-            process(root->right);
+            processTrivial(root->right);
 
         m_processed.emplace_back(root->val);
     }
