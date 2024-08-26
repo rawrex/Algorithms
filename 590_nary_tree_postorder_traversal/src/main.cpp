@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stack>
+#include <algorithm>
 #include <vector>
 
 using namespace std;
@@ -27,23 +29,55 @@ struct Solution
 {
     vector<int> postorder(Node* root) 
     {
-        process(root);
+        // return trivial(root);
+        return iterative(root);
+    }
+    
+private:
+    // Tirvial solution using recursion
+    vector<int> trivial(Node* root)
+    {
+        processTrivial(root);
         return m_result;
     }
 
-private:
-    void process(Node* node)
+    void processTrivial(Node* node)
     {
         if (!node)
             return;
 
         for (const auto& child : node->children)
-            process(child);
+            processTrivial(child);
 
         m_result.emplace_back(node->val);
     }
 
     vector<int> m_result;
+
+private:
+    // Solution using iterative approach
+    vector<int> iterative(Node* root) const
+    {
+        if (!root)
+            return {};
+
+        vector<int> result;
+        stack<Node*> nodes{ {root} };
+
+        while (!nodes.empty())
+        {
+            const auto& node = nodes.top();
+            nodes.pop();
+
+            result.emplace_back(node->val);
+
+            for (const auto& child : node->children)
+                nodes.push(child);
+        }
+
+        std::reverse(std::begin(result), std::end(result));
+        return result;
+    }
 };
 
 int main()
