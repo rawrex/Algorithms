@@ -43,6 +43,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "145_binary_tree_postorder_t
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "590_nary_tree_postorder_traversal", "590_nary_tree_postorder_traversal\590_nary_tree_postorder_traversal.vcxproj", "{9BC02370-CCD2-4A7F-B77C-2ABAFC7A76F9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1905_count_sub_islands", "1905_count_sub_islands\1905_count_sub_islands.vcxproj", "{A655CF9E-2D68-47A6-B4D9-17987E04D2B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -211,6 +213,14 @@ Global
 		{9BC02370-CCD2-4A7F-B77C-2ABAFC7A76F9}.Release|x64.Build.0 = Release|x64
 		{9BC02370-CCD2-4A7F-B77C-2ABAFC7A76F9}.Release|x86.ActiveCfg = Release|Win32
 		{9BC02370-CCD2-4A7F-B77C-2ABAFC7A76F9}.Release|x86.Build.0 = Release|Win32
+		{A655CF9E-2D68-47A6-B4D9-17987E04D2B1}.Debug|x64.ActiveCfg = Debug|x64
+		{A655CF9E-2D68-47A6-B4D9-17987E04D2B1}.Debug|x64.Build.0 = Debug|x64
+		{A655CF9E-2D68-47A6-B4D9-17987E04D2B1}.Debug|x86.ActiveCfg = Debug|Win32
+		{A655CF9E-2D68-47A6-B4D9-17987E04D2B1}.Debug|x86.Build.0 = Debug|Win32
+		{A655CF9E-2D68-47A6-B4D9-17987E04D2B1}.Release|x64.ActiveCfg = Release|x64
+		{A655CF9E-2D68-47A6-B4D9-17987E04D2B1}.Release|x64.Build.0 = Release|x64
+		{A655CF9E-2D68-47A6-B4D9-17987E04D2B1}.Release|x86.ActiveCfg = Release|Win32
+		{A655CF9E-2D68-47A6-B4D9-17987E04D2B1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
