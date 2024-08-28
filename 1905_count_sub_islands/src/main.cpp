@@ -3,11 +3,11 @@
 
 using namespace std;
 
-struct Solution 
+struct Solution
 {
-	using matrix_type = vector<vector<int>>;
+    using matrix_type = vector<vector<int>>;
 
-    int countSubIslands(matrix_type& grid1, matrix_type& grid2) 
+    int countSubIslands(matrix_type& grid1, matrix_type& grid2)
     {
         if (grid1.empty())
             return 0;
@@ -23,8 +23,8 @@ struct Solution
         {
             for (int col = 0; col != m_cols_n; ++col)
             {
-				if(isIsland(*m_grid2, row, col) && dfs(row, col))
-					++counter;
+                if ((*m_grid2)[row][col] && dfs(row, col))
+                    ++counter;
             }
         }
 
@@ -32,39 +32,42 @@ struct Solution
     }
 
 private:
-    bool dfs(int row, int col) 
+    bool dfs(int row, int col)
     {
-        bool is_subisland = isIsland(*m_grid1, row, col);
-        if (!is_subisland)
-            return false;
+        bool is_subisland = (*m_grid1)[row][col];
 
-        markProcessed(*m_grid2, row, col);
+        // Marks as processed
+        (*m_grid2)[row][col] = 0;
 
-        if(!(dfs(row - 1, col) && dfs(row + 1, col) && dfs(row, col - 1) && dfs(row, col + 1)))
-            is_subisland = false;
+        auto row_up = row - 1;
+        auto row_down = row + 1;
+        auto col_left = col - 1;
+        auto col_right = col + 1;
+
+        // If the direction is valid and the grid2 has and island there, go further
+        // And so for each direction...
+
+		if (row_up >= 0 && (*m_grid2)[row_up][col] && !dfs(row_up, col))
+			is_subisland = false;
+
+		if (row_down < m_rows_n && (*m_grid2)[row_down][col] && !dfs(row_down, col))
+			is_subisland = false;
+
+		if (col_left >= 0 && (*m_grid2)[row][col_left] && !dfs(row, col_left))
+			is_subisland = false;
+
+		if (col_right < m_cols_n && (*m_grid2)[row][col_right] && !dfs(row, col_right))
+			is_subisland = false;
 
         return is_subisland;
     }
 
-    inline bool isIsland(const matrix_type& grid, int row, int col) const noexcept
-    {
-        if (row < 0 || row >= m_rows_n || col < 0 || col >= m_cols_n)
-            return false;
-
-        return grid[row][col];
-    }
-
-    void markProcessed(matrix_type& grid, int row, int col) noexcept
-    {
-        grid[row][col] = 0;
-    }
-
-    matrix_type* m_grid1;
-    matrix_type* m_grid2;
-
+    matrix_type* m_grid1 = nullptr;
+    matrix_type* m_grid2 = nullptr;
     int m_rows_n = 0;
     int m_cols_n = 0;
 };
+
 
 int main()
 {
