@@ -36,6 +36,10 @@ private:
     {
         bool is_subisland = (*m_grid1)[row][col];
 
+        // May return already
+        if(!is_subisland)
+            return false;
+
         // Marks as processed
         (*m_grid2)[row][col] = 0;
 
