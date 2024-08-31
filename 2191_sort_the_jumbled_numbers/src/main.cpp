@@ -17,22 +17,20 @@ private:
 	{
 		auto transformer = [&mapping](int number)
 		{
+			int result = 0;
+
 			if (!number)
 				return mapping[number];
 
-			int result = 0;
-			for(int position = 1; number; position *= 10)
-			{
-				int mapped_digit = mapping[number % 10];
-				result = mapped_digit * position + result;
-
-				number /= 10;
-			}
+			// Go up the decimal places for the "result" and crop out the least-significant digits in the "number"
+			for(int position = 1; number; position *= 10, number /= 10)
+				result += position * mapping[number % 10];
 
 			return result;
 		};
 
-		std::sort(numbers.begin(), numbers.end(), [&transformer](const auto a, const auto b)
+		// Use stable sort to preserve the relative placements for the input
+		std::stable_sort(std::begin(numbers), std::end(numbers), [&transformer](const auto a, const auto b)
 		{
 			return transformer(a) < transformer(b);
 		});
