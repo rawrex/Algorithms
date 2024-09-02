@@ -6,17 +6,18 @@ struct Solution
 {
     int chalkReplacer(const vector<int>& chalk, int k) 
     {
+        // Hits time limit
         // return naive(chalk, k);
         return sumFirst(chalk, k);
     }
 
 private:
-    int naive(const vector<int>& chalk, int k) 
+    int naive(const vector<int>& chalk, int k)
     {
         int size = chalk.size();
         int index = 0;
 
-        while (k > 0)
+        for (/* empty */; k > 0; ++index)
         {
             if (index == size)
                 index = 0;
@@ -25,7 +26,6 @@ private:
                 return index;
 
             k -= chalk[index];
-            ++index;
         }
 
         return index == size ? 0 : index;
@@ -38,6 +38,7 @@ private:
             sum += i;
 
         k = k % sum;
+
         return naive(chalk, k);
     }
 };
