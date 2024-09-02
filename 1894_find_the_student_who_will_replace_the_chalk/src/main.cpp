@@ -7,7 +7,7 @@ struct Solution
     int chalkReplacer(const vector<int>& chalk, int k) 
     {
         // return naive(chalk, k);
-        return naive(chalk, k);
+        return sumFirst(chalk, k);
     }
 
 private:
@@ -33,7 +33,7 @@ private:
 
     int sumFirst(const vector<int>& chalk, int k)
     {
-        int sum = 0;
+        long long sum = 0;
         for (int i : chalk)
             sum += i;
 
