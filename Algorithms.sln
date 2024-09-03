@@ -49,6 +49,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2022_convert_1d_array_into_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1894_find_the_student_who_will_replace_the_chalk", "1894_find_the_student_who_will_replace_the_chalk\1894_find_the_student_who_will_replace_the_chalk.vcxproj", "{DB3F5213-FEB7-4ABB-A751-4E074A8075CB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1945_sum_of_digits_of_string_after_convert", "1945_sum_of_digits_of_string_after_convert\1945_sum_of_digits_of_string_after_convert.vcxproj", "{488EE599-72B7-4A47-AE53-6585E1A0C782}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -241,6 +243,14 @@ Global
 		{DB3F5213-FEB7-4ABB-A751-4E074A8075CB}.Release|x64.Build.0 = Release|x64
 		{DB3F5213-FEB7-4ABB-A751-4E074A8075CB}.Release|x86.ActiveCfg = Release|Win32
 		{DB3F5213-FEB7-4ABB-A751-4E074A8075CB}.Release|x86.Build.0 = Release|Win32
+		{488EE599-72B7-4A47-AE53-6585E1A0C782}.Debug|x64.ActiveCfg = Debug|x64
+		{488EE599-72B7-4A47-AE53-6585E1A0C782}.Debug|x64.Build.0 = Debug|x64
+		{488EE599-72B7-4A47-AE53-6585E1A0C782}.Debug|x86.ActiveCfg = Debug|Win32
+		{488EE599-72B7-4A47-AE53-6585E1A0C782}.Debug|x86.Build.0 = Debug|Win32
+		{488EE599-72B7-4A47-AE53-6585E1A0C782}.Release|x64.ActiveCfg = Release|x64
+		{488EE599-72B7-4A47-AE53-6585E1A0C782}.Release|x64.Build.0 = Release|x64
+		{488EE599-72B7-4A47-AE53-6585E1A0C782}.Release|x86.ActiveCfg = Release|Win32
+		{488EE599-72B7-4A47-AE53-6585E1A0C782}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
