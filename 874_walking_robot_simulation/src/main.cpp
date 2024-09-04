@@ -62,41 +62,44 @@ struct Robot
                     if (isBlocked())
                     {
                         --y;
-                        return;
+                        break;
                     }
                 }
-                return;
+                break;
             case 1:
                 for (int x_copy = x; x != x_copy + command; ++x)
                 {
                     if (isBlocked())
                     {
                         --x;
-                        return;
+                        break;
                     }
                 }
-                return;
+                break;
             case 2:
                 for (int y_copy = y; y != y_copy - command; --y)
                 {
                     if (isBlocked())
                     {
                         ++y;
-                        return;
+                        break;
                     }
                 }
-                return;
+                break;
             case 3:
                 for (int x_copy = x; x != x_copy - command; --x)
                 {
                     if (isBlocked())
                     {
                         ++x;
-                        return;
+                        break;
                     }
                 }
-                return;
+                break;
             }
+
+            max_distance_x = std::max(max_distance_x, std::abs(x));
+            max_distance_y = std::max(max_distance_y, std::abs(y));
         }
     }
 
@@ -105,10 +108,18 @@ struct Robot
         return m_obstacles_x.count(x) && m_obstacles_y.count(y);
     }
 
+    int distance() const noexcept
+    {
+        return max_distance_x * max_distance_x + max_distance_y * max_distance_y;
+    }
+
     // 0 north, 1 east, 2 south, 3 west
     int direction = 0;
     int x = 0;
     int y = 0;
+
+    int max_distance_x = std::numeric_limits<int>::min();
+    int max_distance_y = std::numeric_limits<int>::min();
 
     set<int> m_obstacles_x;
     set<int> m_obstacles_y;
@@ -123,7 +134,7 @@ struct Solution
         for (int command : commands)
             robot.move(command);
 
-        return robot.x* robot.x + robot.y * robot.y;
+        return robot.distance();
     }
 };
 
