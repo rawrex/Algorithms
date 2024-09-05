@@ -22,11 +22,13 @@ struct Robot
 			turnLeft();
 		else
 			forward(command);
+
+		max_distance = std::max(max_distance, x*x + y*y);
     }
 
     int distance() const noexcept
     {
-        return max_distance_x * max_distance_x + max_distance_y * max_distance_y;
+		return max_distance;
     }
 
 private:
@@ -80,9 +82,6 @@ private:
 			}
 			break;
 		}
-
-		max_distance_x = std::max(max_distance_x, std::abs(x));
-		max_distance_y = std::max(max_distance_y, std::abs(y));
 	}
 
     void turnRight() noexcept
@@ -128,8 +127,7 @@ private:
     int x = 0;
     int y = 0;
 
-    int max_distance_x = std::numeric_limits<int>::min();
-    int max_distance_y = std::numeric_limits<int>::min();
+	int max_distance = 0;
 
     set<int> m_obstacles_x;
     set<int> m_obstacles_y;
@@ -150,5 +148,5 @@ struct Solution
 
 int main()
 {
-    Solution().robotSim({ 6, -1, -1, 6 }, {  });
+    Solution().robotSim({ -2,8,3,7,-1 }, { {-4,-1} ,{1,-1},{1,4},{5,0},{4,5},{-2,-1},{2,-5},{5,1},{-3,-1},{5,-3} });
 }
