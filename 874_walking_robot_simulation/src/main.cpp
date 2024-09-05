@@ -1,5 +1,8 @@
 #include <vector>
+#include <array>
+#include <utility>
 #include <unordered_set>
+#include <algorithm>
 
 using namespace std;
 
@@ -8,133 +11,83 @@ struct Robot
     Robot(const vector<vector<int>>& obstacles)
     {
         for (const auto& xy : obstacles)
-			m_obstacles.emplace(positionID(xy[0], xy[1]));
+            m_obstacles.emplace(positionID(xy[0], xy[1]));
     }
 
     void move(int command)
     {
-		if (command == -1)
-			turnRight();
-		else if (command == -2)
-			turnLeft();
-		else
-			forward(command);
+        if (command == -1)
+            turnRight();
+        else if (command == -2)
+            turnLeft();
+        else
+            forward(command);
 
-		max_distance = std::max(max_distance, x*x + y*y);
+        max_distance = std::max(max_distance, x*x + y*y);
     }
 
     int distance() const noexcept
     {
-		return max_distance;
+        return max_distance;
     }
 
 private:
-	int positionID(int x, int y) const noexcept
-	{
-		return x * 60010 + y;
-	}
-
-    bool isCollision() const noexcept
+    int64_t positionID(int x, int y) const noexcept
     {
-		return m_obstacles.contains(positionID(x, y));
+        // Use 64-bit int to avoid overflow
+        return static_cast<int64_t>(x) * 60010 + y; 
+    }
+
+    bool isCollision(int newX, int newY) const noexcept
+    {
+        return m_obstacles.contains(positionID(newX, newY));
     }
 
     void forward(int steps) noexcept
-	{
-		switch (direction)
-		{
-		case 0:
-			for (int i = 0; i != steps; ++i, ++y)
-			{
-				if (isCollision())
-				{
-					--y;
-					break;
-				}
-			}
-			break;
-		case 1:
-			for (int i = 0; i != steps; ++i, ++x)
-			{
-				if (isCollision())
-				{
-					--x;
-					break;
-				}
-			}
-			break;
-		case 2:
-			for (int i = 0; i != steps; ++i, --y)
-			{
-				if (isCollision())
-				{
-					++y;
-					break;
-				}
-			}
-			break;
-		case 3:
-			for (int i = 0; i != steps; ++i, --x)
-			{
-				if (isCollision())
-				{
-					++x;
-					break;
-				}
-			}
-			break;
-		}
-	}
+    {
+        for (int i = 0; i != steps; ++i)
+        {
+            int new_x = x + directions[direction].first;
+            int new_y = y + directions[direction].second;
+
+            if (isCollision(new_x, new_y))
+                break;
+
+            x = new_x;
+            y = new_y;
+        }
+    }
 
     void turnRight() noexcept
     {
-		switch (direction)
-		{
-		case 0:
-			direction = 1;
-			return;
-		case 1:
-			direction = 2;
-			return;
-		case 2:
-			direction = 3;
-			return;
-		case 3:
-			direction = 0;
-			return;
-		}
+        direction = (direction + 1) % 4;
     }
 
     void turnLeft() noexcept
     {
-		switch (direction)
-		{
-		case 0:
-			direction = 3;
-			return;
-		case 1:
-			direction = 0;
-			return;
-		case 2:
-			direction = 1;
-			return;
-		case 3:
-			direction = 2;
-			return;
-		}
+        direction = (direction + 3) % 4;
     }
 
     // 0 north, 1 east, 2 south, 3 west
+    static const array<pair<int, int>, 4> directions;
+
     int direction = 0;
     int x = 0;
     int y = 0;
 
-	int max_distance = 0;
-
-	unordered_set<int> m_obstacles;
+    int max_distance = 0;
+    unordered_set<int64_t> m_obstacles;  // Use 64-bit integer for obstacle positions
 };
 
-struct Solution 
+const array<pair<int, int>, 4> Robot::directions = 
+{
+    pair<int, int>(0, 1),
+    pair<int, int>(1, 0),
+    pair<int, int>(0, -1),
+    pair<int, int>(-1, 0)
+};
+
+struct Solution
 {
     int robotSim(const vector<int>& commands, const vector<vector<int>>& obstacles) const
     {
