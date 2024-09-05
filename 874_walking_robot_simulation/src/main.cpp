@@ -30,9 +30,9 @@ struct Robot
     }
 
 private:
-    bool isBlocked() const noexcept
+    bool isCollision() const noexcept
     {
-        return m_obstacles_x.count(x) && m_obstacles_y.count(y);
+		return (m_obstacles_x.count(x) != 0) && (m_obstacles_y.count(y) != 0);
     }
 
     void forward(int steps) noexcept
@@ -40,9 +40,9 @@ private:
 		switch (direction)
 		{
 		case 0:
-			for (int y_copy = y; y != y_copy + steps; ++y)
+			for (int i = 0; i != steps; ++i, ++y)
 			{
-				if (isBlocked())
+				if (isCollision())
 				{
 					--y;
 					break;
@@ -50,9 +50,9 @@ private:
 			}
 			break;
 		case 1:
-			for (int x_copy = x; x != x_copy + steps; ++x)
+			for (int i = 0; i != steps; ++i, ++x)
 			{
-				if (isBlocked())
+				if (isCollision())
 				{
 					--x;
 					break;
@@ -60,9 +60,9 @@ private:
 			}
 			break;
 		case 2:
-			for (int y_copy = y; y != y_copy - steps; --y)
+			for (int i = 0; i != steps; ++i, --y)
 			{
-				if (isBlocked())
+				if (isCollision())
 				{
 					++y;
 					break;
@@ -70,9 +70,9 @@ private:
 			}
 			break;
 		case 3:
-			for (int x_copy = x; x != x_copy - steps; --x)
+			for (int i = 0; i != steps; ++i, --x)
 			{
-				if (isBlocked())
+				if (isCollision())
 				{
 					++x;
 					break;
