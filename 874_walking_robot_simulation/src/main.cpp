@@ -1,5 +1,5 @@
 #include <vector>
-#include <set>
+#include <unordered_set>
 
 using namespace std;
 
@@ -7,11 +7,8 @@ struct Robot
 {
     Robot(const vector<vector<int>>& obstacles)
     {
-        for (auto& xy : obstacles)
-        {
-            m_obstacles_x.emplace(xy[0]);
-            m_obstacles_y.emplace(xy[1]);
-        }
+        for (const auto& xy : obstacles)
+			m_obstacles.emplace(positionID(xy[0], xy[1]));
     }
 
     void move(int command)
@@ -32,9 +29,14 @@ struct Robot
     }
 
 private:
+	int positionID(int x, int y) const noexcept
+	{
+		return x * 60010 + y;
+	}
+
     bool isCollision() const noexcept
     {
-		return (m_obstacles_x.count(x) != 0) && (m_obstacles_y.count(y) != 0);
+		return m_obstacles.contains(positionID(x, y));
     }
 
     void forward(int steps) noexcept
@@ -129,8 +131,7 @@ private:
 
 	int max_distance = 0;
 
-    set<int> m_obstacles_x;
-    set<int> m_obstacles_y;
+	unordered_set<int> m_obstacles;
 };
 
 struct Solution 
