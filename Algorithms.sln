@@ -55,6 +55,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "874_walking_robot_simulatio
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2028_find_missing_observations", "2028_find_missing_observations\2028_find_missing_observations.vcxproj", "{20DA8AC9-1B64-47A1-84CB-125304B0E1EF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3217_delete_nodes_from_linked_list_present_in_array", "3217_delete_nodes_from_linked_list_present_in_array\3217_delete_nodes_from_linked_list_present_in_array.vcxproj", "{B4E6AB21-D992-4546-A7E9-8C6CC0BB7488}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -271,6 +273,14 @@ Global
 		{20DA8AC9-1B64-47A1-84CB-125304B0E1EF}.Release|x64.Build.0 = Release|x64
 		{20DA8AC9-1B64-47A1-84CB-125304B0E1EF}.Release|x86.ActiveCfg = Release|Win32
 		{20DA8AC9-1B64-47A1-84CB-125304B0E1EF}.Release|x86.Build.0 = Release|Win32
+		{B4E6AB21-D992-4546-A7E9-8C6CC0BB7488}.Debug|x64.ActiveCfg = Debug|x64
+		{B4E6AB21-D992-4546-A7E9-8C6CC0BB7488}.Debug|x64.Build.0 = Debug|x64
+		{B4E6AB21-D992-4546-A7E9-8C6CC0BB7488}.Debug|x86.ActiveCfg = Debug|Win32
+		{B4E6AB21-D992-4546-A7E9-8C6CC0BB7488}.Debug|x86.Build.0 = Debug|Win32
+		{B4E6AB21-D992-4546-A7E9-8C6CC0BB7488}.Release|x64.ActiveCfg = Release|x64
+		{B4E6AB21-D992-4546-A7E9-8C6CC0BB7488}.Release|x64.Build.0 = Release|x64
+		{B4E6AB21-D992-4546-A7E9-8C6CC0BB7488}.Release|x86.ActiveCfg = Release|Win32
+		{B4E6AB21-D992-4546-A7E9-8C6CC0BB7488}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
