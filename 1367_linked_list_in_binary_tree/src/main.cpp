@@ -20,35 +20,43 @@ struct TreeNode
 	TreeNode* right;
 };
 
-struct Solution 
+struct Solution
 {
-    bool isSubPath(ListNode* head, TreeNode* root) 
+    bool isSubPath(ListNode* head, TreeNode* root)
     {
-		m_head = head;
-		return process(head, root);
+        m_head = head;
+        return process(root);
     }
 
 private:
-	bool process(ListNode* item, TreeNode* node)
-	{
-		if (!item)
-			return true;
+    bool checkMatches(ListNode* item, TreeNode* node)
+    {
+        // Entire list matched
+        if (!item)
+            return true;
 
-		if (!node && item)
-			return false;
+        // Reached a leaf node in the tree without fully matching the list
+        if (!node)
+            return false;
 
-		if (item->val == node->val)
-		{
-			return process(item->next, node->left) || process(item->next, node->right);
-		}
-		else
-		{
-			item = m_head;
-			return process(item, node->left) || process(item, node->right);
-		}
-	}
+        if (item->val == node->val)
+            return checkMatches(item->next, node->left) || checkMatches(item->next, node->right);
 
-	ListNode* m_head;
+        return false;
+    }
+
+    bool process(TreeNode* node)
+    {
+        if (!node)
+            return false;
+
+        if (checkMatches(m_head, node))
+            return true;
+
+        return process(node->left) || process(node->right);
+    }
+
+    ListNode* m_head;
 };
 
 int main()
