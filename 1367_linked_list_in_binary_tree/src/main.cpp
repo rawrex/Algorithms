@@ -24,8 +24,31 @@ struct Solution
 {
     bool isSubPath(ListNode* head, TreeNode* root) 
     {
-
+		m_head = head;
+		return process(head, root);
     }
+
+private:
+	bool process(ListNode* item, TreeNode* node)
+	{
+		if (!item)
+			return true;
+
+		if (!node && item)
+			return false;
+
+		if (item->val == node->val)
+		{
+			return process(item->next, node->left) || process(item->next, node->right);
+		}
+		else
+		{
+			item = m_head;
+			return process(item, node->left) || process(item, node->right);
+		}
+	}
+
+	ListNode* m_head;
 };
 
 int main()
