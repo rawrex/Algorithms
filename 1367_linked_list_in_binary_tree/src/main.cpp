@@ -55,27 +55,29 @@ private:
         return false;
     }
 
-    bool checkMatchesIter(ListNode* item, TreeNode* root)
+    bool checkMatchesIter(ListNode* head, TreeNode* root)
     {
-        std::stack<TreeNode*> nodes{{ root }};
-		
+        std::stack<std::pair<ListNode*, TreeNode*>> nodes{{{head, root}}};
+
         while (!nodes.empty())
         {
-			// Entire list matched
-			if (!item)
-				return true;
-
-            auto node = nodes.top();
+            auto [item, node] = nodes.top();
             nodes.pop();
+
+            // Entire list matched
+            if (!item)
+                return true;
 
             if (item->val == node->val)
             {
-                item = item->next;
+                // Last item in the list, match found
+                if (!item->next)
+                    return true;  
 
-				if (node->left)
-					nodes.push(node->left);
-				if (node->right)
-					nodes.push(node->right);
+                if (node->left)
+                    nodes.push({ item->next, node->left });
+                if (node->right)
+                    nodes.push({ item->next, node->right });
             }
         }
 
