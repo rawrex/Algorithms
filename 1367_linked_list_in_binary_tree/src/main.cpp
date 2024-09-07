@@ -26,8 +26,8 @@ struct Solution
     bool isSubPath(ListNode* head, TreeNode* root)
     {
         m_head = head;
-        // return walkRecursively(root);
-        return walkIteratively(root);
+        return walkRecursively(root);
+        // return walkIteratively(root);
     }
 
 private:
