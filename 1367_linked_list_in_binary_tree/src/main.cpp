@@ -1,3 +1,5 @@
+#include <stack>
+
 struct ListNode
 {
 	ListNode() : val(0), next(nullptr) {}
@@ -7,7 +9,6 @@ struct ListNode
 	int val;
 	ListNode* next;
 };
-
 
 struct TreeNode
 {
@@ -25,10 +26,35 @@ struct Solution
     bool isSubPath(ListNode* head, TreeNode* root)
     {
         m_head = head;
-        return process(root);
+        // return walkRecursively(root);
+        return walkIteratively(root);
     }
 
 private:
+    bool walkIteratively(TreeNode* root)
+    {
+        if (!root)
+            return false;
+
+        std::stack<TreeNode*> nodes{{ root }};
+
+        while (!nodes.empty())
+        {
+            auto node = nodes.top();
+            nodes.pop();
+
+            if (checkMatches(m_head, node))
+                return true;
+
+            if (node->left)
+                nodes.push(node->left);
+            if (node->right)
+                nodes.push(node->right);
+        }
+
+        return false;
+    }
+
     bool checkMatches(ListNode* item, TreeNode* node)
     {
         // Entire list matched
@@ -45,7 +71,7 @@ private:
         return false;
     }
 
-    bool process(TreeNode* node)
+    bool walkRecursively(TreeNode* node)
     {
         if (!node)
             return false;
@@ -53,7 +79,7 @@ private:
         if (checkMatches(m_head, node))
             return true;
 
-        return process(node->left) || process(node->right);
+        return walkRecursively(node->left) || walkRecursively(node->right);
     }
 
     ListNode* m_head;
