@@ -14,35 +14,38 @@ struct ListNode
 
 struct Solution 
 {
-    vector<ListNode*> splitListToParts(ListNode* head, int k) 
+    vector<ListNode*> splitListToParts(ListNode* head, int k)
     {
-		if (!head)
-			return {};
+        vector<ListNode*> result(k, nullptr);
 
-		vector<ListNode*> result;
-		result.reserve(k);
+        // Count the total number of nodes
+        size_t total_count = 0;
+        for (auto node = head; node; node = node->next)
+            ++total_count;
 
-		size_t total_count = 0;
+        auto part_size = total_count / k;
+        auto remainder = total_count % k;
 
-		for (auto node = head; node; node = node->next)
-			++total_count;
+        auto node = head;
+        for (int i = 0; i < k && node; ++i)
+        {
+            result[i] = node;
 
-		auto part_size = total_count / k;
-		auto remainder = total_count % k;
+            int current_part_size = part_size + (remainder-- > 0 ? 1 : 0);
 
-		for (auto node = head; node; node = node->next)
-		{
-			result.emplace_back(node);
+            for (int j = 1; j != current_part_size && node; ++j)
+                node = node->next;
 
-			for (int i = 0; i != part_size && node; ++i)
-				node = node->next;
+            // Move to the next part
+            if (node)
+            {
+                auto next_part_node = node->next;
+                node->next = nullptr;
+                node = next_part_node; 
+            }
+        }
 
-			// We need to put the bigger parts in the front groups
-			if (remainder--)
-				node = node->next;
-		}
-			
-		return result;
+        return result;
     }
 };
 
