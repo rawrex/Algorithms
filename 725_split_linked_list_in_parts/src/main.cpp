@@ -16,17 +16,34 @@ struct Solution
 {
     vector<ListNode*> splitListToParts(ListNode* head, int k) 
     {
-		process(head);
-		return m_result;
-    }
-		
-private:
-	void process(ListNode* node)
-	{
-		
-	}
+		if (!head)
+			return {};
 
-	vector<ListNode*> m_result;
+		vector<ListNode*> result;
+		result.reserve(k);
+
+		size_t total_count = 0;
+
+		for (auto node = head; node; node = node->next)
+			++total_count;
+
+		auto part_size = total_count / k;
+		auto remainder = total_count % k;
+
+		for (auto node = head; node; node = node->next)
+		{
+			result.emplace_back(node);
+
+			for (int i = 0; i != part_size && node; ++i)
+				node = node->next;
+
+			// We need to put the bigger parts in the front groups
+			if (remainder--)
+				node = node->next;
+		}
+			
+		return result;
+    }
 };
 
 int main()
