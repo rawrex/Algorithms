@@ -45,7 +45,7 @@ using namespace std;
      void updateIndices()
      {
          switch (m_direction)
-         {
+		 {
 			 // We are moving from left to right
 			 case 0:
 			 {
