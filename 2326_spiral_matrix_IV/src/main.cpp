@@ -23,6 +23,11 @@ using namespace std;
          m_rows = m;
          m_cols = n;
 
+         m_top_boundary = 0;
+         m_bottom_boundary = m - 1;
+         m_left_boundary = 0;
+         m_right_boundary = n - 1;
+
          while (node)
          {
              // Fill the current cell
@@ -40,11 +45,11 @@ using namespace std;
      void updateIndices()
      {
          switch (m_direction)
-		 {
+         {
 			 // We are moving from left to right
 			 case 0:
 			 {
-				 if (m_col_index + 1 < m_cols)
+				 if (m_col_index + 1 <= m_right_boundary)
 				 {
 					 ++m_col_index;
 				 }
@@ -52,7 +57,7 @@ using namespace std;
 				 {
 					 ++m_row_index;
 					 ++m_top_boundary;
-					 m_direction = 1;
+					 m_direction = 1; // Change direction to top-to-bottom
 				 }
 				 break;
 			 }
@@ -60,7 +65,7 @@ using namespace std;
 			 // We are moving from top to bottom
 			 case 1:
 			 {
-				 if (m_row_index + 1 < m_rows)
+				 if (m_row_index + 1 <= m_bottom_boundary)
 				 {
 					 ++m_row_index;
 				 }
@@ -68,7 +73,9 @@ using namespace std;
 				 {
 					 --m_col_index;
 					 --m_right_boundary;
-					 m_direction = 2;
+
+					 // Change direction to right-to-left
+					 m_direction = 2; 
 				 }
 				 break;
 			 }
@@ -84,7 +91,9 @@ using namespace std;
 				 {
 					 --m_row_index;
 					 --m_bottom_boundary;
-					 m_direction = 3;
+
+					 // Change direction to bottom-to-top
+					 m_direction = 3; 
 				 }
 				 break;
 			 }
@@ -100,11 +109,13 @@ using namespace std;
 				 {
 					 ++m_col_index;
 					 ++m_left_boundary;
-					 m_direction = 0;
+
+					 // Change direction to left-to-right
+					 m_direction = 0; 
 				 }
 				 break;
 			 }
-		 }
+         }
      }
 
      int m_rows = 0;
@@ -112,7 +123,7 @@ using namespace std;
 
      int m_row_index = 0;
      int m_col_index = 0;
- 
+
      // 0 left-to-right, 1 top-to-bottom, 2 right-to-left, 3 bottom-to-top
      int m_direction = 0;
 
