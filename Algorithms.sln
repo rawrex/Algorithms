@@ -65,6 +65,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "725_split_linked_list_in_pa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2326_spiral_matrix_IV", "2326_spiral_matrix_IV\2326_spiral_matrix_IV.vcxproj", "{79A1AB36-776E-42B4-9457-4A685E981D76}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2807_insert_greatest_common_divisors_in_linked_list", "2807_insert_greatest_common_divisors_in_linked_list\2807_insert_greatest_common_divisors_in_linked_list.vcxproj", "{BBFD5D89-B736-4CDF-B291-0341204A3424}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -321,6 +323,14 @@ Global
 		{79A1AB36-776E-42B4-9457-4A685E981D76}.Release|x64.Build.0 = Release|x64
 		{79A1AB36-776E-42B4-9457-4A685E981D76}.Release|x86.ActiveCfg = Release|Win32
 		{79A1AB36-776E-42B4-9457-4A685E981D76}.Release|x86.Build.0 = Release|Win32
+		{BBFD5D89-B736-4CDF-B291-0341204A3424}.Debug|x64.ActiveCfg = Debug|x64
+		{BBFD5D89-B736-4CDF-B291-0341204A3424}.Debug|x64.Build.0 = Debug|x64
+		{BBFD5D89-B736-4CDF-B291-0341204A3424}.Debug|x86.ActiveCfg = Debug|Win32
+		{BBFD5D89-B736-4CDF-B291-0341204A3424}.Debug|x86.Build.0 = Debug|Win32
+		{BBFD5D89-B736-4CDF-B291-0341204A3424}.Release|x64.ActiveCfg = Release|x64
+		{BBFD5D89-B736-4CDF-B291-0341204A3424}.Release|x64.Build.0 = Release|x64
+		{BBFD5D89-B736-4CDF-B291-0341204A3424}.Release|x86.ActiveCfg = Release|Win32
+		{BBFD5D89-B736-4CDF-B291-0341204A3424}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
