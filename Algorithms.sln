@@ -75,6 +75,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2220_minimum_bit_flips_to_c
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1684_count_the_number_of_consistent_strings", "1684_count_the_number_of_consistent_strings\1684_count_the_number_of_consistent_strings.vcxproj", "{50CEB748-C4C1-4EEF-BFAB-EFCE70634266}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1310_xor_queries_of_a_subarray", "1310_xor_queries_of_a_subarray\1310_xor_queries_of_a_subarray.vcxproj", "{A8ACB66A-E7B1-429A-81A8-E5F6E521F909}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -371,6 +373,14 @@ Global
 		{50CEB748-C4C1-4EEF-BFAB-EFCE70634266}.Release|x64.Build.0 = Release|x64
 		{50CEB748-C4C1-4EEF-BFAB-EFCE70634266}.Release|x86.ActiveCfg = Release|Win32
 		{50CEB748-C4C1-4EEF-BFAB-EFCE70634266}.Release|x86.Build.0 = Release|Win32
+		{A8ACB66A-E7B1-429A-81A8-E5F6E521F909}.Debug|x64.ActiveCfg = Debug|x64
+		{A8ACB66A-E7B1-429A-81A8-E5F6E521F909}.Debug|x64.Build.0 = Debug|x64
+		{A8ACB66A-E7B1-429A-81A8-E5F6E521F909}.Debug|x86.ActiveCfg = Debug|Win32
+		{A8ACB66A-E7B1-429A-81A8-E5F6E521F909}.Debug|x86.Build.0 = Debug|Win32
+		{A8ACB66A-E7B1-429A-81A8-E5F6E521F909}.Release|x64.ActiveCfg = Release|x64
+		{A8ACB66A-E7B1-429A-81A8-E5F6E521F909}.Release|x64.Build.0 = Release|x64
+		{A8ACB66A-E7B1-429A-81A8-E5F6E521F909}.Release|x86.ActiveCfg = Release|Win32
+		{A8ACB66A-E7B1-429A-81A8-E5F6E521F909}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

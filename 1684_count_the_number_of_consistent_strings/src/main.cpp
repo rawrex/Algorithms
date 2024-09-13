@@ -10,13 +10,14 @@ struct Solution
     int countConsistentStrings(const string& allowed_str, const vector<string>& words) 
     {
 		// return naive(allowed_str, words);
-		return oneline(allowed_str, words);
+		return another(allowed_str, words);
     }
 
 private:
-	int oneline(const string& allowed_str, const vector<string>& words)
+	int another(const string& allowed_str, const vector<string>& words)
 	{
-		return words.size() - std::count_if(std::begin(words), std::end(words), [&allowed_str](const string_view& word) { return word.find_first_not_of(allowed_str) != std::string::npos; });
+		auto filter = [&allowed_str](const string_view& word) { return word.find_first_not_of(allowed_str) != std::string::npos; };
+		return words.size() - std::count_if(std::begin(words), std::end(words), filter);
 	}
 
     int naive(string allowed_str, const vector<string>& words) 
