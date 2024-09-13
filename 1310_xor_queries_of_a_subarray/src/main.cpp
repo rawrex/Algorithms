@@ -5,6 +5,7 @@ using namespace std;
 struct Solution 
 {
     using size_type = vector<vector<int>>::size_type;
+
     vector<int> xorQueries(vector<int>& arr, vector<vector<int>>& queries) 
     {
         size_type size = queries.size();
