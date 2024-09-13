@@ -21,8 +21,8 @@ private:
     {
         int result = 0;
 
-        for (int beg = queries[index][0], end = queries[index][1]; beg != end; ++beg)
-            result ^= numbers[beg];
+        for (int left = queries[index][0], right = queries[index][1]; left <= right; ++left)
+            result ^= numbers[left];
 
         return result;
     }
