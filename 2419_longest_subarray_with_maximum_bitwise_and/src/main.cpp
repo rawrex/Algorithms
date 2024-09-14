@@ -6,17 +6,23 @@ struct Solution
 {
     int longestSubarray(vector<int>& nums) 
     {
-        auto size = nums.size();
-        int beg = 0;
-        int end = 0;
-        int sum = 0;
-    
-        for (int i = 0; i != size; ++i)
+        int max_value = std::numeric_limits<int>::min();
+        for (int number : nums)
+            max_value = std::max(max_value, number);
+
+        int length = 0;
+        int total_length = 0;
+        for (int i = 0; i != nums.size(); ++i)
         {
-                        
+            if (nums[i] == max_value)
+                ++length;
+            else 
+                length = 0;
+
+            total_length = std::max(total_length, length);
         }
 
-        return end - beg;
+        return total_length;
     }
 };
 
