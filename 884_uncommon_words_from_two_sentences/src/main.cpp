@@ -1,23 +1,31 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#include <unordered_set>
+#include <unordered_map>
 #include <algorithm>
 
 using namespace std;
 
 struct Solution 
 {
-    vector<string> uncommonFromSentences(string s1, string s2) 
+    vector<string> uncommonFromSentences(const string& s1, const string& s2) const
     {
         istringstream iss1(s1);
         istringstream iss2(s2);
 
-        unordered_set<string> words1{ istream_iterator<string>{iss1}, istream_iterator<string>{} };
-        unordered_set<string> words2{ istream_iterator<string>{iss2}, istream_iterator<string>{} };
+        unordered_map<string, unsigned> tracker;
+
+        string word;
+        while (std::getline(iss1, word, ' '))
+            ++tracker[word];
+
+        while (std::getline(iss2, word, ' '))
+            ++tracker[word];
 
         vector<string> result;
-        std::set_difference(std::cbegin(words1), std::cend(words1), std::cbegin(words2), std::cend(words2), std::back_inserter(result));
+        for (const auto& [w, count] : tracker)
+            if (count == 1)
+                result.emplace_back(w);
 
         return result;
     }
