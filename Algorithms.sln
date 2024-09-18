@@ -83,6 +83,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "539_minimum_time_difference
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "884_uncommon_words_from_two_sentences", "884_uncommon_words_from_two_sentences\884_uncommon_words_from_two_sentences.vcxproj", "{AE4EC706-1B83-4C83-AA1C-05A2A3B7C18D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "179_largest_number", "179_largest_number\179_largest_number.vcxproj", "{886D1592-B19A-419D-8C5A-6F7FBE61B058}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -411,6 +413,14 @@ Global
 		{AE4EC706-1B83-4C83-AA1C-05A2A3B7C18D}.Release|x64.Build.0 = Release|x64
 		{AE4EC706-1B83-4C83-AA1C-05A2A3B7C18D}.Release|x86.ActiveCfg = Release|Win32
 		{AE4EC706-1B83-4C83-AA1C-05A2A3B7C18D}.Release|x86.Build.0 = Release|Win32
+		{886D1592-B19A-419D-8C5A-6F7FBE61B058}.Debug|x64.ActiveCfg = Debug|x64
+		{886D1592-B19A-419D-8C5A-6F7FBE61B058}.Debug|x64.Build.0 = Debug|x64
+		{886D1592-B19A-419D-8C5A-6F7FBE61B058}.Debug|x86.ActiveCfg = Debug|Win32
+		{886D1592-B19A-419D-8C5A-6F7FBE61B058}.Debug|x86.Build.0 = Debug|Win32
+		{886D1592-B19A-419D-8C5A-6F7FBE61B058}.Release|x64.ActiveCfg = Release|x64
+		{886D1592-B19A-419D-8C5A-6F7FBE61B058}.Release|x64.Build.0 = Release|x64
+		{886D1592-B19A-419D-8C5A-6F7FBE61B058}.Release|x86.ActiveCfg = Release|Win32
+		{886D1592-B19A-419D-8C5A-6F7FBE61B058}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
