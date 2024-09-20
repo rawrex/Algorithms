@@ -7,6 +7,12 @@ struct Solution
 {
     string shortestPalindrome(string s) 
     {
+        return naive(s);
+    }
+
+private:
+    string naive(string s) 
+    {
         if (s.empty())
             return s;
 
@@ -17,7 +23,6 @@ struct Solution
         return makePalindrome(s, found_middle);
     }
 
-private:
     int findPalindromeMiddle(const string& s)
     {
         for (int middle = m_size / 2; middle >= 0; --middle)
