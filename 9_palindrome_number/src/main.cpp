@@ -5,13 +5,8 @@ struct Solution
     bool isPalindrome(int x) 
     {
         auto str = std::to_string(x);
-        
-        int size = str.size();
-        if (size == 1)
-            return true;
-
-        auto i = 0;
-        auto j = size - 1;
+        int i = 0;
+        int j = str.size() - 1;
 
         for (; i <= j; ++i, --j)
             if (str[i] != str[j])
