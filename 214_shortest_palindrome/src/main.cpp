@@ -11,17 +11,16 @@ struct Solution
             return s;
 
         m_size = s.size();
-        int string_middle = (m_size % 2) ? m_size / 2 : (m_size / 2) - 1;
 
-        auto found_middle = findPalindromeMiddle(s, string_middle);
+        auto found_middle = findPalindromeMiddle(s);
 
         return makePalindrome(s, found_middle);
     }
 
 private:
-    int findPalindromeMiddle(const string& s, int middle) const
+    int findPalindromeMiddle(const string& s) const
     {
-        for (/* empty */; middle; --middle)
+        for (int middle = m_size / 2; middle >= 0; --middle)
         {
             int left_index = middle - 1;
             int right_index = middle + 1;
@@ -32,7 +31,7 @@ private:
                     break;
             }
 
-            if (left_index < 0 || right_index == m_size)
+            if (left_index < 0)
                 return middle;
         }
 
