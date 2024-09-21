@@ -1,6 +1,8 @@
 #include <set>
 #include <vector>
 #include <string>
+#include <numeric>
+#include <algorithm>
 
 using namespace std;
 
@@ -8,13 +10,9 @@ struct Solution
 {
     vector<int> lexicalOrder(int n) 
     {
-        // return naive(n);
-        return second(n);
-    }
+        vector<int> result(n);
+        std::iota(std::begin(result), std::end(result), 1);
 
-private:
-    vector<int> second(int n)
-    {
         auto sorter = [](int a, int b) 
         {
             int a_position = 1;
@@ -39,33 +37,8 @@ private:
             return a_digit < b_digit;
         };
 
-        multiset<int, decltype(sorter)> sorted(sorter);
-
-        for (int i = 1; i <= n; ++i)
-            sorted.emplace(i);
-
-        return { std::cbegin(sorted), std::cend(sorted) };
-    }
-
-    vector<int> naive(int n)
-    {
-        string a_str;
-        string b_str;
-
-        auto sorter = [&a_str, &b_str](int a, int b) 
-        { 
-            a_str = std::to_string(a);
-            b_str = std::to_string(b);
-
-            return a_str < b_str;
-        };
-
-        set<int, decltype(sorter)> sorted(sorter);
-
-        for (int i = 1; i <= n; ++i)
-            sorted.emplace(i);
-
-        return { std::cbegin(sorted), std::cend(sorted) };
+        std::ranges::stable_sort(std::begin(result), std::end(result), sorter);
+        return result;
     }
 };
 
