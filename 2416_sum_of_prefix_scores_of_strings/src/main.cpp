@@ -25,16 +25,14 @@ public:
 
         for (char ch : str)
         {
-            ++current->m_count;
-
             if (!current->m_children.contains(ch))
                 current->m_children[ch] = std::make_unique<Node>();
 
             current = current->m_children[ch].get();
+            ++current->m_count;
         }
     }
 
-    // Search for a complete integer in the trie
     int search(const string& word) const 
     {
         int count = 0;
@@ -42,12 +40,11 @@ public:
 
         for (char ch : word)
         {
-            count += current->m_count;
-
             if (!current->m_children.contains(ch))
                 return count;
 
             current = current->m_children[ch].get();
+            count += current->m_count;
         }
 
         return count;
