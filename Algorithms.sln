@@ -99,6 +99,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2707_extra_characters_in_a_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3043_find_the_length_of_the_longest_common_prefix", "3043_find_the_length_of_the_longest_common_prefix\3043_find_the_length_of_the_longest_common_prefix.vcxproj", "{576D7061-802E-4073-BA12-65B620CC958D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2416_sum_of_prefix_scores_of_strings", "2416_sum_of_prefix_scores_of_strings\2416_sum_of_prefix_scores_of_strings.vcxproj", "{5C254D7A-5EE6-4CC9-B4E4-41DFAC690624}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -491,6 +493,14 @@ Global
 		{576D7061-802E-4073-BA12-65B620CC958D}.Release|x64.Build.0 = Release|x64
 		{576D7061-802E-4073-BA12-65B620CC958D}.Release|x86.ActiveCfg = Release|Win32
 		{576D7061-802E-4073-BA12-65B620CC958D}.Release|x86.Build.0 = Release|Win32
+		{5C254D7A-5EE6-4CC9-B4E4-41DFAC690624}.Debug|x64.ActiveCfg = Debug|x64
+		{5C254D7A-5EE6-4CC9-B4E4-41DFAC690624}.Debug|x64.Build.0 = Debug|x64
+		{5C254D7A-5EE6-4CC9-B4E4-41DFAC690624}.Debug|x86.ActiveCfg = Debug|Win32
+		{5C254D7A-5EE6-4CC9-B4E4-41DFAC690624}.Debug|x86.Build.0 = Debug|Win32
+		{5C254D7A-5EE6-4CC9-B4E4-41DFAC690624}.Release|x64.ActiveCfg = Release|x64
+		{5C254D7A-5EE6-4CC9-B4E4-41DFAC690624}.Release|x64.Build.0 = Release|x64
+		{5C254D7A-5EE6-4CC9-B4E4-41DFAC690624}.Release|x86.ActiveCfg = Release|Win32
+		{5C254D7A-5EE6-4CC9-B4E4-41DFAC690624}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
