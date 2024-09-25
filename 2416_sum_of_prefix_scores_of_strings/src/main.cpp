@@ -54,7 +54,6 @@ private:
     std::unique_ptr<Node> m_root;
 };
 
-
 struct Solution 
 {
     vector<int> sumPrefixScores(vector<string>& words) 
@@ -75,3 +74,8 @@ struct Solution
         return result;
     }
 };
+
+int main()
+{
+
+}
