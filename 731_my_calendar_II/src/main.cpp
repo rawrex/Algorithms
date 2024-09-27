@@ -1,32 +1,36 @@
 #include <map>
 #include <set>
+#include <memory>
 
 struct MyCalendar 
 {
-    struct Event
-    {
-        friend bool operator<(const Event& a, const Event& b) noexcept
-        {
-            return a.m_start < b.m_start && a.m_end <= b.m_start;
-        }
-
-        int m_start = -1;
-        int m_end = -1;
-    };
-
     MyCalendar() = default;
 
     bool book(int start, int end) 
     {
-        if(!m_events_1.emplace(start, end).second)
-            return m_events_2.emplace(start, end).second;
+        ++m_bookings[start];
+        --m_bookings[end];
+
+        unsigned count = 0; 
+        for (const auto& [time, booking_count] : m_bookings) 
+        {
+            // If count ever comes to more that two
+            // It will mean that there are more that two consequtive (and overlapping) bookings present
+            count += booking_count;
+
+            // Undo the changes
+            if (count > 2) 
+            {
+                --m_bookings[start];
+                ++m_bookings[end];
+                return false;
+            }
+        }
 
         return true;
     }
 
-private:
-    std::set<Event> m_events_1;
-    std::set<Event> m_events_2;
+    std::map<int, int> m_bookings;
 };
 
 int main()
