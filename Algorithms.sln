@@ -105,6 +105,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "729_my_calendar_I", "729_my
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "731_my_calendar_II", "731_my_calendar_II\731_my_calendar_II.vcxproj", "{F6953213-F81D-46CD-80D3-6B150958456B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "641_design_circular_deque", "641_design_circular_deque\641_design_circular_deque.vcxproj", "{5AC0F7D3-115E-47BA-9EFF-B5BD40AB3044}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -521,6 +523,14 @@ Global
 		{F6953213-F81D-46CD-80D3-6B150958456B}.Release|x64.Build.0 = Release|x64
 		{F6953213-F81D-46CD-80D3-6B150958456B}.Release|x86.ActiveCfg = Release|Win32
 		{F6953213-F81D-46CD-80D3-6B150958456B}.Release|x86.Build.0 = Release|Win32
+		{5AC0F7D3-115E-47BA-9EFF-B5BD40AB3044}.Debug|x64.ActiveCfg = Debug|x64
+		{5AC0F7D3-115E-47BA-9EFF-B5BD40AB3044}.Debug|x64.Build.0 = Debug|x64
+		{5AC0F7D3-115E-47BA-9EFF-B5BD40AB3044}.Debug|x86.ActiveCfg = Debug|Win32
+		{5AC0F7D3-115E-47BA-9EFF-B5BD40AB3044}.Debug|x86.Build.0 = Debug|Win32
+		{5AC0F7D3-115E-47BA-9EFF-B5BD40AB3044}.Release|x64.ActiveCfg = Release|x64
+		{5AC0F7D3-115E-47BA-9EFF-B5BD40AB3044}.Release|x64.Build.0 = Release|x64
+		{5AC0F7D3-115E-47BA-9EFF-B5BD40AB3044}.Release|x86.ActiveCfg = Release|Win32
+		{5AC0F7D3-115E-47BA-9EFF-B5BD40AB3044}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
