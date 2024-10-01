@@ -1,6 +1,7 @@
 #include <vector>
 #include <algorithm>
 #include <unordered_set>
+#include <unordered_map>
 
 using namespace std;
 
@@ -8,10 +9,41 @@ struct Solution
 {
     bool canArrange(const vector<int>& numbers, int k) 
     {
-        return naive(numbers, k);
+        // return naive(numbers, k);
+        return remainders(numbers, k);
     }
 
 private:
+    bool remainders(const vector<int>& numbers, int k)
+    {
+        std::unordered_map<int, int> remainder_count;
+
+		for (const auto& num : numbers)
+		{
+			int remainder = ((num % k) + k) % k;  
+			++remainder_count[remainder];
+		}
+
+		for (const auto& [remainder, count] : remainder_count)
+		{
+            // Special case: remainder 0 must have an even count 
+			if (remainder == 0) 
+			{
+				if (count % 2 != 0)
+					return false;
+			}
+            // For remainder r, there should be remainder k - r
+			else  
+			{
+				int complement = k - remainder;
+				if (remainder_count[complement] != count)
+					return false;
+			}
+		}
+
+		return true;
+    }
+
     bool naive(const vector<int>& numbers, int k)
     {
         auto size = numbers.size();
