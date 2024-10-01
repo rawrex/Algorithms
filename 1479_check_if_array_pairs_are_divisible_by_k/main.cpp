@@ -6,13 +6,13 @@ using namespace std;
 
 struct Solution 
 {
-    bool canArrange(vector<int>& numbers, int k) 
+    bool canArrange(const vector<int>& numbers, int k) 
     {
         return naive(numbers, k);
     }
 
 private:
-    bool naive(vector<int>& numbers, int k)
+    bool naive(const vector<int>& numbers, int k)
     {
         auto size = numbers.size();
         for (int i = 0; i != size; ++i)
@@ -30,10 +30,11 @@ private:
 
 				m_used_indices.emplace(i);
 				m_used_indices.emplace(j);
+                break;
             }
         }
 
-        return m_used_indices.size() != size;
+        return m_used_indices.size() == size;
     }
 
     std::unordered_set<int> m_used_indices;
@@ -41,5 +42,5 @@ private:
 
 int main()
 {
-
+    Solution().canArrange({ 1,2,3,4,5,10,6,7,8,9 }, 5);
 }
