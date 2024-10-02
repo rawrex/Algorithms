@@ -9,7 +9,9 @@ struct Solution
 {
     vector<int> arrayRankTransform(vector<int>& input)
     {
-        return second(input);
+        // return first(input);
+        // return second(input);
+        return third(input);
     }
 
 private:
@@ -43,5 +45,17 @@ private:
         }
 
         return ranks;
+    }
+
+    vector<int> third(vector<int>& input) 
+    {
+        vector<int> sorted = input;
+        std::sort(std::begin(sorted), std::end(sorted));
+        sorted.erase(unique(std::begin(sorted), std::end(sorted)), std::end(sorted));
+
+        for (auto& i : input) 
+            i = upper_bound(std::cbegin(sorted), std::cend(sorted), i) - sorted.cbegin();
+
+        return input;
     }
 };
