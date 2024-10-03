@@ -113,6 +113,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1479_check_if_array_pairs_a
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1331_rank_transform_of_an_array", "1331_rank_transform_of_an_array\1331_rank_transform_of_an_array.vcxproj", "{A57E195B-928A-4083-B975-712DD16F1C2B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1590_make_sum_divisible_by_p", "1590_make_sum_divisible_by_p\1590_make_sum_divisible_by_p.vcxproj", "{538261B9-7798-496E-9329-5534AF82D479}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -561,6 +563,14 @@ Global
 		{A57E195B-928A-4083-B975-712DD16F1C2B}.Release|x64.Build.0 = Release|x64
 		{A57E195B-928A-4083-B975-712DD16F1C2B}.Release|x86.ActiveCfg = Release|Win32
 		{A57E195B-928A-4083-B975-712DD16F1C2B}.Release|x86.Build.0 = Release|Win32
+		{538261B9-7798-496E-9329-5534AF82D479}.Debug|x64.ActiveCfg = Debug|x64
+		{538261B9-7798-496E-9329-5534AF82D479}.Debug|x64.Build.0 = Debug|x64
+		{538261B9-7798-496E-9329-5534AF82D479}.Debug|x86.ActiveCfg = Debug|Win32
+		{538261B9-7798-496E-9329-5534AF82D479}.Debug|x86.Build.0 = Debug|Win32
+		{538261B9-7798-496E-9329-5534AF82D479}.Release|x64.ActiveCfg = Release|x64
+		{538261B9-7798-496E-9329-5534AF82D479}.Release|x64.Build.0 = Release|x64
+		{538261B9-7798-496E-9329-5534AF82D479}.Release|x86.ActiveCfg = Release|Win32
+		{538261B9-7798-496E-9329-5534AF82D479}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
