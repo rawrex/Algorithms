@@ -6,57 +6,48 @@ using namespace std;
 
 struct Solution
 {
-    bool areSentencesSimilar(string s1, string s2)
+    bool areSentencesSimilar(string s1, string s2) const
     {
         if (s1 == s2)
             return true;
 
-        string word1;
-        string word2;
+        auto words1 = split(s1);
+        auto words2 = split(s2);
 
-        vector<string> words1;
-        vector<string> words2;
+        int size1 = words1.size();
+        int size2 = words2.size();
 
-        stringstream sswords1(s1);
-        while (getline(sswords1, word1, ' '))
-			words1.emplace_back(word1);
-
-        stringstream sswords2(s2);
-        while (getline(sswords2, word2, ' '))
-			words2.emplace_back(word2);
-
-        std::vector<string> common_prefix;
-        std::vector<string> common_suffix;
-
-        stringstream ss1(s1);
-        stringstream ss2(s2);
-        while (getline(ss1, word1, ' ') && getline(ss2, word2, ' '))
+        if (size1 > size2)
         {
-            if(word1 == word2)
-                common_prefix.emplace_back(word1);
+            std::swap(words1, words2);
+            std::swap(size1, size2);
         }
 
-        auto s1_reversed = s1;
-        auto s2_reversed = s2;
-        std::reverse(std::begin(s1_reversed), std::end(s1_reversed));
-        std::reverse(std::begin(s2_reversed), std::end(s2_reversed));
-        stringstream ss1_reversed(s1_reversed);
-        stringstream ss2_reversed(s2_reversed);
-        while (getline(ss1_reversed, word1, ' ') && getline(ss2_reversed, word2, ' '))
-        {
-            if(word1 == word2)
-                common_suffix.emplace_back(word1);
-        }
+        int index = 0;
 
-        // Transform the suffix so the characters are going left to right
-        std::reverse(std::begin(common_suffix), std::end(common_suffix));
-        for(auto& word : common_suffix)
-            std::reverse(std::begin(word), std::end(word));
+		for (; index < size1; ++index)
+			if (words1[index] != words2[index])
+				break;
+ 
+        // The main trick, counts out the difference in sizes (the middle part) 
+        // And checks to see that the tail of words2 is the same as the remaining part of words1
+        for (; index < size1; ++index)
+            if (words1[index] != words2[index + size2 - size1])
+                break;
 
-        auto total = common_prefix;
-        total.insert(std::end(total), std::begin(common_suffix), std::end(common_suffix));
+        return index == size1;
+    }
 
-        return common_prefix == words1 || common_prefix == words2 || common_suffix == words1 || common_suffix == words2 || total == words1 || total == words2;
+    std::vector<std::string> split(const std::string& str) const
+    {
+        std::vector<std::string> words;
+        std::string word;
+        std::stringstream stream(str);
+
+        while (std::getline(stream, word, ' '))
+			words.emplace_back(word);
+
+        return words;
     }
 };
 
