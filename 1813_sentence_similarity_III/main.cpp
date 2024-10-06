@@ -1,4 +1,6 @@
+#include <vector>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -9,8 +11,8 @@ struct Solution
         if (s1 == s2)
             return true;
 
-        string common_prefix;
-        string common_suffix;
+        std::vector<string> common_prefix;
+        std::vector<string> common_suffix;
 
         auto iter1 = s1.cbegin();
         auto iter2 = s2.cbegin();
@@ -18,27 +20,37 @@ struct Solution
         auto riter1 = s1.crbegin();
         auto riter2 = s2.crbegin();
 
-        for (; iter1 != s1.cend() && iter2 != s2.cend() && *iter1 == *iter2; ++iter1, ++iter2)
-            common_prefix.push_back(*iter1);
+        string word1;
+        string word2;
+        stringstream ss1(s1);
+        stringstream ss2(s2);
 
-        for (; riter1 != s1.crend() && riter2 != s2.crend() && *riter1 == *riter2; ++riter1, ++riter2)
-            common_suffix.push_back(*riter1);
+        while (getline(ss1, word1, ' ') && getline(ss2, word2, ' '))
+        {
+            if(word1 == word2)
+                common_prefix.emplace_back(word1);
+        }
+
+        auto s1_reversed = s1;
+        auto s2_reversed = s2;
+        std::reverse(std::begin(s1_reversed), std::end(s1_reversed));
+        std::reverse(std::begin(s2_reversed), std::end(s2_reversed));
+        stringstream ss1_reversed(s1_reversed);
+        stringstream ss2_reversed(s2_reversed);
+
+        while (getline(ss1_reversed, word1, ' ') && getline(ss2_reversed, word2, ' '))
+        {
+            if(word1 == word2)
+                common_suffix.emplace_back(word1);
+        }
 
         // Transform the suffix so the characters are going left to right
         std::reverse(std::begin(common_suffix), std::end(common_suffix));
 
-        if (!common_prefix.empty())
-        {
-            if(auto space = common_prefix.find_last_of(' '); space != std::string::npos)
-                common_prefix.erase(space);
-        }
-        else if (!common_suffix.empty())
-        {
-            if(auto space = common_suffix.find_first_of(' '); space != std::string::npos)
-                common_suffix.erase(space);
-        }
+        auto total = common_prefix;
+        total.insert(std::end(total), std::begin(common_suffix), std::end(common_suffix));
 
-        return common_prefix == s1 || common_prefix == s2 || common_suffix == s1 || common_suffix == s2 || common_prefix + common_suffix == s1 || common_prefix + common_suffix == s2;
+        return common_prefix == s1_set || common_prefix == s2_set || common_suffix == s1_set || common_suffix == s2_set || total == s1_set || total == s2_set;
     }
 };
 
