@@ -121,6 +121,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1813_sentence_similarity_II
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2696_minimum_string_length_after_removing_substrings", "2696_minimum_string_length_after_removing_substrings\2696_minimum_string_length_after_removing_substrings.vcxproj", "{C991204B-6EAE-40B8-81CF-E9D1D4EC0693}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1963_minimum_number_of_swaps_to_make_the_string_balanced", "1963_minimum_number_of_swaps_to_make_the_string_balanced\1963_minimum_number_of_swaps_to_make_the_string_balanced.vcxproj", "{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -601,6 +603,14 @@ Global
 		{C991204B-6EAE-40B8-81CF-E9D1D4EC0693}.Release|x64.Build.0 = Release|x64
 		{C991204B-6EAE-40B8-81CF-E9D1D4EC0693}.Release|x86.ActiveCfg = Release|Win32
 		{C991204B-6EAE-40B8-81CF-E9D1D4EC0693}.Release|x86.Build.0 = Release|Win32
+		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Debug|x64.ActiveCfg = Debug|x64
+		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Debug|x64.Build.0 = Debug|x64
+		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Debug|x86.ActiveCfg = Debug|Win32
+		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Debug|x86.Build.0 = Debug|Win32
+		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Release|x64.ActiveCfg = Release|x64
+		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Release|x64.Build.0 = Release|x64
+		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Release|x86.ActiveCfg = Release|Win32
+		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
