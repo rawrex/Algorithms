@@ -1,29 +1,30 @@
-#include <stack>
 #include <string>
 
 using namespace std;
 
 struct Solution 
 {
-    int minAddToMakeValid(string s) 
+    int minAddToMakeValid(string s) const
     {
-        int count = 0;
-        std::stack<char> opened;
+        int unpaired_open_count = 0;
+        int unpaired_close_count = 0;
 
         for (char ch : s)
         {
             if (ch == '(')
-                opened.push(1);
+            {
+                ++unpaired_open_count;
+            }
             else
             {
-                if (!opened.empty())
-                    opened.pop();
+                if (unpaired_open_count != 0)
+                    --unpaired_open_count;
                 else
-                    ++count;
+                    ++unpaired_close_count;
             }
         }
 
-        return count + opened.size();
+        return unpaired_open_count + unpaired_close_count;
     }
 };
 
