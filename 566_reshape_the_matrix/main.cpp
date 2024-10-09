@@ -1,3 +1,4 @@
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -12,23 +13,32 @@ struct Solution
         auto old_rows = mat.size();
         auto old_cols = mat[0].size();
 
-        if (old_rows * old_cols != new_rows * new_cols)
+        auto total_old_items = old_rows * old_cols;
+        auto total_new_items = new_rows * new_cols;
+
+        if (total_new_items != total_old_items)
             return mat;
 
         vector<vector<int>> reshaped(new_rows, vector<int>(new_cols, -1));
 
-        for (int index = 0; index != new_rows * new_cols; ++index)
+        for (int item = 0; item != total_new_items; ++item)
         {
-            int old_row_i = index / old_rows;
-            int old_col_i = index % old_cols;
+            auto [old_row, old_col] = makeRowCol(item, old_rows, old_cols);
+            auto [new_row, new_col] = makeRowCol(item, new_rows, new_cols);
 
-            int new_row_i = new_rows == 1 ? 0 : index / new_rows;
-            int new_col_i = index % new_cols;
-
-            reshaped[new_row_i][new_col_i] = mat[old_row_i][old_col_i];
+            reshaped[new_row][new_col] = mat[old_row][old_col];
         }
 
         return reshaped;
+    }
+
+private:
+    std::pair<int, int> makeRowCol(int index, int rows, int cols) const
+    {
+		int row = index / cols;
+		int col = index - (row * cols);
+
+        return std::make_pair(row, col);
     }
 };
 
