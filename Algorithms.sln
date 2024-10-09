@@ -123,6 +123,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2696_minimum_string_length_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1963_minimum_number_of_swaps_to_make_the_string_balanced", "1963_minimum_number_of_swaps_to_make_the_string_balanced\1963_minimum_number_of_swaps_to_make_the_string_balanced.vcxproj", "{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "921_minimum_add_to_make_parenthesis_valid", "921_minimum_add_to_make_parenthesis_valid\921_minimum_add_to_make_parenthesis_valid.vcxproj", "{F73DC282-FF38-4514-991F-900E3F4A4C24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -611,6 +613,14 @@ Global
 		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Release|x64.Build.0 = Release|x64
 		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Release|x86.ActiveCfg = Release|Win32
 		{FC4E12B9-63B0-40F7-B757-4A6B3FAE3244}.Release|x86.Build.0 = Release|Win32
+		{F73DC282-FF38-4514-991F-900E3F4A4C24}.Debug|x64.ActiveCfg = Debug|x64
+		{F73DC282-FF38-4514-991F-900E3F4A4C24}.Debug|x64.Build.0 = Debug|x64
+		{F73DC282-FF38-4514-991F-900E3F4A4C24}.Debug|x86.ActiveCfg = Debug|Win32
+		{F73DC282-FF38-4514-991F-900E3F4A4C24}.Debug|x86.Build.0 = Debug|Win32
+		{F73DC282-FF38-4514-991F-900E3F4A4C24}.Release|x64.ActiveCfg = Release|x64
+		{F73DC282-FF38-4514-991F-900E3F4A4C24}.Release|x64.Build.0 = Release|x64
+		{F73DC282-FF38-4514-991F-900E3F4A4C24}.Release|x86.ActiveCfg = Release|Win32
+		{F73DC282-FF38-4514-991F-900E3F4A4C24}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
