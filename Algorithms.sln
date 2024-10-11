@@ -131,6 +131,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "962_maximum_width_ramp", "9
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1942_the_number_of_the_smallest_unoccupied_chair", "1942_the_number_of_the_smallest_unoccupied_chair\1942_the_number_of_the_smallest_unoccupied_chair.vcxproj", "{A51F4C01-D831-4FE3-9B08-519AFC5F0661}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1827_minimum_operations_to_make_the_array_increasing", "1827_minimum_operations_to_make_the_array_increasing\1827_minimum_operations_to_make_the_array_increasing.vcxproj", "{E415D0E4-EC8A-4432-9964-0BE9FEB38919}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -651,6 +653,14 @@ Global
 		{A51F4C01-D831-4FE3-9B08-519AFC5F0661}.Release|x64.Build.0 = Release|x64
 		{A51F4C01-D831-4FE3-9B08-519AFC5F0661}.Release|x86.ActiveCfg = Release|Win32
 		{A51F4C01-D831-4FE3-9B08-519AFC5F0661}.Release|x86.Build.0 = Release|Win32
+		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Debug|x64.ActiveCfg = Debug|x64
+		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Debug|x64.Build.0 = Debug|x64
+		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Debug|x86.ActiveCfg = Debug|Win32
+		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Debug|x86.Build.0 = Debug|Win32
+		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Release|x64.ActiveCfg = Release|x64
+		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Release|x64.Build.0 = Release|x64
+		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Release|x86.ActiveCfg = Release|Win32
+		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
