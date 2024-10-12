@@ -133,6 +133,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1942_the_number_of_the_smal
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1827_minimum_operations_to_make_the_array_increasing", "1827_minimum_operations_to_make_the_array_increasing\1827_minimum_operations_to_make_the_array_increasing.vcxproj", "{E415D0E4-EC8A-4432-9964-0BE9FEB38919}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2406_divide_intervals_into_minimum_number_of_groups", "2406_divide_intervals_into_minimum_number_of_groups\2406_divide_intervals_into_minimum_number_of_groups.vcxproj", "{DB82B30B-5252-4D87-B522-A9F6D0EEDB18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -661,6 +663,14 @@ Global
 		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Release|x64.Build.0 = Release|x64
 		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Release|x86.ActiveCfg = Release|Win32
 		{E415D0E4-EC8A-4432-9964-0BE9FEB38919}.Release|x86.Build.0 = Release|Win32
+		{DB82B30B-5252-4D87-B522-A9F6D0EEDB18}.Debug|x64.ActiveCfg = Debug|x64
+		{DB82B30B-5252-4D87-B522-A9F6D0EEDB18}.Debug|x64.Build.0 = Debug|x64
+		{DB82B30B-5252-4D87-B522-A9F6D0EEDB18}.Debug|x86.ActiveCfg = Debug|Win32
+		{DB82B30B-5252-4D87-B522-A9F6D0EEDB18}.Debug|x86.Build.0 = Debug|Win32
+		{DB82B30B-5252-4D87-B522-A9F6D0EEDB18}.Release|x64.ActiveCfg = Release|x64
+		{DB82B30B-5252-4D87-B522-A9F6D0EEDB18}.Release|x64.Build.0 = Release|x64
+		{DB82B30B-5252-4D87-B522-A9F6D0EEDB18}.Release|x86.ActiveCfg = Release|Win32
+		{DB82B30B-5252-4D87-B522-A9F6D0EEDB18}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
