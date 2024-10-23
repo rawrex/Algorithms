@@ -11,15 +11,16 @@ struct TreeNode
 	TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 
-struct Solution 
+struct Solution
 {
-    TreeNode* replaceValueInTree(TreeNode* root) 
+	TreeNode* replaceValueInTree(TreeNode* root)
 	{
 		collect(root, 0);
 		update();
 
+		root->val = 0;
 		return root;
-    }
+	}
 
 	void collect(TreeNode* node, unsigned level)
 	{
@@ -38,25 +39,27 @@ struct Solution
 
 		for (const auto& [level, nodes] : m_levels)
 		{
-			for (auto node : nodes)
+			for (auto parent_node : nodes)
 			{
 				int sum = 0;
 				for (auto another_node : nodes)
 				{
-					if (node == another_node)
+					if (parent_node == another_node)
 						continue;
 
 					sum += another_node->left ? another_node->left->val : 0;
 					sum += another_node->right ? another_node->right->val : 0;
 				}
 
-				new_values[node->left] = sum;
-				new_values[node->right] = sum;
+				if (parent_node->left)
+					new_values[parent_node->left] = sum;
+				if (parent_node->right)
+					new_values[parent_node->right] = sum;
 			}
-
-			for (auto node : nodes)
-				node->val = new_values[node];
 		}
+
+		for (const auto& [node, new_val] : new_values)
+			node->val = new_val;
 	}
 
 private:
