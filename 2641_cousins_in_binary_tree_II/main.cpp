@@ -19,6 +19,7 @@ struct Solution
 		update();
 
 		root->val = 0;
+
 		return root;
 	}
 
@@ -35,31 +36,40 @@ struct Solution
 
 	void update()
 	{
-		std::unordered_map<TreeNode*, int> new_values;
+		// Precompute the total sum of all node values at each level
+		std::unordered_map<unsigned, int> level_sums;
 
+		for (const auto& [level, nodes] : m_levels)
+		{
+			int total_sum = 0;
+			for (const auto& node : nodes)
+			{
+				if (node->left)
+					total_sum += node->left->val;
+				if (node->right)
+					total_sum += node->right->val;
+			}
+			level_sums[level] = total_sum;
+		}
+
+		// Update the values using precomputed sums
 		for (const auto& [level, nodes] : m_levels)
 		{
 			for (auto parent_node : nodes)
 			{
-				int sum = 0;
-				for (auto another_node : nodes)
-				{
-					if (parent_node == another_node)
-						continue;
+				int sibling_sum = 0;
 
-					sum += another_node->left ? another_node->left->val : 0;
-					sum += another_node->right ? another_node->right->val : 0;
-				}
+				sibling_sum += parent_node->left ? parent_node->left->val : 0;
+				sibling_sum += parent_node->right ? parent_node->right->val : 0;
+
+				int cousin_sum = level_sums[level] - sibling_sum;
 
 				if (parent_node->left)
-					new_values[parent_node->left] = sum;
+					parent_node->left->val = cousin_sum;
 				if (parent_node->right)
-					new_values[parent_node->right] = sum;
+					parent_node->right->val = cousin_sum;
 			}
 		}
-
-		for (const auto& [node, new_val] : new_values)
-			node->val = new_val;
 	}
 
 private:
