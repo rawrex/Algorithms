@@ -12,7 +12,26 @@ struct TreeNode
 	TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 
-struct Solution 
+struct Solution1
+{
+	bool flipEquiv(TreeNode* root1, TreeNode* root2) 
+	{
+		return isFlipEquivalent(root1, root2);
+	}
+
+	bool isFlipEquivalent(TreeNode* root1, TreeNode* root2) 
+	{
+		if (root1 == root2)
+			return true;
+
+		if (!root1 || !root2 || root1->val != root2->val)
+			return false;
+
+		return (isFlipEquivalent(root1->left, root2->left) && isFlipEquivalent(root1->right, root2->right)) || (isFlipEquivalent(root1->left, root2->right) && isFlipEquivalent(root1->right, root2->left));
+	}
+};
+
+struct Solution2
 {
     bool flipEquiv(TreeNode* root1, TreeNode* root2) 
     {
@@ -42,22 +61,43 @@ private:
 		return true;
 	}
 
-	void collect(TreeNode* node, unsigned level, std::unordered_map<unsigned, std::vector<TreeNode*>>& levels)
+	void collect(TreeNode* node, unsigned level, std::unordered_map<unsigned, std::vector<int>>& levels)
 	{
 		if (!node)
 			return;
 
-		m_max_level = std::max(m_max_level, level);
-
 		collect(node->left, level + 1, levels);
 		collect(node->right, level + 1, levels);
 
-		levels[level].emplace_back(node);
+		m_max_level = std::max(m_max_level, level);
+		levels[level].emplace_back(node->val);
+	}
+
+	std::size_t hash(std::vector<uint32_t> const& vec) const 
+	{
+		std::size_t seed = vec.size();
+		for (auto& i : vec)
+			seed ^= i + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+
+		return seed;
 	}
 
 	unsigned m_max_level = 0;
-	std::unordered_map<unsigned, std::vector<TreeNode*>> m_levels1;
-	std::unordered_map<unsigned, std::vector<TreeNode*>> m_levels2;
+	std::unordered_map<unsigned, std::vector<int>> m_levels1;
+	std::unordered_map<unsigned, std::vector<int>> m_levels2;
+};
+
+struct Solution
+{
+	bool flipEquiv(TreeNode* root1, TreeNode* root2)
+	{
+		return s1.flipEquiv(root1, root2);
+		// return s2.flipEquiv(root1, root2);
+	}
+
+private:
+	Solution1 s1;
+	Solution2 s2;
 };
 
 int main()
