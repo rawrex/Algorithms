@@ -2,63 +2,56 @@
 #include <string>
 #include <memory>
 #include <sstream>
+#include <algorithm>
 #include <unordered_map>
 
 using namespace std;
 
-class Trie 
+class Trie
 {
 public:
-    struct Node 
+    struct Node
     {
-        int m_count = 0;
+        bool is_terminal = false;
         unordered_map<string, std::unique_ptr<Node>> m_children;
     };
 
-    Trie() : m_root(std::make_unique<Node>()) 
-    {
-    
-    }
+    Trie() : m_root(std::make_unique<Node>()) {}
 
     void insert(const string& path)
     {
         Node* current = m_root.get();
-
         for (const auto& folder : splitPath(path))
         {
             if (!current->m_children.contains(folder))
                 current->m_children[folder] = std::make_unique<Node>();
 
             current = current->m_children[folder].get();
-            ++current->m_count;
         }
+
+        // Mark end of a unique folder path
+        current->is_terminal = true;  
     }
 
-    int search(const string& path) const 
+    void collectPaths(vector<string>& result, const string& path = "", Node* node = nullptr)
     {
-        int count = 0;
-        Node* current = m_root.get();
+        if (!node) node = m_root.get();
 
-        for (const auto& folder : splitPath(path))
-        {
-            if (!current->m_children.contains(folder))
-                return count;
+        // Collect the path to this non-terminal node and return
+        if (node->is_terminal)
+            return result.push_back(path);
 
-            current = current->m_children[folder].get();
-            count += current->m_count;
-        }
-
-        return count;
+        for (const auto& [folder, child] : node->m_children)
+            collectPaths(result, path + "/" + folder, child.get());
     }
 
 private:
     static vector<string> splitPath(const string& path)
     {
         vector<string> output;
-
         istringstream ss(path);
         string folder;
-        std::getline(ss, folder, '/'); // drop the leading '/'
+        std::getline(ss, folder, '/');  // Drop the leading '/'
         while (std::getline(ss, folder, '/'))
             output.push_back(folder);
 
@@ -68,14 +61,17 @@ private:
     std::unique_ptr<Node> m_root;
 };
 
-struct Solution 
+struct Solution
 {
-    vector<string> removeSubfolders(const vector<string>& folders) 
+    vector<string> removeSubfolders(vector<string>& folders)
     {
         Trie tree;
 
-        for (const auto& path : folders)
-            tree.insert(path);
+        for (const auto& folder : folders)
+            tree.insert(folder);
+
+        folders.clear();
+        tree.collectPaths(folders);
 
         return folders;
     }
