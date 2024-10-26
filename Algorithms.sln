@@ -151,6 +151,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "951_flip_equivalent_binary_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1233_remove_sub_folders_from_the_filesystem", "1233_remove_sub_folders_from_the_filesystem\1233_remove_sub_folders_from_the_filesystem.vcxproj", "{72A1769E-2C51-4B41-AFF5-7595B85092DE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2458_height_of_binary_tree_after_subtree_removal_queries", "2458_height_of_binary_tree_after_subtree_removal_queries\2458_height_of_binary_tree_after_subtree_removal_queries.vcxproj", "{8DABB662-1D92-4C6F-82B0-338EA492D546}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -751,6 +753,14 @@ Global
 		{72A1769E-2C51-4B41-AFF5-7595B85092DE}.Release|x64.Build.0 = Release|x64
 		{72A1769E-2C51-4B41-AFF5-7595B85092DE}.Release|x86.ActiveCfg = Release|Win32
 		{72A1769E-2C51-4B41-AFF5-7595B85092DE}.Release|x86.Build.0 = Release|Win32
+		{8DABB662-1D92-4C6F-82B0-338EA492D546}.Debug|x64.ActiveCfg = Debug|x64
+		{8DABB662-1D92-4C6F-82B0-338EA492D546}.Debug|x64.Build.0 = Debug|x64
+		{8DABB662-1D92-4C6F-82B0-338EA492D546}.Debug|x86.ActiveCfg = Debug|Win32
+		{8DABB662-1D92-4C6F-82B0-338EA492D546}.Debug|x86.Build.0 = Debug|Win32
+		{8DABB662-1D92-4C6F-82B0-338EA492D546}.Release|x64.ActiveCfg = Release|x64
+		{8DABB662-1D92-4C6F-82B0-338EA492D546}.Release|x64.Build.0 = Release|x64
+		{8DABB662-1D92-4C6F-82B0-338EA492D546}.Release|x86.ActiveCfg = Release|Win32
+		{8DABB662-1D92-4C6F-82B0-338EA492D546}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
