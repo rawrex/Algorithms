@@ -22,7 +22,7 @@ struct Solution
 		collect(root, 0);
 
 		for (int query : queries)
-			result.emplace_back(maxHeight(root, value_to_node[query]));
+			result.emplace_back(height(root, value_to_node[query]));
 
 		return result;
     }
@@ -41,23 +41,12 @@ private:
 		collect(node->right, level);
 	}
 
-	unsigned maxHeight(TreeNode* node, TreeNode* avoid_node)
-	{
-		unsigned level = 0;
-		height(node, avoid_node, level);
-
-		return level;
-	}
-
-	void height(TreeNode* node, TreeNode* avoid_node, unsigned& level)
+	int height(TreeNode* node, TreeNode* avoid_node)
 	{
 		if (!node || node == avoid_node)
-			return;
+			return -1;
 
-		++level;
-
-		height(node->left, avoid_node, level);
-		height(node->right, avoid_node, level);
+		return 1 + std::max(height(node->left, avoid_node), height(node->right, avoid_node));
 	}
 
 	unordered_map<int, TreeNode*> value_to_node;
