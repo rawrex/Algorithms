@@ -22,34 +22,52 @@ struct Solution
 		collect(root, 0);
 
 		for (int query : queries)
-			result.emplace_back(height(root, value_to_node[query]));
+			result.emplace_back(process(query));
 
 		return result;
     }
 
 private:
-	void collect(TreeNode* node, unsigned level)
+	int collect(TreeNode* node, unsigned level)
 	{
 		if (!node)
-			return;
+			return level - 1;  // return the last valid level if null
 
-		value_to_node[node->val] = node;
+		value_to_level[node->val] = level;
+		level_nodes[level].emplace_back(node);
 
-		++level;
-		
-		collect(node->left, level);
-		collect(node->right, level);
+		// Calculate the height of the subtree rooted at this node
+		int left_height = collect(node->left, level + 1);
+		int right_height = collect(node->right, level + 1);
+
+		int height = std::max(left_height, right_height);
+		height_below_node[node] = height - level;
+
+		return height;
 	}
 
-	int height(TreeNode* node, TreeNode* avoid_node)
+	int process(int query)
 	{
-		if (!node || node == avoid_node)
-			return -1;
+		auto level = value_to_level[query];
 
-		return 1 + std::max(height(node->left, avoid_node), height(node->right, avoid_node));
+		while (level && level_nodes.count(level) == 1)
+			--level;
+
+		int max_height = 0;
+		for (auto other_node : level_nodes[level])
+		{
+			if (query == other_node->val)
+				continue;
+			
+			max_height = std::max(max_height, height_below_node[other_node]);
+		}
+
+		return max_height + level;
 	}
 
-	unordered_map<int, TreeNode*> value_to_node;
+	unordered_map<int, unsigned> value_to_level;
+	unordered_map<unsigned, vector<TreeNode*>> level_nodes;
+	unordered_map<TreeNode*, int> height_below_node;
 };
 
 int main()
