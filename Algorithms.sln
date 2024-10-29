@@ -157,6 +157,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1277_count_square_submatric
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2501_longest_square_sterak_in_an_array", "2501_longest_square_sterak_in_an_array\2501_longest_square_sterak_in_an_array.vcxproj", "{728AF2BC-51A0-4076-82F7-927525CCAB1B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2684_maximum_number_of_moves_in_a_grid", "2684_maximum_number_of_moves_in_a_grid\2684_maximum_number_of_moves_in_a_grid.vcxproj", "{8D0A7ECC-E0B2-48AE-9930-A464486E8015}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -781,6 +783,14 @@ Global
 		{728AF2BC-51A0-4076-82F7-927525CCAB1B}.Release|x64.Build.0 = Release|x64
 		{728AF2BC-51A0-4076-82F7-927525CCAB1B}.Release|x86.ActiveCfg = Release|Win32
 		{728AF2BC-51A0-4076-82F7-927525CCAB1B}.Release|x86.Build.0 = Release|Win32
+		{8D0A7ECC-E0B2-48AE-9930-A464486E8015}.Debug|x64.ActiveCfg = Debug|x64
+		{8D0A7ECC-E0B2-48AE-9930-A464486E8015}.Debug|x64.Build.0 = Debug|x64
+		{8D0A7ECC-E0B2-48AE-9930-A464486E8015}.Debug|x86.ActiveCfg = Debug|Win32
+		{8D0A7ECC-E0B2-48AE-9930-A464486E8015}.Debug|x86.Build.0 = Debug|Win32
+		{8D0A7ECC-E0B2-48AE-9930-A464486E8015}.Release|x64.ActiveCfg = Release|x64
+		{8D0A7ECC-E0B2-48AE-9930-A464486E8015}.Release|x64.Build.0 = Release|x64
+		{8D0A7ECC-E0B2-48AE-9930-A464486E8015}.Release|x86.ActiveCfg = Release|Win32
+		{8D0A7ECC-E0B2-48AE-9930-A464486E8015}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
