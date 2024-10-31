@@ -161,6 +161,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2684_maximum_number_of_move
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1671_minimum_number_of_removals_to_make_mountain_array", "1671_minimum_number_of_removals_to_make_mountain_array\1671_minimum_number_of_removals_to_make_mountain_array.vcxproj", "{4C565DAE-682E-4D35-A1DF-00A77DC0284D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2463_minimum_total_distance_traveled", "2463_minimum_total_distance_traveled\2463_minimum_total_distance_traveled.vcxproj", "{278347E1-78D1-4FAD-86FA-AD4CD9AB7908}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -801,6 +803,14 @@ Global
 		{4C565DAE-682E-4D35-A1DF-00A77DC0284D}.Release|x64.Build.0 = Release|x64
 		{4C565DAE-682E-4D35-A1DF-00A77DC0284D}.Release|x86.ActiveCfg = Release|Win32
 		{4C565DAE-682E-4D35-A1DF-00A77DC0284D}.Release|x86.Build.0 = Release|Win32
+		{278347E1-78D1-4FAD-86FA-AD4CD9AB7908}.Debug|x64.ActiveCfg = Debug|x64
+		{278347E1-78D1-4FAD-86FA-AD4CD9AB7908}.Debug|x64.Build.0 = Debug|x64
+		{278347E1-78D1-4FAD-86FA-AD4CD9AB7908}.Debug|x86.ActiveCfg = Debug|Win32
+		{278347E1-78D1-4FAD-86FA-AD4CD9AB7908}.Debug|x86.Build.0 = Debug|Win32
+		{278347E1-78D1-4FAD-86FA-AD4CD9AB7908}.Release|x64.ActiveCfg = Release|x64
+		{278347E1-78D1-4FAD-86FA-AD4CD9AB7908}.Release|x64.Build.0 = Release|x64
+		{278347E1-78D1-4FAD-86FA-AD4CD9AB7908}.Release|x86.ActiveCfg = Release|Win32
+		{278347E1-78D1-4FAD-86FA-AD4CD9AB7908}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
