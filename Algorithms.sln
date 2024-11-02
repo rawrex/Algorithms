@@ -165,6 +165,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2463_minimum_total_distance
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1957_delete_characters_to_make_fancy_string", "1957_delete_characters_to_make_fancy_string\1957_delete_characters_to_make_fancy_string.vcxproj", "{7F3A57AC-D9B6-4271-BBC2-F9E806C69C48}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2490_circular_sentence", "2490_circular_sentence\2490_circular_sentence.vcxproj", "{08D7388B-7DDF-4704-9760-FAE58E0D881B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -821,6 +823,14 @@ Global
 		{7F3A57AC-D9B6-4271-BBC2-F9E806C69C48}.Release|x64.Build.0 = Release|x64
 		{7F3A57AC-D9B6-4271-BBC2-F9E806C69C48}.Release|x86.ActiveCfg = Release|Win32
 		{7F3A57AC-D9B6-4271-BBC2-F9E806C69C48}.Release|x86.Build.0 = Release|Win32
+		{08D7388B-7DDF-4704-9760-FAE58E0D881B}.Debug|x64.ActiveCfg = Debug|x64
+		{08D7388B-7DDF-4704-9760-FAE58E0D881B}.Debug|x64.Build.0 = Debug|x64
+		{08D7388B-7DDF-4704-9760-FAE58E0D881B}.Debug|x86.ActiveCfg = Debug|Win32
+		{08D7388B-7DDF-4704-9760-FAE58E0D881B}.Debug|x86.Build.0 = Debug|Win32
+		{08D7388B-7DDF-4704-9760-FAE58E0D881B}.Release|x64.ActiveCfg = Release|x64
+		{08D7388B-7DDF-4704-9760-FAE58E0D881B}.Release|x64.Build.0 = Release|x64
+		{08D7388B-7DDF-4704-9760-FAE58E0D881B}.Release|x86.ActiveCfg = Release|Win32
+		{08D7388B-7DDF-4704-9760-FAE58E0D881B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
