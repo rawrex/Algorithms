@@ -4,10 +4,9 @@ using namespace std;
 
 struct Solution
 {
-    string compressedString(string word)
+    string compressedString(string& word)
     {
         static size_t limit = 9;
-        string result;
 
         char prev = word[0];
         size_t counter = 1;
@@ -17,14 +16,14 @@ struct Solution
         {
             if (i == size)
             {
-                result.push_back(static_cast<char>('0' + counter));
-                result.push_back(prev);
+                word.push_back(static_cast<char>('0' + counter));
+                word.push_back(prev);
                 break;
             }
             else if (counter == limit || word[i] != prev)
             {
-                result.push_back(static_cast<char>('0' + counter));
-                result.push_back(prev);
+                word.push_back(static_cast<char>('0' + counter));
+                word.push_back(prev);
                 counter = 0;
             }
 
@@ -32,7 +31,8 @@ struct Solution
             prev = word[i];
         }
 
-        return result;
+        word.erase(std::cbegin(word), std::cbegin(word) + size);
+        return word;
     }
 };
 
