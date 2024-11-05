@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -10,24 +11,45 @@ struct Solution
     }
 
 private:
-    using halves = std::pair<std::string_view, std::string_view>;
+    using partitions = std::vector<std::pair<std::string_view, std::string_view>>;
 
-    int process(const halves& L_R)
+    int process(const partitions& parts)
     {
-        const auto& [L, R] = L_R;
-        auto L_size = L.size();
-        auto R_size = R.size();
+        int sum = 0;
+        for (const auto& [L, R] : parts)
+        {
+            if (L.empty() || R.empty())
+                continue;
 
-        if (L_size == 1 && R_size == 1)
-            return (L.back() == R.back()) ? 0 : 1;
-        else
-            return process(split(L)) + process(split(R));
+			auto L_size = L.size();
+			auto R_size = R.size();
+
+			if (L_size == 1 && R_size == 1)
+				sum += (L.back() == R.back()) ? 0 : 1;
+			else
+				sum += process(split(L)) + process(split(R));
+		}
+        return sum;
     }
 
-    halves split(std::string_view str)
+    partitions split(std::string_view str)
     {
-        auto middle = str.size() / 2;
-        return { str.substr(0, middle), str.substr(middle) };
+        partitions result;
+
+        // Recursively split the string into partitions of even length
+        if (str.size() % 2 == 0) 
+        {
+            auto middle = str.size() / 2;
+            result.push_back({ str.substr(0, middle), str.substr(middle) });
+        }
+        else 
+        {
+            // Handle odd length by excluding the last character in the left partition
+            auto middle = (str.size() - 1) / 2;
+            result.push_back({ str.substr(0, middle), str.substr(middle) });
+        }
+
+        return result;
     }
 };
 
