@@ -171,6 +171,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "796_rotate_string", "796_ro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3163_string_compression_III", "3163_string_compression_III\3163_string_compression_III.vcxproj", "{C0E36A14-4E2F-4FEC-BE95-9293CBA54FBD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2914_minimum_number_of_changes_to_make_binary_string_beautiful", "2914_minimum_number_of_changes_to_make_binary_string_beautiful\2914_minimum_number_of_changes_to_make_binary_string_beautiful.vcxproj", "{CD14ECC9-3C69-437C-8254-BC244B11999A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -851,6 +853,14 @@ Global
 		{C0E36A14-4E2F-4FEC-BE95-9293CBA54FBD}.Release|x64.Build.0 = Release|x64
 		{C0E36A14-4E2F-4FEC-BE95-9293CBA54FBD}.Release|x86.ActiveCfg = Release|Win32
 		{C0E36A14-4E2F-4FEC-BE95-9293CBA54FBD}.Release|x86.Build.0 = Release|Win32
+		{CD14ECC9-3C69-437C-8254-BC244B11999A}.Debug|x64.ActiveCfg = Debug|x64
+		{CD14ECC9-3C69-437C-8254-BC244B11999A}.Debug|x64.Build.0 = Debug|x64
+		{CD14ECC9-3C69-437C-8254-BC244B11999A}.Debug|x86.ActiveCfg = Debug|Win32
+		{CD14ECC9-3C69-437C-8254-BC244B11999A}.Debug|x86.Build.0 = Debug|Win32
+		{CD14ECC9-3C69-437C-8254-BC244B11999A}.Release|x64.ActiveCfg = Release|x64
+		{CD14ECC9-3C69-437C-8254-BC244B11999A}.Release|x64.Build.0 = Release|x64
+		{CD14ECC9-3C69-437C-8254-BC244B11999A}.Release|x86.ActiveCfg = Release|Win32
+		{CD14ECC9-3C69-437C-8254-BC244B11999A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
