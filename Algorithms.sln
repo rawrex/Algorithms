@@ -179,6 +179,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2275_largest_combination_wi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1829_maximum_xor_for_each_query", "1829_maximum_xor_for_each_query\1829_maximum_xor_for_each_query.vcxproj", "{0442E73E-0FBD-40FE-81D1-0A829A4B42E7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3133_minimum_array_end", "3133_minimum_array_end\3133_minimum_array_end.vcxproj", "{F5B45718-B522-4BA7-A783-073889907AC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -891,6 +893,14 @@ Global
 		{0442E73E-0FBD-40FE-81D1-0A829A4B42E7}.Release|x64.Build.0 = Release|x64
 		{0442E73E-0FBD-40FE-81D1-0A829A4B42E7}.Release|x86.ActiveCfg = Release|Win32
 		{0442E73E-0FBD-40FE-81D1-0A829A4B42E7}.Release|x86.Build.0 = Release|Win32
+		{F5B45718-B522-4BA7-A783-073889907AC8}.Debug|x64.ActiveCfg = Debug|x64
+		{F5B45718-B522-4BA7-A783-073889907AC8}.Debug|x64.Build.0 = Debug|x64
+		{F5B45718-B522-4BA7-A783-073889907AC8}.Debug|x86.ActiveCfg = Debug|Win32
+		{F5B45718-B522-4BA7-A783-073889907AC8}.Debug|x86.Build.0 = Debug|Win32
+		{F5B45718-B522-4BA7-A783-073889907AC8}.Release|x64.ActiveCfg = Release|x64
+		{F5B45718-B522-4BA7-A783-073889907AC8}.Release|x64.Build.0 = Release|x64
+		{F5B45718-B522-4BA7-A783-073889907AC8}.Release|x86.ActiveCfg = Release|Win32
+		{F5B45718-B522-4BA7-A783-073889907AC8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
