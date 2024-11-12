@@ -7,7 +7,7 @@ using namespace std;
 
 struct Solution
 {
-    bool primeSubOperation(std::vector<int>& nums)
+    bool primeSubOperation(td::vector<int>& nums)
     {
         int size = nums.size();
 
