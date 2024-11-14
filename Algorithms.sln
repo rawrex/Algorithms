@@ -189,6 +189,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2070_most_beautiful_item_fo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2563_count_the_number_of_fair_pairs", "2563_count_the_number_of_fair_pairs\2563_count_the_number_of_fair_pairs.vcxproj", "{40EE80C1-55FC-4920-82FA-3E0577AB1BCC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2064_minimized_maximum_of_products_distributed_to_any_store", "2064_minimized_maximum_of_products_distributed_to_any_store\2064_minimized_maximum_of_products_distributed_to_any_store.vcxproj", "{E4D89991-532C-41DC-9413-6FEDCCDDB3A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -941,6 +943,14 @@ Global
 		{40EE80C1-55FC-4920-82FA-3E0577AB1BCC}.Release|x64.Build.0 = Release|x64
 		{40EE80C1-55FC-4920-82FA-3E0577AB1BCC}.Release|x86.ActiveCfg = Release|Win32
 		{40EE80C1-55FC-4920-82FA-3E0577AB1BCC}.Release|x86.Build.0 = Release|Win32
+		{E4D89991-532C-41DC-9413-6FEDCCDDB3A8}.Debug|x64.ActiveCfg = Debug|x64
+		{E4D89991-532C-41DC-9413-6FEDCCDDB3A8}.Debug|x64.Build.0 = Debug|x64
+		{E4D89991-532C-41DC-9413-6FEDCCDDB3A8}.Debug|x86.ActiveCfg = Debug|Win32
+		{E4D89991-532C-41DC-9413-6FEDCCDDB3A8}.Debug|x86.Build.0 = Debug|Win32
+		{E4D89991-532C-41DC-9413-6FEDCCDDB3A8}.Release|x64.ActiveCfg = Release|x64
+		{E4D89991-532C-41DC-9413-6FEDCCDDB3A8}.Release|x64.Build.0 = Release|x64
+		{E4D89991-532C-41DC-9413-6FEDCCDDB3A8}.Release|x86.ActiveCfg = Release|Win32
+		{E4D89991-532C-41DC-9413-6FEDCCDDB3A8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
