@@ -195,6 +195,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1574_shortest_subarray_to_b
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3254_find_the_power_of_k_size_subarrays_I", "3254_find_the_power_of_k_size_subarrays_I\3254_find_the_power_of_k_size_subarrays_I.vcxproj", "{F70D2F73-289F-406F-BEC2-932D7E4934FE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "862_shortest_subarray_with_sum_at_least_k", "862_shortest_subarray_with_sum_at_least_k\862_shortest_subarray_with_sum_at_least_k.vcxproj", "{85F7FA6F-752E-48F2-B830-619E58052531}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -971,6 +973,14 @@ Global
 		{F70D2F73-289F-406F-BEC2-932D7E4934FE}.Release|x64.Build.0 = Release|x64
 		{F70D2F73-289F-406F-BEC2-932D7E4934FE}.Release|x86.ActiveCfg = Release|Win32
 		{F70D2F73-289F-406F-BEC2-932D7E4934FE}.Release|x86.Build.0 = Release|Win32
+		{85F7FA6F-752E-48F2-B830-619E58052531}.Debug|x64.ActiveCfg = Debug|x64
+		{85F7FA6F-752E-48F2-B830-619E58052531}.Debug|x64.Build.0 = Debug|x64
+		{85F7FA6F-752E-48F2-B830-619E58052531}.Debug|x86.ActiveCfg = Debug|Win32
+		{85F7FA6F-752E-48F2-B830-619E58052531}.Debug|x86.Build.0 = Debug|Win32
+		{85F7FA6F-752E-48F2-B830-619E58052531}.Release|x64.ActiveCfg = Release|x64
+		{85F7FA6F-752E-48F2-B830-619E58052531}.Release|x64.Build.0 = Release|x64
+		{85F7FA6F-752E-48F2-B830-619E58052531}.Release|x86.ActiveCfg = Release|Win32
+		{85F7FA6F-752E-48F2-B830-619E58052531}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
