@@ -199,6 +199,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "862_shortest_subarray_with_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1652_defuse_the_bomb", "1652_defuse_the_bomb\1652_defuse_the_bomb.vcxproj", "{8DF43223-0823-4A87-AACD-A9B729737982}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "980_unique_paths_III", "980_unique_paths_III\980_unique_paths_III.vcxproj", "{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -991,6 +993,14 @@ Global
 		{8DF43223-0823-4A87-AACD-A9B729737982}.Release|x64.Build.0 = Release|x64
 		{8DF43223-0823-4A87-AACD-A9B729737982}.Release|x86.ActiveCfg = Release|Win32
 		{8DF43223-0823-4A87-AACD-A9B729737982}.Release|x86.Build.0 = Release|Win32
+		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Debug|x64.ActiveCfg = Debug|x64
+		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Debug|x64.Build.0 = Debug|x64
+		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Debug|x86.ActiveCfg = Debug|Win32
+		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Debug|x86.Build.0 = Debug|Win32
+		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Release|x64.ActiveCfg = Release|x64
+		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Release|x64.Build.0 = Release|x64
+		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Release|x86.ActiveCfg = Release|Win32
+		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
