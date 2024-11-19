@@ -2,7 +2,7 @@
 #include <vector>
 #include <numeric>
 #include <algorithm>
-#include <unordered_set>
+#include <unordered_map>
 
 using namespace std;
 
@@ -11,14 +11,31 @@ struct Solution
     long long maximumSubarraySum(vector<int>& nums, int k) 
     {
         auto size = nums.size();
-        long long max = 0;
-        unordered_set<int> tracker;
+        unordered_map<int, int> tracker;
 
-        for (size_t index = 0; index + k <= size; ++index)
+        long long current_sum = 0;
+
+        for (size_t index = 0; index < k; ++index)
         {
-            tracker = { cbegin(nums) + index, cbegin(nums) + index + k };
+            ++tracker[nums[index]];
+            current_sum += nums[index];
+        }
+
+        long long max = tracker.size() == k ? current_sum : 0;
+
+        for (size_t index = k; index < size; ++index)
+        {
+            ++tracker[nums[index]];
+            current_sum += nums[index];
+
+            --tracker[nums[index - k]];
+			current_sum -= nums[index - k];
+
+            if (tracker[nums[index - k]] == 0)
+                tracker.erase(nums[index - k]);
+
             if (tracker.size() == k)
-                max = std::max(max, std::accumulate(cbegin(tracker), cend(tracker), 0LL));
+                max = std::max(max, current_sum);
         }
 
         return max;
