@@ -201,6 +201,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1652_defuse_the_bomb", "165
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "980_unique_paths_III", "980_unique_paths_III\980_unique_paths_III.vcxproj", "{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2461_maximum_sum_of_distinct_subarrays_with_length_k", "2461_maximum_sum_of_distinct_subarrays_with_length_k\2461_maximum_sum_of_distinct_subarrays_with_length_k.vcxproj", "{A3C9BCF6-B5CE-4AFA-B8B6-81BDD1455DA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -1001,6 +1003,14 @@ Global
 		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Release|x64.Build.0 = Release|x64
 		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Release|x86.ActiveCfg = Release|Win32
 		{F8E5761F-E867-4090-A2D4-B2E80B3CDF6F}.Release|x86.Build.0 = Release|Win32
+		{A3C9BCF6-B5CE-4AFA-B8B6-81BDD1455DA7}.Debug|x64.ActiveCfg = Debug|x64
+		{A3C9BCF6-B5CE-4AFA-B8B6-81BDD1455DA7}.Debug|x64.Build.0 = Debug|x64
+		{A3C9BCF6-B5CE-4AFA-B8B6-81BDD1455DA7}.Debug|x86.ActiveCfg = Debug|Win32
+		{A3C9BCF6-B5CE-4AFA-B8B6-81BDD1455DA7}.Debug|x86.Build.0 = Debug|Win32
+		{A3C9BCF6-B5CE-4AFA-B8B6-81BDD1455DA7}.Release|x64.ActiveCfg = Release|x64
+		{A3C9BCF6-B5CE-4AFA-B8B6-81BDD1455DA7}.Release|x64.Build.0 = Release|x64
+		{A3C9BCF6-B5CE-4AFA-B8B6-81BDD1455DA7}.Release|x86.ActiveCfg = Release|Win32
+		{A3C9BCF6-B5CE-4AFA-B8B6-81BDD1455DA7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
