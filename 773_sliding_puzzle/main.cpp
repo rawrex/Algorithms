@@ -1,3 +1,4 @@
+#include <array>
 #include <queue>
 #include <vector>
 #include <string>
@@ -8,15 +9,17 @@ using namespace std;
 
 struct Solution
 {
-    using board_t = vector<vector<int>>;
+    using board_t = array<array<int, 3>, 2>;
     using pos_t = pair<size_t, size_t>;
 
-    int slidingPuzzle(board_t& root)
+    int slidingPuzzle(vector<vector<int>>& root)
     {
-        unordered_set<string> processed; // Use string to represent the board state
+        board_t initialBoard = convertToArray(root);
+
+        unordered_set<string> processed;
         queue<board_t> q;
-        q.push(root);
-        processed.insert(serialize(root));
+        q.push(initialBoard);
+        processed.insert(serialize(initialBoard));
 
         int moves = 0;
         while (!q.empty())
@@ -47,28 +50,28 @@ private:
     bool isTarget(const board_t& board)
     {
         const static board_t target
-        {
-            {1, 2, 3},
-            {4, 5, 0}
-        };
+        { {
+            {{1, 2, 3}},
+            {{4, 5, 0}}
+        } };
         return board == target;
     }
 
     vector<board_t> possibleMoves(const board_t& board)
     {
         vector<board_t> possible;
-        const auto& [row, col] = findStart(board);
+        auto [row, col] = findStart(board);
 
         const vector<pos_t> directions = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
-        for (const auto& [dir_row, dir_col] : directions)
+        for (const auto& [dr, dc] : directions)
         {
-            size_t next_row = row + dir_row;
-            size_t next_col = col + dir_col;
-            if (next_row < rows && next_col < cols)
+            size_t newRow = row + dr;
+            size_t newCol = col + dc;
+            if (newRow < rows && newCol < cols)
             {
                 board_t next = board;
-                swap(next[row][col], next[next_row][next_col]);
-                possible.emplace_back(next);
+                swap(next[row][col], next[newRow][newCol]);
+                possible.push_back(next);
             }
         }
 
@@ -88,15 +91,27 @@ private:
         return { 0, 0 };
     }
 
-    inline string serialize(const board_t& board)
+    string serialize(const board_t& board)
     {
-        return to_string(board[0][0]) + to_string(board[0][1]) + to_string(board[0][2]) + to_string(board[1][0]) + to_string(board[1][1]) + to_string(board[1][2]);
+        string s;
+        for (const auto& row : board)
+            for (int cell : row)
+                s += to_string(cell);
+        return s;
+    }
+
+    board_t convertToArray(const vector<vector<int>>& vec)
+    {
+        board_t arr;
+        for (size_t row = 0; row < rows; ++row)
+            for (size_t col = 0; col < cols; ++col)
+                arr[row][col] = vec[row][col];
+        return arr;
     }
 
     const static constexpr size_t rows = 2;
     const static constexpr size_t cols = 3;
 };
-
 
 int main()
 {
