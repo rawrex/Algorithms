@@ -1,34 +1,43 @@
 #include <queue>
 #include <vector>
+#include <string>
 #include <utility>
 #include <unordered_set>
 
 using namespace std;
 
-struct Solution 
+struct Solution
 {
     using board_t = vector<vector<int>>;
+    using pos_t = pair<size_t, size_t>;
 
-    int slidingPuzzle(board_t& root) 
+    int slidingPuzzle(board_t& root)
     {
-        unordered_set<board_t> processed;
+        unordered_set<string> processed; // Use string to represent the board state
         queue<board_t> q;
-        q.emplace(root);
+        q.push(root);
+        processed.insert(serialize(root));
 
-        int count = 0;
+        int moves = 0;
         while (!q.empty())
         {
-            const auto& current = q.back();
-            q.pop();
-
-            if (isTarget(current))
-                return count;
-
-            for (const auto& possible : possibleMoves(current))
+            size_t size = q.size();
+            for (size_t i = 0; i < size; ++i)
             {
-                if (!processed.emplace(possible).second)
-                    q.push(possible);
+                board_t current = q.front();
+                q.pop();
+
+                if (isTarget(current))
+                    return moves;
+
+                for (const auto& next : possibleMoves(current))
+                {
+                    string serialized = serialize(next);
+                    if (processed.emplace(serialized).second)
+                        q.push(next);
+                }
             }
+            ++moves;
         }
 
         return -1;
@@ -47,47 +56,26 @@ private:
 
     vector<board_t> possibleMoves(const board_t& board)
     {
-        // For now we do not pass the current zero position info
         vector<board_t> possible;
         const auto& [row, col] = findStart(board);
 
-		if (row != 0 && col == 1)
+        const vector<pos_t> directions = { {1, 0}, {-1, 0}, {0, 1}, {0, -1} };
+        for (const auto& [dir_row, dir_col] : directions)
         {
-            possible.emplace_back(row - 1, col);
-            possible.emplace_back(row, col + 1);
-            possible.emplace_back(row, col - 1);
-        }
-        else if (row != 0 && col == 0)
-        {
-            possible.emplace_back(row - 1, col);
-            possible.emplace_back(row, col + 1);
-        }
-        else if (row != 0 && col == 2)
-        {
-            possible.emplace_back(row - 1, col);
-            possible.emplace_back(row, col - 1);
-        }
-		else if (row == 0 && col == 1)
-        {
-            possible.emplace_back(row + 1, col);
-            possible.emplace_back(row, col + 1);
-            possible.emplace_back(row, col - 1);
-        }
-        else if (row == 0 && col == 0)
-        {
-            possible.emplace_back(row + 1, col);
-            possible.emplace_back(row, col + 1);
-        }
-        else if (row == 0 && col == 2)
-        {
-            possible.emplace_back(row + 1, col);
-            possible.emplace_back(row, col - 1);
+            size_t next_row = row + dir_row;
+            size_t next_col = col + dir_col;
+            if (next_row < rows && next_col < cols)
+            {
+                board_t next = board;
+                swap(next[row][col], next[next_row][next_col]);
+                possible.emplace_back(next);
+            }
         }
 
         return possible;
     }
 
-    pair<size_t, size_t> findStart(const board_t& board)
+    pos_t findStart(const board_t& board)
     {
         for (size_t row = 0; row < rows; ++row)
         {
@@ -100,9 +88,15 @@ private:
         return { 0, 0 };
     }
 
+    inline string serialize(const board_t& board)
+    {
+        return to_string(board[0][0]) + to_string(board[0][1]) + to_string(board[0][2]) + to_string(board[1][0]) + to_string(board[1][1]) + to_string(board[1][2]);
+    }
+
     const static constexpr size_t rows = 2;
     const static constexpr size_t cols = 3;
 };
+
 
 int main()
 {
