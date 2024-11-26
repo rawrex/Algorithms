@@ -215,6 +215,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1975_maximum_matrix_sum", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "773_sliding_puzzle", "773_sliding_puzzle\773_sliding_puzzle.vcxproj", "{02C82462-B40E-4122-8B8A-0575FACFFBBE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2924_find_champion_II", "2924_find_champion_II\2924_find_champion_II.vcxproj", "{4E421937-F110-4598-8396-FD99191422FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -1071,6 +1073,14 @@ Global
 		{02C82462-B40E-4122-8B8A-0575FACFFBBE}.Release|x64.Build.0 = Release|x64
 		{02C82462-B40E-4122-8B8A-0575FACFFBBE}.Release|x86.ActiveCfg = Release|Win32
 		{02C82462-B40E-4122-8B8A-0575FACFFBBE}.Release|x86.Build.0 = Release|Win32
+		{4E421937-F110-4598-8396-FD99191422FC}.Debug|x64.ActiveCfg = Debug|x64
+		{4E421937-F110-4598-8396-FD99191422FC}.Debug|x64.Build.0 = Debug|x64
+		{4E421937-F110-4598-8396-FD99191422FC}.Debug|x86.ActiveCfg = Debug|Win32
+		{4E421937-F110-4598-8396-FD99191422FC}.Debug|x86.Build.0 = Debug|Win32
+		{4E421937-F110-4598-8396-FD99191422FC}.Release|x64.ActiveCfg = Release|x64
+		{4E421937-F110-4598-8396-FD99191422FC}.Release|x64.Build.0 = Release|x64
+		{4E421937-F110-4598-8396-FD99191422FC}.Release|x86.ActiveCfg = Release|Win32
+		{4E421937-F110-4598-8396-FD99191422FC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
