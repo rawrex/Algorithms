@@ -219,6 +219,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2924_find_champion_II", "29
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3243_shoretest_distance_after_road_addition_queries_I", "3243_shoretest_distance_after_road_addition_queries_I\3243_shoretest_distance_after_road_addition_queries_I.vcxproj", "{C80B3682-6D0E-4A57-873C-0B3212F9574C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2290_minimum_obstacle_removal_to_reach_corner", "2290_minimum_obstacle_removal_to_reach_corner\2290_minimum_obstacle_removal_to_reach_corner.vcxproj", "{6C23CAEB-EF11-4D49-8EC4-47EF30BD24B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -1091,6 +1093,14 @@ Global
 		{C80B3682-6D0E-4A57-873C-0B3212F9574C}.Release|x64.Build.0 = Release|x64
 		{C80B3682-6D0E-4A57-873C-0B3212F9574C}.Release|x86.ActiveCfg = Release|Win32
 		{C80B3682-6D0E-4A57-873C-0B3212F9574C}.Release|x86.Build.0 = Release|Win32
+		{6C23CAEB-EF11-4D49-8EC4-47EF30BD24B4}.Debug|x64.ActiveCfg = Debug|x64
+		{6C23CAEB-EF11-4D49-8EC4-47EF30BD24B4}.Debug|x64.Build.0 = Debug|x64
+		{6C23CAEB-EF11-4D49-8EC4-47EF30BD24B4}.Debug|x86.ActiveCfg = Debug|Win32
+		{6C23CAEB-EF11-4D49-8EC4-47EF30BD24B4}.Debug|x86.Build.0 = Debug|Win32
+		{6C23CAEB-EF11-4D49-8EC4-47EF30BD24B4}.Release|x64.ActiveCfg = Release|x64
+		{6C23CAEB-EF11-4D49-8EC4-47EF30BD24B4}.Release|x64.Build.0 = Release|x64
+		{6C23CAEB-EF11-4D49-8EC4-47EF30BD24B4}.Release|x86.ActiveCfg = Release|Win32
+		{6C23CAEB-EF11-4D49-8EC4-47EF30BD24B4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
