@@ -223,6 +223,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2290_minimum_obstacle_remov
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2097_valid_arrangements_of_pairs", "2097_valid_arrangements_of_pairs\2097_valid_arrangements_of_pairs.vcxproj", "{11957D6B-AB45-41F2-90C7-C6B233358A09}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "564_find_the_closest_palindrome", "564_find_the_closest_palindrome\564_find_the_closest_palindrome.vcxproj", "{1AE3B3A2-057E-4B19-917B-D7521F2AFBE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -1111,6 +1113,14 @@ Global
 		{11957D6B-AB45-41F2-90C7-C6B233358A09}.Release|x64.Build.0 = Release|x64
 		{11957D6B-AB45-41F2-90C7-C6B233358A09}.Release|x86.ActiveCfg = Release|Win32
 		{11957D6B-AB45-41F2-90C7-C6B233358A09}.Release|x86.Build.0 = Release|Win32
+		{1AE3B3A2-057E-4B19-917B-D7521F2AFBE9}.Debug|x64.ActiveCfg = Debug|x64
+		{1AE3B3A2-057E-4B19-917B-D7521F2AFBE9}.Debug|x64.Build.0 = Debug|x64
+		{1AE3B3A2-057E-4B19-917B-D7521F2AFBE9}.Debug|x86.ActiveCfg = Debug|Win32
+		{1AE3B3A2-057E-4B19-917B-D7521F2AFBE9}.Debug|x86.Build.0 = Debug|Win32
+		{1AE3B3A2-057E-4B19-917B-D7521F2AFBE9}.Release|x64.ActiveCfg = Release|x64
+		{1AE3B3A2-057E-4B19-917B-D7521F2AFBE9}.Release|x64.Build.0 = Release|x64
+		{1AE3B3A2-057E-4B19-917B-D7521F2AFBE9}.Release|x86.ActiveCfg = Release|Win32
+		{1AE3B3A2-057E-4B19-917B-D7521F2AFBE9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
