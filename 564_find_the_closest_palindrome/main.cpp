@@ -29,7 +29,7 @@ private:
             return std::to_string(down);
     }
 
-    bool isPalindrome(int x)
+    bool isPalindrome(unsigned long long x)
     {
         if (x < 0)
             return false;
@@ -37,11 +37,11 @@ private:
         if (x == 0)
             return true;
 
-        int digits_n = static_cast<int>(std::log10(x));
+        int digits_n = static_cast<unsigned long long>(std::log10(x));
         for (int front = digits_n, back = 0; back <= front; --front, ++back)
         {
-            int front_digit = (x / static_cast<int>(std::pow(10, front))) % 10;
-            int back_digit = (x / static_cast<int>(std::pow(10, back))) % 10;
+            int front_digit = (x / static_cast<unsigned long long>(std::pow(10, front))) % 10;
+            int back_digit = (x / static_cast<unsigned long long>(std::pow(10, back))) % 10;
 
             if (front_digit != back_digit)
                 return false;
