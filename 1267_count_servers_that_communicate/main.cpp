@@ -1,3 +1,4 @@
+#include <array>
 #include <vector>
 #include <iostream>
 #include <unordered_map>
@@ -8,8 +9,8 @@ struct Solution
 {
     int countServers(vector<vector<int>>& grid)
     {
-        std::unordered_map<int, int> rows;
-        std::unordered_map<int, int> cols;
+        std::array<int, 250> rows;
+        std::array<int, 250> cols;
 
         for (int row = 0; row < grid.size(); ++row)
         {
@@ -17,8 +18,8 @@ struct Solution
             {
                 if (grid[row][col])
                 {
-                    ++rows[col];
-                    ++cols[row];
+                    ++rows[row];
+                    ++cols[col];
                 }
             }
         }
@@ -29,7 +30,7 @@ struct Solution
             for (int col = 0; col < grid.back().size(); ++col)
             {
                 if (grid[row][col])
-                    count += rows[col] > 1 || cols[row] > 1;
+                    count += rows[row] > 1 || cols[col] > 1;
             }
         }
 
